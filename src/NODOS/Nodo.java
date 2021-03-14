@@ -9,16 +9,16 @@ package NODOS;
  *
  * @author User
  */
-public class nodo {//convertir  a genérico
+public class Nodo {//convertir  a genérico
     public String  valor;
-    public nodo siguiente;
+    public Nodo siguiente;
 
-    public nodo() {
+    public Nodo() {
         this.valor = null;
         this.siguiente = null;
     }
 
-    public nodo(String p) {
+    public Nodo(String p) {
         valor=p;
         siguiente=null;
     }
@@ -31,11 +31,11 @@ public class nodo {//convertir  a genérico
         this.valor = valor;
     }
 
-    public nodo getSiguiente() {
+    public Nodo getSiguiente() {
         return siguiente;
     }
 
-    public void setSiguiente(nodo siguiente) {
+    public void setSiguiente(Nodo siguiente) {
         this.siguiente = siguiente;
     }
     

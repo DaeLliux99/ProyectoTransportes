@@ -5,19 +5,20 @@
  */
 package estructuras;
 
-import NODOS.nodo;
+import NODOS.Nodo;
 
 /**
  *
  * @author User
  */
+
 public class lista {
-    nodo inicio=null;
+    Nodo inicio=null;
     
     public void insertar(String p) {
-        nodo aux,q;
+        Nodo aux,q;
         q = inicio;
-        aux= new nodo(p);
+        aux= new Nodo(p);
         if (q == null) {
             inicio = aux;
         } else {
@@ -26,7 +27,7 @@ public class lista {
         }
     }
     public void mostrarLista(){
-        nodo aux= inicio;
+        Nodo aux= inicio;
         while(aux!=null){
             
             System.out.println(aux.valor);
