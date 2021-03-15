@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package NODOS;
+package nodos;
 
 /**
  *
  * @author User
  */
 public class Nodo {//convertir  a genérico
-    public String  valor;
+    public String valor;
     public Nodo siguiente;
 
     public Nodo() {
@@ -19,8 +19,8 @@ public class Nodo {//convertir  a genérico
     }
 
     public Nodo(String p) {
-        valor=p;
-        siguiente=null;
+        valor = p;
+        siguiente = null;
     }
 
     public String getValor() {
