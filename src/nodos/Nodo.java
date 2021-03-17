@@ -9,8 +9,8 @@ package nodos;
  *
  * @author User
  */
-public class Nodo {//convertir  a genérico
-    public String valor;
+public class Nodo <G>{//convertir  a genérico
+    public G valor;
     public Nodo siguiente;
 
     public Nodo() {
@@ -18,16 +18,16 @@ public class Nodo {//convertir  a genérico
         this.siguiente = null;
     }
 
-    public Nodo(String p) {
+    public Nodo(G p) {
         valor = p;
         siguiente = null;
     }
 
-    public String getValor() {
+    public G getValor() {
         return valor;
     }
 
-    public void setValor(String valor) {
+    public void setValor(G valor) {
         this.valor = valor;
     }
 

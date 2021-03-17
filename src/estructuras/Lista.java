@@ -12,7 +12,7 @@ import nodos.Nodo;
  * @author User
  */
 
-public class Lista {
+public class Lista <G> {
     //Atributos
     Nodo cabeza;
     int longitud;
@@ -20,18 +20,19 @@ public class Lista {
     //Constructor
     public Lista() {
         cabeza = null;
+        longitud = 0;
     }
     
     //Metodos
-    public void insertarInicio(String dato) {
-        Nodo nodo = new Nodo(dato);
+    public void insertarInicio(G dato) {
+        Nodo<G> nodo = new Nodo<>(dato);
         nodo.siguiente = this.cabeza;
         this.cabeza = nodo;
         this.longitud++;
     }
     
-    public void insertarFinal(String dato) {
-        Nodo nodo = new Nodo(dato);
+    public void insertarFinal(G dato) {
+        Nodo<G> nodo = new Nodo<>(dato);
         if (this.cabeza == null) {
             this.cabeza = nodo;
         } else {
@@ -44,8 +45,8 @@ public class Lista {
         this.longitud++;
     }
     
-    public void insertarEnIndice(int indice, String dato) {
-        Nodo nodo = new Nodo(dato);
+    public void insertarEnIndice(int indice, G dato) {
+        Nodo<G> nodo = new Nodo<>(dato);
         if (this.cabeza == null) {
             nodo.siguiente = this.cabeza;
             this.cabeza = nodo;
@@ -67,11 +68,9 @@ public class Lista {
     
     public void mostrarLista() {
         Nodo puntero = cabeza;
-        while(puntero != null){
-            System.out.println(puntero.valor);
+        while(puntero != null) {
+            System.out.println(puntero.valor.toString());
             puntero = puntero.siguiente;
         }
-    }
-    
-    
+    } 
 }
