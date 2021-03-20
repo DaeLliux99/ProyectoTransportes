@@ -8,7 +8,7 @@ package modelos;
 
 /**
  * 
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * @author Carlos Esteban
  */
 public class Alumno {
     private String nombre;

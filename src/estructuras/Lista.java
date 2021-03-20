@@ -9,7 +9,8 @@ import nodos.Nodo;
 
 /**
  *
- * @author User
+ * @author Carlos Esteban
+ * @param <G>
  */
 
 public class Lista <G> {

@@ -7,9 +7,10 @@ package nodos;
 
 /**
  *
- * @author User
+ * @author Carlos Esteban
+ * @param <G>
  */
-public class Nodo <G>{//convertir  a genérico
+public class Nodo <G> {
     public G valor;
     public Nodo siguiente;
 
