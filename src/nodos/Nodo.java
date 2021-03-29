@@ -13,17 +13,20 @@ package nodos;
 public class Nodo <G> {
     public G valor;
     public Nodo siguiente;
+    public Nodo anterior;
 
     public Nodo() {
         this.valor = null;
         this.siguiente = null;
+        this.anterior = null;   //Agregando para un nodo doble enlazado
     }
 
     public Nodo(G p) {
         valor = p;
         siguiente = null;
+        anterior = null;
     }
-
+    //NODO VALOR
     public G getValor() {
         return valor;
     }
@@ -31,7 +34,7 @@ public class Nodo <G> {
     public void setValor(G valor) {
         this.valor = valor;
     }
-
+    //NODO SIGUIENTE
     public Nodo getSiguiente() {
         return siguiente;
     }
@@ -39,6 +42,15 @@ public class Nodo <G> {
     public void setSiguiente(Nodo siguiente) {
         this.siguiente = siguiente;
     }
+    //NODO ANTERIOR
+    public Nodo getAnterior() {
+        return anterior;
+    }
+
+    public void setAnterior(Nodo anterior) {
+        this.anterior = anterior;
+    }
+    
     
     
 }

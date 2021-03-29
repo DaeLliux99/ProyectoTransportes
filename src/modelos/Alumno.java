@@ -12,6 +12,7 @@ package modelos;
  */
 public class Alumno {
     private String nombre;
+    private String DNI;
     private int codigo;
 
     public Alumno(String nombre, int codigo) {

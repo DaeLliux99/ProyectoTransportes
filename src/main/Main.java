@@ -3,19 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package main;
 
 import estructuras.*;
 import modelos.Alumno;
 
-
 /**
- * 
+ *
  * @author Carlos Esteban
  */
-
 public class Main {
+
     public static void main(String args[]) {
         Lista<Alumno> l = new Lista<>();
         System.out.println("Lista de Alumnos: ");
@@ -25,7 +23,7 @@ public class Main {
         l.insertarInicio(new Alumno("UwU", 33));
         l.mostrarLista();
         System.out.println("");
-        
+
         System.out.println("Lista de Numeros: ");
         Lista<Integer> l2 = new Lista<>();
         l2.insertarInicio(12);
@@ -34,7 +32,7 @@ public class Main {
         l2.insertarInicio(24);
         l2.mostrarLista();
         System.out.println("");
-        
+
         System.out.println("Pila de Alumnos: ");
         Pila<Alumno> l3 = new Pila<>();
         l3.push(new Alumno("Esteban", 20));
@@ -44,7 +42,7 @@ public class Main {
         l3.mostrarPila();
         System.out.println("Pop:" + l3.pop().toString());
         System.out.println("");
-        
+
         System.out.println("Cola de Alumnos: ");
         Cola<Alumno> l4 = new Cola<>();
         l4.push(new Alumno("Esteban", 20));
@@ -53,5 +51,31 @@ public class Main {
         l4.push(new Alumno("Jorge", 13));
         l4.mostrarCola();
         System.out.println("Pop:" + l4.pop().toString());
+
+        System.out.println("");
+        System.out.println("");
+        Lista_Doble<Integer> l5 = new Lista_Doble<>();
+        l5.insertarInicio(11);
+        l5.insertarInicio(12);
+        l5.insertarFinal(15);
+        l5.insertarFinal(16);
+        System.out.println("");
+        l5.mostrarLista();
+        System.out.println("");
+        l5.insertarEnIndice(3,13);
+        l5.insertarEnIndice(2,14);
+        System.out.println("");
+        l5.mostrarLista();
+        System.out.println("");
+        l5.EliminarXDato(15);
+        System.out.println("");
+        l5.mostrarLista();
+        System.out.println("");
+        
+        
+        
+        
+        
+        
     }
 }
