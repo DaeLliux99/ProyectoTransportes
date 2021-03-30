@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Jorge Cardenas
+ * @author T800
  */
 public class Horarios extends javax.swing.JFrame {
 
@@ -176,7 +176,9 @@ public class Horarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void regclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regclienteActionPerformed
-
+        RegistroV2 r=new RegistroV2();
+        this.setVisible(false);
+        r.setVisible(true);
     }//GEN-LAST:event_regclienteActionPerformed
 
     private void cancelcliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelcliActionPerformed
