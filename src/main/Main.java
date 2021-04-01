@@ -6,7 +6,8 @@
 package main;
 
 import estructuras.*;
-import modelos.Alumno;
+import modelos.*;
+import nodos.*;
 
 /**
  *
@@ -15,14 +16,26 @@ import modelos.Alumno;
 public class Main {
 
     public static void main(String args[]) {
+        
+        /*
+        Alumno A = new Alumno("jjj", 20);
+        
+        
         Lista<Alumno> l = new Lista<>();
         System.out.println("Lista de Alumnos: ");
+        l.insertarInicio(A);
         l.insertarInicio(new Alumno("Esteban", 20));
         l.insertarInicio(new Alumno("Aea", 10));
         l.insertarInicio(new Alumno("OWO", 11));
         l.insertarInicio(new Alumno("UwU", 33));
         l.mostrarLista();
+        //l.ObetenerNodo().getClass().;
         System.out.println("");
+        //l.eliminar(A);
+        System.out.println("");
+        l.mostrarLista();
+        l.ObetenerNodo().equals(A);
+        System.out.println(l.ObetenerNodo().equals(A));
 
         System.out.println("Lista de Numeros: ");
         Lista<Integer> l2 = new Lista<>();
@@ -71,6 +84,59 @@ public class Main {
         System.out.println("");
         l5.mostrarLista();
         System.out.println("");
+        
+        */
+        
+        /*
+        ruta r = new ruta();
+        ciudad c = new ciudad();
+        r.ingresarCiudad(c);
+        r.ingresarCiudad(c);
+        r.ingresarCiudad(c);
+        r.ingresarCiudad(c);
+        r.ingresarCiudad(c);
+        r.ingresarCiudad(c);
+        
+        Lista<ruta> r1 = new Lista<>();
+        
+        r1.insertarFinal(r);
+        r1.mostrarLista();
+        //System.out.println(r1.ObetenerNodo().);
+        r1.ObetenerNodo().valor.getClass();
+        System.out.println(r1.ObetenerNodo().valor.equals(r1));
+        */
+        
+        //int ID_ruta, float distancia, String Salida, String LLegada
+        
+        
+        Nodo<ruta> nodoC = new Nodo<ruta>();
+        
+        
+        //int ID_ciudad, String ciudad, int distanciaSigteCiudad
+        Lista<ciudad> c = new Lista<>();
+        
+        c.insertarInicio(new ciudad(001,"AB",50));
+        c.insertarInicio(new ciudad(001,"CD",50));
+        c.insertarInicio(new ciudad(001,"EF",50));
+        c.insertarInicio(new ciudad(001,"FG",50));
+        c.insertarInicio(new ciudad(001,"HI",50));
+        c.insertarInicio(new ciudad(001,"JK",50));
+        
+        Lista<ruta> l = new Lista<>();
+        System.out.println("Lista de ruta: ");
+        ruta r = new ruta(1,500,"La merced","Acobanba",c);
+        l.insertarInicio(r);
+        //l.insertarInicio(new ruta(2,400,"Pucusana","Lima"));
+        //l.insertarInicio(new ruta(3,300,"A","C"));
+        //l.insertarInicio(new ruta(4,200,"B","D"));
+        
+        l.mostrarLista();
+        ruta A = (ruta) l.ObetenerNodo();
+        A.ciudadesLista();
+        
+        
+        
+         
         
         
         

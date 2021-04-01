@@ -12,13 +12,29 @@ package modelos;
  * @author Sistema
  */
 public class ciudad {
+    private int ID_ciudad;
+    private String ciudad;
+    private int distanciaSigteCiudad;
+
+    public ciudad() {
+        this.ciudad = "Chanchamayo  -   La merced";
+    }
     
-    String ciudad;
+
     
-    public ciudad(String ciudad) {
-        
-        this.ciudad=ciudad;
-        
+    
+    public ciudad(int ID_ciudad, String ciudad, int distanciaSigteCiudad) {
+        this.ID_ciudad = ID_ciudad;
+        this.ciudad = ciudad;
+        this.distanciaSigteCiudad = distanciaSigteCiudad;
+    }
+
+    public int getID_ciudad() {
+        return ID_ciudad;
+    }
+
+    public void setID_ciudad(int ID_ciudad) {
+        this.ID_ciudad = ID_ciudad;
     }
 
     public String getCiudad() {
@@ -28,5 +44,16 @@ public class ciudad {
     public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
     }
- 
+
+    public int getDistanciaSigteCiudad() {
+        return distanciaSigteCiudad;
+    }
+
+    public void setDistanciaSigteCiudad(int distanciaSigteCiudad) {
+        this.distanciaSigteCiudad = distanciaSigteCiudad;
+    }
+
+    public String toString() {
+        return (getCiudad()+"-");
+    }
 }
