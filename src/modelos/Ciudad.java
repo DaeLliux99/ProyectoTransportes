@@ -11,19 +11,12 @@ package modelos;
  *
  * @author Sistema
  */
-public class ciudad {
+public class Ciudad {
     private int ID_ciudad;
     private String ciudad;
     private int distanciaSigteCiudad;
 
-    public ciudad() {
-        this.ciudad = "Chanchamayo  -   La merced";
-    }
-    
-
-    
-    
-    public ciudad(int ID_ciudad, String ciudad, int distanciaSigteCiudad) {
+    public Ciudad(int ID_ciudad, String ciudad, int distanciaSigteCiudad) {
         this.ID_ciudad = ID_ciudad;
         this.ciudad = ciudad;
         this.distanciaSigteCiudad = distanciaSigteCiudad;

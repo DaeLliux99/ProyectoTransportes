@@ -10,20 +10,21 @@ package modelos;
  * @author LEONARDO
  */
 public class Chofer {
-    private int DNI;
+    private int DNI_chofer;
     private String Nombre;
+    private boolean estado=true; //true = disponible false= no disponible
 
-    public Chofer(int DNI, String Nombre) {
-        this.DNI = DNI;
+    public Chofer(int DNI_chofer, String Nombre) {
+        this.DNI_chofer = DNI_chofer;
         this.Nombre = Nombre;
     }
 
-    public int getDNI() {
-        return DNI;
+    public int getDNI_chofer() {
+        return DNI_chofer;
     }
 
-    public void setDNI(int DNI) {
-        this.DNI = DNI;
+    public void setDNI_chofer(int DNI_chofer) {
+        this.DNI_chofer = DNI_chofer;
     }
 
     public String getNombre() {
@@ -33,6 +34,18 @@ public class Chofer {
     public void setNombre(String Nombre) {
         this.Nombre = Nombre;
     }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
+    
+    
+   
     
     
     

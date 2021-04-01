@@ -13,11 +13,36 @@ import nodos.*;
  *
  * @author Carlos Esteban
  */
-public class Main {
+public class ClassCollector {
+    Lista<Ciudad> Lista_ciudades = new Lista<>();
+    Lista<Ruta> Lista_rutas = new Lista<>();
+    Lista<Chofer> Lista_choferes = new Lista<>();
+    Lista<Bus> Lista_buses = new Lista<>();
+    Cola<Pasajero> Cola_clientes = new Cola<>();
+    Pila<Horarios> Pila_Horarios = new Pila<>();
 
-    public static void main(String args[]) {
+    public ClassCollector(){
+        Lista_ciudades.insertarInicio(new Ciudad(001,"AB",50));
+        Lista_ciudades.insertarInicio(new Ciudad(001,"CD",50));
+        Lista_ciudades.insertarInicio(new Ciudad(001,"EF",50));
+        Lista_ciudades.insertarInicio(new Ciudad(001,"FG",50));
+        Lista_ciudades.insertarInicio(new Ciudad(001,"HI",50));
+        Lista_ciudades.insertarInicio(new Ciudad(001,"JK",50));
         
-        /*
+        Ruta r = new Ruta(1,Lista_ciudades);
+        Lista_rutas.insertarInicio(r);
+        
+        
+        
+        
+    }
+    public static void main(String args[]) {
+        ClassCollector A = new ClassCollector();
+        Ruta B = A.Lista_rutas.obetenerPrimerObjeto();
+        B.ciudadesLista();
+    }
+    /*
+    /*
         Alumno A = new Alumno("jjj", 20);
         
         
@@ -108,9 +133,8 @@ public class Main {
         
         //int ID_ruta, float distancia, String Salida, String LLegada
         
-        
-        Nodo<ruta> nodoC = new Nodo<ruta>();
-        
+       
+        /*
         
         //int ID_ciudad, String ciudad, int distanciaSigteCiudad
         Lista<ciudad> c = new Lista<>();
@@ -122,7 +146,9 @@ public class Main {
         c.insertarInicio(new ciudad(001,"HI",50));
         c.insertarInicio(new ciudad(001,"JK",50));
         
+        
         Lista<ruta> l = new Lista<>();
+        
         System.out.println("Lista de ruta: ");
         ruta r = new ruta(1,500,"La merced","Acobanba",c);
         l.insertarInicio(r);
@@ -134,14 +160,8 @@ public class Main {
         ruta A = (ruta) l.ObetenerNodo();
         A.ciudadesLista();
         
-        
-        
-         
-        
-        
-        
-        
-        
-        
-    }
+    
+    */
+
+
 }

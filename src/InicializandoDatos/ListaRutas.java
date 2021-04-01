@@ -12,9 +12,9 @@ import estructuras.*;
  * @author LEONARDO
  */
 public class ListaRutas {
-    Lista<ruta> r1 = new Lista();
+    Lista<Ruta> r1 = new Lista();
     
-    public void insertarRuta(ruta r){
+    public void insertarRuta(Ruta r){
         r1.insertarFinal(r);
     }
     

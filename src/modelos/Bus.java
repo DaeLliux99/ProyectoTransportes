@@ -5,45 +5,62 @@
  */
 package modelos;
 
+import estructuras.*;
+
 /**
  *
  * @author LEONARDO
  */
 public class Bus {
-    private int IDBus;
+    
+    private int matricula;
     private int NumAsientos;
     private int PesoMaximo;
-  
-    public Bus(int IDBus, int NumAsientos, int PesoMaximo) {
-    this.IDBus = IDBus;
+    private Chofer ID_chofer;
+
+    Lista<Pasajero> Lista_Pasajero = new Lista<>();
+
+    //Recordar que la lista debe ser meno o igual a la cantidad de asientos
+    //colocar un if afuera cuando se llene para que no se llene de mas
+    public Bus(int matricula, int NumAsientos, int PesoMaximo, Chofer ID_chofer, Lista<Pasajero> Lista_Pasajero ) {
+    this.matricula = matricula;
     this.NumAsientos = NumAsientos;
     this.PesoMaximo = PesoMaximo;
-    }
-    
-    public int getIDBus() {
-        return IDBus;
+    this.ID_chofer= ID_chofer;
+    this.Lista_Pasajero = Lista_Pasajero;
     }
 
-    public void setIDBus(int IDBus) {
-        this.IDBus = IDBus;
+    public int getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
     }
 
     public int getNumAsientos() {
         return NumAsientos;
     }
-
+     
     public void setNumAsientos(int NumAsientos) {
         this.NumAsientos = NumAsientos;
     }
-
+     
     public int getPesoMaximo() {
         return PesoMaximo;
     }
-
+     
     public void setPesoMaximo(int PesoMaximo) {
         this.PesoMaximo = PesoMaximo;
     }
-    
-    
+
+    public Chofer getID_chofer() {
+        return ID_chofer;
+    }
+
+    public void setID_chofer(Chofer ID_chofer) {
+        this.ID_chofer = ID_chofer;
+    }
+       
     
 }

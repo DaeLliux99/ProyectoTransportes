@@ -28,6 +28,7 @@ public class Nodo <G> {
     }
     //NODO VALOR
     public G getValor() {
+       
         return valor;
     }
 
