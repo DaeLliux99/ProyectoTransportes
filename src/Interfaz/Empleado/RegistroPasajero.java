@@ -98,7 +98,7 @@ public class RegistroPasajero extends javax.swing.JPanel implements java.beans.C
         });
         jPanel1.add(Cfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 250, -1));
 
-        jLabel7.setText("Destino");
+        jLabel7.setText("Salida");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
         Cfecha1.addActionListener(new java.awt.event.ActionListener() {

@@ -5,10 +5,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author T800
- */
+import modelos.*;
+import nodos.*;
+import estructuras.*;
+        
+
 public class Horarios extends javax.swing.JFrame {
 
     /**
@@ -56,7 +57,7 @@ public class Horarios extends javax.swing.JFrame {
         salir = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        Buscar_Ruta_Boton = new javax.swing.JButton();
         dniBorrar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -116,7 +117,7 @@ public class Horarios extends javax.swing.JFrame {
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 673, 210));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 670, 210));
 
         regcliente.setText("Registrar pasajero");
         regcliente.addActionListener(new java.awt.event.ActionListener() {
@@ -153,13 +154,13 @@ public class Horarios extends javax.swing.JFrame {
         jLabel7.setText("Rura");
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
-        jButton2.setText("Buscar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Buscar_Ruta_Boton.setText("Buscar");
+        Buscar_Ruta_Boton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                Buscar_Ruta_BotonActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, -1, -1));
+        jPanel3.add(Buscar_Ruta_Boton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, -1, -1));
 
         dniBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,7 +170,6 @@ public class Horarios extends javax.swing.JFrame {
         jPanel3.add(dniBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 430, -1));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 670, 70));
-        jPanel3.getAccessibleContext().setAccessibleName("Buscar destino");
         jPanel3.getAccessibleContext().setAccessibleDescription("");
 
         pack();
@@ -189,13 +189,20 @@ public class Horarios extends javax.swing.JFrame {
 
     }//GEN-LAST:event_salirActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void Buscar_Ruta_BotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar_Ruta_BotonActionPerformed
 
+        
+        
+        
+        
+        
+        
         JOptionPane.showMessageDialog(null, "No se puede realizar la busqueda!", "NO HAY REGISTROS", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_Buscar_Ruta_BotonActionPerformed
 
     private void dniBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dniBorrarActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_dniBorrarActionPerformed
 
     private void jPanel3PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jPanel3PropertyChange
@@ -204,9 +211,9 @@ public class Horarios extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Buscar_Ruta_Boton;
     private javax.swing.JButton cancelcli;
     private javax.swing.JTextField dniBorrar;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel3;

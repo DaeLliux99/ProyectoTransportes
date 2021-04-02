@@ -9,12 +9,12 @@ package modelos;
  *
  * @author LEONARDO
  */
-public class Horarios {
+public class Horario {
     private Bus bus;
     private String Hora_Salida;
     private String Hora_Llegada;
 
-    public Horarios(Bus bus, String Hora_Salida, String Hora_Llegada) {
+    public Horario(Bus bus, String Hora_Salida, String Hora_Llegada) {
         this.bus = bus;
         this.Hora_Salida = Hora_Salida;
         this.Hora_Llegada = Hora_Llegada;

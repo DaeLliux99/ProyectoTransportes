@@ -14,32 +14,62 @@ import nodos.*;
  * @author Carlos Esteban
  */
 public class ClassCollector {
+
     Lista<Ciudad> Lista_ciudades = new Lista<>();
     Lista<Ruta> Lista_rutas = new Lista<>();
     Lista<Chofer> Lista_choferes = new Lista<>();
     Lista<Bus> Lista_buses = new Lista<>();
     Cola<Pasajero> Cola_clientes = new Cola<>();
-    Pila<Horarios> Pila_Horarios = new Pila<>();
+    Pila<Horario> Pila_Horarios = new Pila<>();
 
-    public ClassCollector(){
-        Lista_ciudades.insertarInicio(new Ciudad(001,"AB",50));
-        Lista_ciudades.insertarInicio(new Ciudad(001,"CD",50));
-        Lista_ciudades.insertarInicio(new Ciudad(001,"EF",50));
-        Lista_ciudades.insertarInicio(new Ciudad(001,"FG",50));
-        Lista_ciudades.insertarInicio(new Ciudad(001,"HI",50));
-        Lista_ciudades.insertarInicio(new Ciudad(001,"JK",50));
-        
-        Ruta r = new Ruta(1,Lista_ciudades);
+    public ClassCollector() {
+        Lista_ciudades.insertarInicio(new Ciudad(001, "AB", 50));
+        Lista_ciudades.insertarInicio(new Ciudad(001, "CD", 50));
+        Lista_ciudades.insertarInicio(new Ciudad(001, "EF", 50));
+        Lista_ciudades.insertarInicio(new Ciudad(001, "FG", 50));
+        Lista_ciudades.insertarInicio(new Ciudad(001, "HI", 50));
+        Lista_ciudades.insertarInicio(new Ciudad(001, "JK", 50));
+        Ciudad B = new Ciudad(001, "AB", 50);
+        Ruta r = new Ruta(1, Lista_ciudades);
         Lista_rutas.insertarInicio(r);
         
         
+        /*
+        //Para la interfaz codigo   --- hACER SIMIL para cada clase
+        Nodo<Ruta> temp = Lista_rutas.ObetenerPrimerNodo();
+        while(temp != null){
+            if(temp.valor.getID_ruta() == ruta){
+                return temp.valor;
+            }
+            temp = temp.siguiente;
+        }
         
         
+        //REVISAR POR SI ACASO
+        public Ruta Busqueda_Ruta(int Ruta_Buscada){
+        Nodo<Ruta> temp = ruta1.ObetenerPrimerNodo();
+        while(temp != null){
+            if(temp.valor.getID_ruta()== Ruta_Buscada){
+                return temp.valor;
+            }
+            temp = temp.siguiente;
+        }  
+        System.out.println("\nNo se ha encontrado la ciudad en los archivos ....");
+        return null;
+        }
+        
+        
+         */
+
     }
+
     public static void main(String args[]) {
         ClassCollector A = new ClassCollector();
-        Ruta B = A.Lista_rutas.obetenerPrimerObjeto();
-        B.ciudadesLista();
+
+        A.Lista_rutas.obetenerPrimerObjeto().ciudadesLista();
+        A.Lista_ciudades.eliminar(A.Lista_rutas.obetenerPrimerObjeto().Busqueda_Ciudad("EF"));
+        A.Lista_rutas.obetenerPrimerObjeto().ciudadesLista();
+        
     }
     /*
     /*
@@ -110,9 +140,9 @@ public class ClassCollector {
         l5.mostrarLista();
         System.out.println("");
         
-        */
-        
-        /*
+     */
+
+ /*
         ruta r = new ruta();
         ciudad c = new ciudad();
         r.ingresarCiudad(c);
@@ -129,12 +159,9 @@ public class ClassCollector {
         //System.out.println(r1.ObetenerNodo().);
         r1.ObetenerNodo().valor.getClass();
         System.out.println(r1.ObetenerNodo().valor.equals(r1));
-        */
-        
-        //int ID_ruta, float distancia, String Salida, String LLegada
-        
-       
-        /*
+     */
+    //int ID_ruta, float distancia, String Salida, String LLegada
+    /*
         
         //int ID_ciudad, String ciudad, int distanciaSigteCiudad
         Lista<ciudad> c = new Lista<>();
@@ -161,7 +188,5 @@ public class ClassCollector {
         A.ciudadesLista();
         
     
-    */
-
-
+     */
 }
