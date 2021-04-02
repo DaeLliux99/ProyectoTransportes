@@ -86,23 +86,42 @@ public class Ruta {
         System.out.println("");
     }
 
+    /*
     public Ciudad Busqueda_Ciudad(String Ciudad_Buscada) {
         boolean encontro = false;
         Nodo<Ciudad> temp = ruta1.ObetenerPrimerNodo();
-        Ciudad c=null;
         while (temp != null && !encontro) {
-            if (temp.valor.getCiudad().equals(Ciudad_Buscada)) {
+            if ((temp.valor.getCiudad()).equals(Ciudad_Buscada)) {
                 encontro = true;
-                c=temp.valor;
+                System.out.println("Se encontro ");
             }
             temp = temp.siguiente;
         }
-        if (encontro==true) {
+        if (encontro) {
+            return temp.valor;
+        } else {
+            System.out.println("\nNo se ha encontrado la ciudad en los archivos ....");
+            return null;
+        }
+
+    }
+     */
+    public Ciudad Busqueda_Ciudad(String Ciudad_Buscada) {
+        boolean encontro = false;
+        Nodo<Ciudad> temp = ruta1.ObetenerPrimerNodo();
+        Ciudad c = null;
+        while (temp != null && !encontro) {
+            if (temp.valor.getCiudad().equals(Ciudad_Buscada)) {
+                encontro = true;
+                c = temp.valor;
+            }
+            temp = temp.siguiente;
+        }
+        if (encontro == true) {
             return c;
         } else {
             return null;
         }
-
     }
 
     public String toString() {

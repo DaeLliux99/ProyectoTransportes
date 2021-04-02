@@ -28,6 +28,9 @@ public class Horarios extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
+    public void MostrarHorarios() {
+
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -175,22 +178,26 @@ public class Horarios extends javax.swing.JFrame {
 
     private void Buscar_Ruta_BotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar_Ruta_BotonActionPerformed
 
+        for (int i=0; i<=10;i++ ) {
+            jTable1.getModel().setValueAt("", i, 0);
+            jTable1.getModel().setValueAt("", i, 1);
+            jTable1.getModel().setValueAt("", i, 2);   //
+            jTable1.getModel().setValueAt("", i, 3);
+            jTable1.getModel().setValueAt("", i, 4);
+        }
+
         Nodo<Ruta> temp = Principal.Lista_rutas.ObetenerPrimerNodo();
         int i = 0;
-        if (temp == null) {
-            JOptionPane.showMessageDialog(null, "No se encontro datos", "NO HAY REGISTROS", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            while (temp != null) {
-                if (temp.valor.Busqueda_Ciudad(Casilla_Buscar_Ruta.getText())!=null){
-                    jTable1.getModel().setValueAt(temp.valor.getSalida(), i, 0);
-                    jTable1.getModel().setValueAt(temp.valor.getLLegada(), i, 1);
-                    jTable1.getModel().setValueAt("DEBE IR BUS", i, 2);   //
-                    jTable1.getModel().setValueAt("asd", i, 3);
-                    jTable1.getModel().setValueAt("DEBE IR PRECIO", i, 4);
-                    i++;
-                }
-                temp = temp.siguiente;
+        while (temp != null) {
+            if (temp.valor.Busqueda_Ciudad(Casilla_Buscar_Ruta.getText()) != null) {
+                jTable1.getModel().setValueAt(temp.valor.getSalida(), i, 0);
+                jTable1.getModel().setValueAt(temp.valor.getLLegada(), i, 1);
+                jTable1.getModel().setValueAt("DEBE IR BUS", i, 2);   //
+                jTable1.getModel().setValueAt("asd", i, 3);
+                jTable1.getModel().setValueAt("DEBE IR PRECIO", i, 4);
+                i++;
             }
+            temp = temp.siguiente;
         }
 
         //JOptionPane.showMessageDialog(null, "No se puede realizar la busqueda!", "NO HAY REGISTROS", JOptionPane.INFORMATION_MESSAGE);
