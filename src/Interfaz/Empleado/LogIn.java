@@ -4,6 +4,7 @@ import Interfaz.Administrador.RegistrarPasajero;
 import static java.lang.System.exit;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import main.ClassCollector;
 
 /**
  *
@@ -11,8 +12,10 @@ import javax.swing.JTextField;
  */
 public class LogIn extends javax.swing.JFrame {
 
+    ClassCollector A;
     public LogIn() {
         initComponents();
+        A = new ClassCollector();
         jTextField3.setText("admin");
         passw.setText("123");
 
@@ -145,7 +148,7 @@ public class LogIn extends javax.swing.JFrame {
 
         String nombre_usuario = jTextField3.getText();
         String pass = passw.getText();
-        Horarios h = new Horarios();
+        Horarios h = new Horarios(A);
         if (nombre_usuario.equalsIgnoreCase("admin") && pass.equalsIgnoreCase("123")) {
             this.setVisible(false);
             h.setVisible(true);
