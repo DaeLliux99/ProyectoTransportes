@@ -6,6 +6,7 @@
 package estructuras;
 
 import nodos.Nodo;
+import modelos.*;
 
 /**
  *
@@ -72,55 +73,70 @@ public class Lista<G> {
         }
     }
 
-    public void eliminar(G dato) {
-        if (cabeza == null) {
-            System.out.println("\nLa lista esta vacia. No hay datos que eliminar\n");
-        } else {
-
-            /*
-            Nodo temp1 = cabeza, temp2 = cabeza;
-            boolean encontro = false;
-            while (temp2 != null && !encontro) {
-                if (temp2.valor == dato) {
-                    encontro = true;
-                }
-                temp1 = temp2;
-                temp2 = temp2.siguiente;
-            }
-            if(encontro== true && temp2.siguiente !=null){
-                temp1.siguiente = temp1.siguiente.siguiente;
-                System.out.println("\nValor eliminado: "+temp2.valor);
+    public void eliminar(G dato){
+        Nodo<G> temp, cabeza1=cabeza;
+        if(cabeza==null){
+            System.out.println("lista vacia");
+        }else{
+            if(cabeza1.valor==dato){
+                cabeza1=cabeza1.siguiente;
+                System.out.println("eliminado");
             }else{
-                System.out.println("\nValor eliminado: "+temp2.valor);
-                temp2 = null;
-                temp1 = null;
+                temp=cabeza1;
+                cabeza1=cabeza1.siguiente;
+                while(cabeza1!=null){
+                    if(cabeza1.valor==dato && cabeza1.siguiente!=null){
+                        temp.siguiente=cabeza1.siguiente;
+                        System.out.println("eliminado");
+                    }else if(cabeza1.valor==dato){
+                        temp.siguiente=null;
+                        System.out.println("eliminado");
+                    }
+                    temp=cabeza1;
+                    cabeza1=cabeza1.siguiente;
+                }
             }
-             */
         }
     }
-    
-    
-    public void BuscarXDato(){
-        
+
+    public G BuscarXDato(G dato) {
+        if (this.cabeza == null) {
+            System.out.println("\nLa lista está vacia, no hay datos para buscar ...\n");
+        } else {
+            Nodo temp = cabeza;
+            Nodo temp2;
+            boolean bandera = false;
+            do {
+                if (temp.valor == dato) {
+                    bandera = true;
+                }
+                temp2 = temp;
+                temp = temp.siguiente;
+            } while (!bandera && temp != null);
+            if (bandera) {
+                return (G) temp2.getValor();
+            } else {
+                System.out.println("\nEl dato no existe\n");
+            }           
+        }
+        return null;
     }
-    
 
     public G obetenerPrimerObjeto() {
         Object obj = cabeza.getValor();
         return (G) obj;
     }
-    
+
     public G obetenerUltimoObjeto() {
         Object obj = ultimo.getValor();
         return (G) obj;
     }
-    
-    
+
     public Nodo ObetenerPrimerNodo() {
         Nodo obj = cabeza;
         return obj;
     }
-    
+
     public Nodo ObetenerUltimoNodo() {
         Nodo obj = ultimo;
         return obj;

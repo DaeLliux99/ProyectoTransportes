@@ -6,6 +6,7 @@
 package estructuras;
 
 import nodos.Nodo;
+import modelos.*;
 
 public class Lista_Doble<G> {
 
@@ -103,14 +104,16 @@ public class Lista_Doble<G> {
                     temp2.siguiente.anterior = temp1;
                 }
             }
+            this.longitud--;
         }
-        this.longitud--;
     }
 
-    public void BuscarXValor(G dato) {
+    public void BuscarXValor(G dato, int separador) {
+
         if (this.cabeza == null) {
             System.out.println("\nLa lista está vacia, no hay datos para buscar ...\n");
         } else {
+
             Nodo temp = cabeza;
             boolean bandera = false;
             do {
@@ -119,12 +122,14 @@ public class Lista_Doble<G> {
                 }
                 temp = temp.siguiente;
             } while (!bandera && temp != null);
-            if(bandera){
+            if (bandera) {
                 System.out.println("\nEl dato ha sido encontrado\n");
-            }else{
+            } else {
                 System.out.println("\nEl dato no existe\n");
             }
+             
         }
+
     }
 
     public void mostrarLista() {

@@ -33,7 +33,6 @@ public class Ruta {
         Nodo<Ciudad> temp2 = temp.ObetenerPrimerNodo();
         while (temp2 != null) {
             distancia_Ruta = distancia_Ruta + temp2.valor.getDistanciaSigteCiudad();
-            System.out.print(temp2.valor.toString());
             temp2 = temp2.siguiente;
         }
     }
@@ -86,6 +85,21 @@ public class Ruta {
         }
         System.out.println("");
     }
+    
+    
+    public Ciudad Busqueda_Ciudad(String Ciudad_Buscada){
+        Nodo<Ciudad> temp = ruta1.ObetenerPrimerNodo();
+        while(temp != null){
+            if(temp.valor.getCiudad() == Ciudad_Buscada){
+                return temp.valor;
+            }
+            temp = temp.siguiente;
+        }  
+        System.out.println("\nNo se ha encontrado la ciudad en los archivos ....");
+        return null;
+    }
+    
+    
 
     
 
