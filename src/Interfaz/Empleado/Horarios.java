@@ -1,3 +1,4 @@
+
 package Interfaz.Empleado;
 
 import com.sun.java.accessibility.util.GUIInitializedListener;
@@ -5,9 +6,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
+
 import modelos.*;
 import nodos.*;
 import estructuras.*;
+
+
+import main.ClassCollector;
         
 
 public class Horarios extends javax.swing.JFrame {
@@ -15,34 +20,21 @@ public class Horarios extends javax.swing.JFrame {
     /**
      * Creates new form GUI_BuscarProveedores
      */
-    public Horarios() {
-
+    ClassCollector Principal;
+    String rutaA;
+    Ruta ruta1;
+    Lista<Ruta> ListRuta = new Lista<>();
+    
+    public Horarios(ClassCollector A) {
+        
         initComponents();
+        Principal = A ;
         this.setLocationRelativeTo(null);
-
-        MostrarHorarios();
     }
 
     public void MostrarHorarios() {
-        boolean validar=true;
-        if (validar) {//se usara para mostrar mensaje en panatalla de que no hay horarios disponibles
-
-            for(int i = 0;i<=5;i++) {
-                String text = "esto es temporal";
-                //String nom_ciudad = GestorPrincipal.getGestorProveedor().getNombreCiudad(proveedor.getCodigo_ciudad());
-                //jTable1.getModel().setValueAt(proveedor.getCodigo_proveedor(), i, 0);
-                jTable1.getModel().setValueAt(text, i, 0);
-                jTable1.getModel().setValueAt(text, i, 1);
-                jTable1.getModel().setValueAt(text, i, 2);
-                jTable1.getModel().setValueAt(text, i, 3);
-                jTable1.getModel().setValueAt(text, i, 4);
-            }
-        } else {
-
-            JOptionPane.showMessageDialog(this, "No existen horarios disponibles.", "HORARIOS", JOptionPane.ERROR_MESSAGE);
-
-        }
-
+        
+       
     }
 
     @SuppressWarnings("unchecked")
@@ -58,7 +50,7 @@ public class Horarios extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         Buscar_Ruta_Boton = new javax.swing.JButton();
-        dniBorrar = new javax.swing.JTextField();
+        Casilla_Buscar_Ruta = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -162,12 +154,12 @@ public class Horarios extends javax.swing.JFrame {
         });
         jPanel3.add(Buscar_Ruta_Boton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, -1, -1));
 
-        dniBorrar.addActionListener(new java.awt.event.ActionListener() {
+        Casilla_Buscar_Ruta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dniBorrarActionPerformed(evt);
+                Casilla_Buscar_RutaActionPerformed(evt);
             }
         });
-        jPanel3.add(dniBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 430, -1));
+        jPanel3.add(Casilla_Buscar_Ruta, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 430, -1));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 670, 70));
         jPanel3.getAccessibleContext().setAccessibleDescription("");
@@ -191,19 +183,29 @@ public class Horarios extends javax.swing.JFrame {
 
     private void Buscar_Ruta_BotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar_Ruta_BotonActionPerformed
 
+        Nodo<Ruta> temp  = Principal.Lista_rutas.ObetenerPrimerNodo();
         
+        int i=0;
         
-        
-        
-        
-        
-        JOptionPane.showMessageDialog(null, "No se puede realizar la busqueda!", "NO HAY REGISTROS", JOptionPane.INFORMATION_MESSAGE);
+        while(temp != null){
+            if(temp.valor.Busqueda_Ciudad(Casilla_Buscar_Ruta.getText()) != null){                
+                jTable1.getModel().setValueAt(temp.valor.getSalida(), i, 0);
+                jTable1.getModel().setValueAt(temp.valor.getLLegada(), i, 1);
+                jTable1.getModel().setValueAt("DEBE IR BUS", i, 2);   //
+                jTable1.getModel().setValueAt( "asd", i, 3);
+                jTable1.getModel().setValueAt("DEBE IR PRECIO", i, 4);
+                i++;                
+            }   
+            temp = temp.siguiente;
+        }
+
+        //JOptionPane.showMessageDialog(null, "No se puede realizar la busqueda!", "NO HAY REGISTROS", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_Buscar_Ruta_BotonActionPerformed
 
-    private void dniBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dniBorrarActionPerformed
+    private void Casilla_Buscar_RutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Casilla_Buscar_RutaActionPerformed
         // TODO add your handling code here:
 
-    }//GEN-LAST:event_dniBorrarActionPerformed
+    }//GEN-LAST:event_Casilla_Buscar_RutaActionPerformed
 
     private void jPanel3PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jPanel3PropertyChange
         // TODO add your handling code here:
@@ -212,8 +214,8 @@ public class Horarios extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Buscar_Ruta_Boton;
+    private javax.swing.JTextField Casilla_Buscar_Ruta;
     private javax.swing.JButton cancelcli;
-    private javax.swing.JTextField dniBorrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel3;
