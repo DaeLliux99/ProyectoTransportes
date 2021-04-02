@@ -1,4 +1,3 @@
-
 package Interfaz.Empleado;
 
 import com.sun.java.accessibility.util.GUIInitializedListener;
@@ -6,14 +5,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-
 import modelos.*;
 import nodos.*;
 import estructuras.*;
 
-
 import main.ClassCollector;
-        
 
 public class Horarios extends javax.swing.JFrame {
 
@@ -24,18 +20,14 @@ public class Horarios extends javax.swing.JFrame {
     String rutaA;
     Ruta ruta1;
     Lista<Ruta> ListRuta = new Lista<>();
-    
+
     public Horarios(ClassCollector A) {
-        
+
         initComponents();
-        Principal = A ;
+        Principal = A;
         this.setLocationRelativeTo(null);
     }
 
-    public void MostrarHorarios() {
-        
-       
-    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -168,7 +160,7 @@ public class Horarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void regclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regclienteActionPerformed
-        RegistroV2 r=new RegistroV2();
+        RegistroV2 r = new RegistroV2();
         this.setVisible(false);
         r.setVisible(true);
     }//GEN-LAST:event_regclienteActionPerformed
@@ -183,20 +175,22 @@ public class Horarios extends javax.swing.JFrame {
 
     private void Buscar_Ruta_BotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar_Ruta_BotonActionPerformed
 
-        Nodo<Ruta> temp  = Principal.Lista_rutas.ObetenerPrimerNodo();
-        
-        int i=0;
-        
-        while(temp != null){
-            if(temp.valor.Busqueda_Ciudad(Casilla_Buscar_Ruta.getText()) != null){                
-                jTable1.getModel().setValueAt(temp.valor.getSalida(), i, 0);
-                jTable1.getModel().setValueAt(temp.valor.getLLegada(), i, 1);
-                jTable1.getModel().setValueAt("DEBE IR BUS", i, 2);   //
-                jTable1.getModel().setValueAt( "asd", i, 3);
-                jTable1.getModel().setValueAt("DEBE IR PRECIO", i, 4);
-                i++;                
-            }   
-            temp = temp.siguiente;
+        Nodo<Ruta> temp = Principal.Lista_rutas.ObetenerPrimerNodo();
+        int i = 0;
+        if (temp == null) {
+            JOptionPane.showMessageDialog(null, "No se encontro datos", "NO HAY REGISTROS", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            while (temp != null) {
+                if (temp.valor.Busqueda_Ciudad(Casilla_Buscar_Ruta.getText())!=null){
+                    jTable1.getModel().setValueAt(temp.valor.getSalida(), i, 0);
+                    jTable1.getModel().setValueAt(temp.valor.getLLegada(), i, 1);
+                    jTable1.getModel().setValueAt("DEBE IR BUS", i, 2);   //
+                    jTable1.getModel().setValueAt("asd", i, 3);
+                    jTable1.getModel().setValueAt("DEBE IR PRECIO", i, 4);
+                    i++;
+                }
+                temp = temp.siguiente;
+            }
         }
 
         //JOptionPane.showMessageDialog(null, "No se puede realizar la busqueda!", "NO HAY REGISTROS", JOptionPane.INFORMATION_MESSAGE);

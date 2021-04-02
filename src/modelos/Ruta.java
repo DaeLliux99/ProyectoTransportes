@@ -89,17 +89,17 @@ public class Ruta {
     public Ciudad Busqueda_Ciudad(String Ciudad_Buscada) {
         boolean encontro = false;
         Nodo<Ciudad> temp = ruta1.ObetenerPrimerNodo();
+        Ciudad c=null;
         while (temp != null && !encontro) {
-            if (temp.valor.getCiudad() == Ciudad_Buscada) {
+            if (temp.valor.getCiudad().equals(Ciudad_Buscada)) {
                 encontro = true;
-                System.out.println("Se encontro ");
+                c=temp.valor;
             }
             temp = temp.siguiente;
         }
-        if (encontro) {
-            return temp.valor;
+        if (encontro==true) {
+            return c;
         } else {
-            System.out.println("\nNo se ha encontrado la ciudad en los archivos ....");
             return null;
         }
 
