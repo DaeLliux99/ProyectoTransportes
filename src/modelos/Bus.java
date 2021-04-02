@@ -22,6 +22,17 @@ public class Bus {
 
     //Recordar que la lista debe ser meno o igual a la cantidad de asientos
     //colocar un if afuera cuando se llene para que no se llene de mas
+
+    public Bus(int matricula, int NumAsientos, int PesoMaximo, Chofer ID_chofer) {
+        this.matricula = matricula;
+        this.NumAsientos = NumAsientos;
+        this.PesoMaximo = PesoMaximo;
+        this.ID_chofer = ID_chofer;
+    }
+    
+    
+    
+    
     public Bus(int matricula, int NumAsientos, int PesoMaximo, Chofer ID_chofer, Lista<Pasajero> Lista_Pasajero ) {
     this.matricula = matricula;
     this.NumAsientos = NumAsientos;
@@ -62,5 +73,9 @@ public class Bus {
         this.ID_chofer = ID_chofer;
     }
        
+    
+    
+    
+    
     
 }

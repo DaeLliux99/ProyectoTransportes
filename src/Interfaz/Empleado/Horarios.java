@@ -46,6 +46,8 @@ public class Horarios extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         Buscar_Ruta_Boton = new javax.swing.JButton();
         Casilla_Buscar_Ruta = new javax.swing.JTextField();
+        ruta = new javax.swing.JTextField();
+        BUs = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -102,6 +104,11 @@ public class Horarios extends javax.swing.JFrame {
             }
         });
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 670, 210));
@@ -159,6 +166,22 @@ public class Horarios extends javax.swing.JFrame {
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 670, 70));
         jPanel3.getAccessibleContext().setAccessibleDescription("");
 
+        ruta.setText("jTextField1");
+        ruta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rutaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ruta, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, -1, -1));
+
+        BUs.setText("jTextField2");
+        BUs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BUsActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 420, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -192,13 +215,19 @@ public class Horarios extends javax.swing.JFrame {
             if (temp.valor.Busqueda_Ciudad(Casilla_Buscar_Ruta.getText()) != null) {
                 jTable1.getModel().setValueAt(temp.valor.getSalida(), i, 0);
                 jTable1.getModel().setValueAt(temp.valor.getLLegada(), i, 1);
-                jTable1.getModel().setValueAt("DEBE IR BUS", i, 2);   //
-                jTable1.getModel().setValueAt("asd", i, 3);
-                jTable1.getModel().setValueAt("DEBE IR PRECIO", i, 4);
+                jTable1.getModel().setValueAt(temp.valor.getBus().getMatricula(), i, 2);   //
+                jTable1.getModel().setValueAt(temp.valor.mostrarCiudadesRuta(), i, 3);
+                jTable1.getModel().setValueAt(temp.valor.getPrecio(), i, 4);
+                //Considerar numero de asientos disponibles
                 i++;
             }
             temp = temp.siguiente;
         }
+        
+        
+        
+        
+        
 
         //JOptionPane.showMessageDialog(null, "No se puede realizar la busqueda!", "NO HAY REGISTROS", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_Buscar_Ruta_BotonActionPerformed
@@ -212,8 +241,31 @@ public class Horarios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel3PropertyChange
 
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int seleccionar = jTable1.rowAtPoint(evt.getPoint());
+        BUs.setText(String.valueOf(jTable1.getValueAt(seleccionar, 2)));
+        ruta.setText(String.valueOf(jTable1.getValueAt(seleccionar, 3)));
+        
+        /*
+        RegistroV2 r = new RegistroV2();
+        this.setVisible(false);
+        r.setVisible(true);
+        */
+        
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void rutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rutaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rutaActionPerformed
+
+    private void BUsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BUsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField BUs;
     private javax.swing.JButton Buscar_Ruta_Boton;
     private javax.swing.JTextField Casilla_Buscar_Ruta;
     private javax.swing.JButton cancelcli;
@@ -223,6 +275,7 @@ public class Horarios extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton regcliente;
+    private javax.swing.JTextField ruta;
     private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables
 }

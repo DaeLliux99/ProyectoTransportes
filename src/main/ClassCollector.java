@@ -23,9 +23,14 @@ public class ClassCollector {
         Lista_ciudades.insertarInicio(new Ciudad(001, "FG", 50));
         Lista_ciudades.insertarInicio(new Ciudad(001, "HI", 50));
         Lista_ciudades.insertarInicio(new Ciudad(001, "JK", 50));
+        //int matricula, int NumAsientos, int PesoMaximo, Chofer ID_chofer, Lista<Pasajero> Lista_Pasajero 
         
         
-        Ruta r = new Ruta(1, Lista_ciudades);
+        Chofer C = new Chofer(730,"Pepito");
+        
+        Bus B = new Bus(1234,20,80,C);
+        
+        Ruta r = new Ruta(1, Lista_ciudades,B,28);
         
         
         
@@ -39,7 +44,7 @@ public class ClassCollector {
         Lista_ciudades2.insertarInicio(new Ciudad(005, "AB", 50));
         Lista_ciudades2.insertarInicio(new Ciudad(006, "TT", 50));
         Lista_ciudades2.insertarInicio(new Ciudad(007, "RR", 50));
-        Ruta r2 = new Ruta(2, Lista_ciudades2);
+        Ruta r2 = new Ruta(2, Lista_ciudades2,B,30);
         Lista_rutas.insertarInicio(r2);
         
     }
