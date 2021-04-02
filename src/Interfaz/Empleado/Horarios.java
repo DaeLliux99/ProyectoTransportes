@@ -8,6 +8,8 @@ import javax.swing.JOptionPane;
 import modelos.*;
 import nodos.*;
 import estructuras.*;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import main.ClassCollector;
 
@@ -102,6 +104,11 @@ public class Horarios extends javax.swing.JFrame {
             }
         });
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 670, 210));
@@ -211,6 +218,22 @@ public class Horarios extends javax.swing.JFrame {
     private void jPanel3PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jPanel3PropertyChange
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel3PropertyChange
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        int fila= jTable1.getSelectedRow();
+        DefaultTableModel modelo=(DefaultTableModel) jTable1.getModel();
+        
+           String salidaTXT= (String) modelo.getValueAt(fila, 0);
+           String llegadaTXT= (String) modelo.getValueAt(fila, 1);
+           String bus=(String) modelo.getValueAt(fila, 2);
+           JOptionPane.showMessageDialog(null, "Salida: "+salidaTXT+" llegada: "+llegadaTXT, "INFORMACION DE SELECCION", JOptionPane.INFORMATION_MESSAGE);
+        
+        /*
+        RegistroV2 r = new RegistroV2();
+        this.setVisible(false);
+        r.setVisible(true);
+*/
+    }//GEN-LAST:event_jTable1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
