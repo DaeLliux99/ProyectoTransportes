@@ -3,12 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelos;
+package InicializandoDatos;
 
+import modelos.*;
+import estructuras.*;
 /**
  *
  * @author LEONARDO
  */
-public class Cliente {
+public class ListaRutas {
+    Lista<Ruta> r1 = new Lista();
+    
+    public void insertarRuta(Ruta r){
+        r1.insertarFinal(r);
+    }
     
 }

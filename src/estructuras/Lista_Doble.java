@@ -77,28 +77,28 @@ public class Lista_Doble<G> {
             }
         }
     }
-    
-    public void EliminarXDato(G dato){
-        if(this.cabeza == null){
+
+    public void EliminarXDato(G dato) {
+        if (this.cabeza == null) {
             System.out.println("\nLa lista esta vacio, no se puede eliminar datos ...\n");
-        }else{
-            if(cabeza == ultimo && dato == cabeza.valor){
+        } else {
+            if (cabeza == ultimo && dato == cabeza.valor) {
                 cabeza = ultimo = null;
-            }else if(cabeza.valor == dato){
+            } else if (cabeza.valor == dato) {
                 cabeza = cabeza.siguiente;
                 cabeza.anterior = null;
-            }else if(ultimo.valor == dato ){
+            } else if (ultimo.valor == dato) {
                 ultimo = ultimo.anterior;
                 ultimo.siguiente = null;
-            }else{
+            } else {
                 Nodo temp1, temp2;
                 temp1 = cabeza;
                 temp2 = cabeza.siguiente;
-                while(temp2 != null && temp2.valor != dato){
+                while (temp2 != null && temp2.valor != dato) {
                     temp1 = temp1.siguiente;
                     temp2 = temp2.siguiente;
                 }
-                if(temp2 != null){
+                if (temp2 != null) {
                     temp1.siguiente = temp2.siguiente;
                     temp2.siguiente.anterior = temp1;
                 }
@@ -106,7 +106,26 @@ public class Lista_Doble<G> {
         }
         this.longitud--;
     }
-    
+
+    public void BuscarXValor(G dato) {
+        if (this.cabeza == null) {
+            System.out.println("\nLa lista está vacia, no hay datos para buscar ...\n");
+        } else {
+            Nodo temp = cabeza;
+            boolean bandera = false;
+            do {
+                if (temp.valor == dato) {
+                    bandera = true;
+                }
+                temp = temp.siguiente;
+            } while (!bandera && temp != null);
+            if(bandera){
+                System.out.println("\nEl dato ha sido encontrado\n");
+            }else{
+                System.out.println("\nEl dato no existe\n");
+            }
+        }
+    }
 
     public void mostrarLista() {
         Nodo puntero = cabeza;

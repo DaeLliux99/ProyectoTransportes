@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelos;
+package InicializandoDatos;
 
 /**
  *
  * @author LEONARDO
  */
-public class Conductor {
+public class Init_Ciudades {
     
 }
