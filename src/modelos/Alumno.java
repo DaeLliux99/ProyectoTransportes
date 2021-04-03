@@ -10,13 +10,17 @@ package modelos;
  * 
  * @author Carlos Esteban
  */
-public class Alumno {
+public class Alumno implements Comparable <Alumno>{
     private String nombre;
     private String DNI;
     private int codigo;
 
     public Alumno(String nombre, int codigo) {
         this.nombre = nombre;
+        this.codigo = codigo;
+    }
+    
+    public Alumno(int codigo) {
         this.codigo = codigo;
     }
     
@@ -40,5 +44,12 @@ public class Alumno {
     public String toString() {
         return (" Alumno: "+ this.nombre +
                 " Codigo: "+ this.codigo);
+    }
+
+    @Override
+    public int compareTo(Alumno o) {
+        if (this.codigo < o.codigo) return -1;
+        if (this.codigo > o.codigo) return 1;
+        return 0;
     }
 }

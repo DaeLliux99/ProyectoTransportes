@@ -51,31 +51,9 @@ public class Main {
         l4.push(new Alumno("Jorge", 13));
         l4.mostrarCola();
         System.out.println("Pop:" + l4.pop().toString());
-
-        System.out.println("");
-        System.out.println("");
-        Lista_Doble<Integer> l5 = new Lista_Doble<>();
-        l5.insertarInicio(11);
-        l5.insertarInicio(12);
-        l5.insertarFinal(15);
-        l5.insertarFinal(16);
-        System.out.println("");
-        l5.mostrarLista();
-        System.out.println("");
-        l5.insertarEnIndice(3,13);
-        l5.insertarEnIndice(2,14);
-        System.out.println("");
-        l5.mostrarLista();
-        System.out.println("");
-        l5.EliminarXDato(15);
-        System.out.println("");
-        l5.mostrarLista();
-        System.out.println("");
         
-        
-        
-        
-        
-        
+        Busqueda_Binaria<Alumno> bb = new Busqueda_Binaria();
+        Alumno buscado = bb.busquedaBinaria(l, new Alumno(33));
+        System.out.println(buscado);
     }
 }
