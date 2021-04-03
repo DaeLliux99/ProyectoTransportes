@@ -34,9 +34,6 @@ public class Horarios extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
-    public void MostrarHorarios() {
-
-    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -52,6 +49,7 @@ public class Horarios extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         Buscar_Ruta_Boton = new javax.swing.JButton();
         Casilla_Buscar_Ruta = new javax.swing.JTextField();
+        mostrarPasajero = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -138,7 +136,7 @@ public class Horarios extends javax.swing.JFrame {
                 cancelcliActionPerformed(evt);
             }
         });
-        getContentPane().add(cancelcli, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, -1, -1));
+        getContentPane().add(cancelcli, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, -1, -1));
 
         salir.setText("Salir");
         salir.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +144,7 @@ public class Horarios extends javax.swing.JFrame {
                 salirActionPerformed(evt);
             }
         });
-        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 370, -1, -1));
+        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 430, -1, -1));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Buscar destino", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
         jPanel3.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -176,6 +174,14 @@ public class Horarios extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 670, 70));
         jPanel3.getAccessibleContext().setAccessibleDescription("");
+
+        mostrarPasajero.setText("Mostrar Pasajeros");
+        mostrarPasajero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarPasajeroActionPerformed(evt);
+            }
+        });
+        getContentPane().add(mostrarPasajero, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 370, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -248,6 +254,13 @@ public class Horarios extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Salida: " + salidaTXT + " llegada: " + llegadaTXT, "INFORMACION DE SELECCION", JOptionPane.INFORMATION_MESSAGE); 
     }//GEN-LAST:event_jTable1MouseClicked
 
+    private void mostrarPasajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarPasajeroActionPerformed
+        // TODO add your handling code here:
+        MostrarPasajero a=new MostrarPasajero(Principal);
+        a.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_mostrarPasajeroActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Buscar_Ruta_Boton;
@@ -258,6 +271,7 @@ public class Horarios extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JButton mostrarPasajero;
     private javax.swing.JButton regcliente;
     private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables

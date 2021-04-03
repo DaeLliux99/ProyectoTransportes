@@ -23,6 +23,8 @@ public class RegistroV2 extends javax.swing.JFrame {
         ID_bus = bus;
         CSalida.setText(Salida);
         Cllegada.setText(llegada);
+        llenar();
+        sacar();
         setLocationRelativeTo(null);
 
     }
@@ -49,7 +51,29 @@ public class RegistroV2 extends javax.swing.JFrame {
         }       
         return null;
     }
-
+    
+    public void llenar(){
+        Bus busUsado =encontrarBus() ;
+        for(int i=0; i<busUsado.getNumAsientos();i++){
+            asiento.addItem(i+1);
+        }
+    }
+    
+    public void sacar(){
+        Bus busUsado =encontrarBus() ;
+        if(busUsado.getCola_Pasajero()==null){
+            System.out.println("vacio");
+        }else{
+            Cola<Pasajero> a=busUsado.getCola_Pasajero();
+            Pasajero b;
+            for(int i=0; i<a.getLongitud(); i++){
+                b=a.pop();
+                asiento.removeItem(b.getAsiento());
+                a.push(b);
+            }
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -71,6 +95,8 @@ public class RegistroV2 extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TextoEquipaje = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
+        asiento = new javax.swing.JComboBox();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -161,10 +187,15 @@ public class RegistroV2 extends javax.swing.JFrame {
         TextoEquipaje.setRows(5);
         jScrollPane1.setViewportView(TextoEquipaje);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 450, 120));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 450, 110));
 
         jLabel2.setText("Descripción Equipaje");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
+
+        jPanel1.add(asiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, -1, -1));
+
+        jLabel3.setText("Asiento");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 500, 310));
 
@@ -181,10 +212,12 @@ public class RegistroV2 extends javax.swing.JFrame {
         }
         Bus busUsado =encontrarBus() ;
         
-        if(busUsado.getOcupado() < busUsado.getNumAsientos()){
-            Pasajero p1 = new Pasajero(dni,Cnombre.getText(),Cllegada.getText(),equipaje,TextoEquipaje.getText());
+        if(busUsado.getOcupado() < busUsado.getNumAsientos() && asiento.getSelectedItem()!=null){
+            Pasajero p1 = new Pasajero(dni,Cnombre.getText(),Cllegada.getText(),equipaje,TextoEquipaje.getText(), (int)asiento.getSelectedItem());
             busUsado.getCola_Pasajero().push(p1);     
             busUsado.ocuparAsiento();
+        }else if(asiento.getSelectedItem()==null){
+            JOptionPane.showMessageDialog(null, "No selecciono asiento, no se registro pasajero", "No selecciono asiento, no se registro pasajero", JOptionPane.INFORMATION_MESSAGE);
         }else{
             JOptionPane.showMessageDialog(null, "Bus lleno", "Bus lleno", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -234,9 +267,11 @@ public class RegistroV2 extends javax.swing.JFrame {
     private javax.swing.JTextField Cllegada;
     private javax.swing.JTextField Cnombre;
     private javax.swing.JTextArea TextoEquipaje;
+    private javax.swing.JComboBox asiento;
     private javax.swing.JButton cancelcli;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

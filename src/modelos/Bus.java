@@ -85,6 +85,8 @@ public class Bus {
     public void setCola_Pasajero(Cola<Pasajero> Cola_Pasajero) {
         this.Cola_Pasajero = Cola_Pasajero;
     }
+    
+    
 
     
     
