@@ -214,13 +214,12 @@ public class Horarios extends javax.swing.JFrame {
         int i = 0;
         while (temp != null) {
             if (temp.valor.Busqueda_Ciudad(Casilla_Buscar_Ruta.getText()) != null) {
-                jTable1.getModel().setValueAt(temp.valor.getSalida(), i, 0);
-                jTable1.getModel().setValueAt(temp.valor.getLLegada(), i, 1);
+                jTable1.getModel().setValueAt(temp.valor.obtenerPrimerCiudad(), i, 0);
+                jTable1.getModel().setValueAt(temp.valor.obtenerUltimaCiudad(), i, 1);
                 jTable1.getModel().setValueAt(temp.valor.getBus().getMatricula(), i, 2);   //
                 jTable1.getModel().setValueAt(temp.valor.mostrarCiudadesRuta(), i, 3);
                 jTable1.getModel().setValueAt(temp.valor.getPrecio(), i, 4);
-                jTable1.getModel().setValueAt(temp.valor.getBus().getNumAsientos()-temp.valor.getBus().getOcupado(), i, 5);
-                //Considerar numero de asientos disponibles
+                jTable1.getModel().setValueAt(temp.valor.getBus().getNumAsientos()-temp.valor.getBus().getOcupado(), i, 5);            
                 i++;
             }
             temp = temp.siguiente;
@@ -246,14 +245,7 @@ public class Horarios extends javax.swing.JFrame {
         llegadaTXT = (String) Casilla_Buscar_Ruta.getText();
         bus = (int) modelo.getValueAt(fila, 2);
         System.out.println(bus);
-        JOptionPane.showMessageDialog(null, "Salida: " + salidaTXT + " llegada: " + llegadaTXT, "INFORMACION DE SELECCION", JOptionPane.INFORMATION_MESSAGE);
-
-        /*
-        RegistroV2 r = new RegistroV2();
-        this.setVisible(false);
-        r.setVisible(true);
-        */
-        
+        JOptionPane.showMessageDialog(null, "Salida: " + salidaTXT + " llegada: " + llegadaTXT, "INFORMACION DE SELECCION", JOptionPane.INFORMATION_MESSAGE); 
     }//GEN-LAST:event_jTable1MouseClicked
 
 

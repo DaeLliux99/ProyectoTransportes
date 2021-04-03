@@ -20,38 +20,39 @@ public class Ruta {
     private float distancia_Ruta = 0;
     private Bus bus;
     private float precio;
-    Lista<Ciudad> ruta1 = new Lista();
+    
+    
+    Lista<Ciudad> ciudades_Ruta = new Lista<>();
 
     public Ruta() {
     }
 
-    public Ruta(int ID_ruta, String Salida, String LLegada, Bus bus) {
+    public Ruta(int ID_ruta, Bus bus, float precio) {
         this.ID_ruta = ID_ruta;
-
-        this.Salida = ruta1.obetenerPrimerObjeto().getCiudad();
-        this.LLegada = ruta1.obetenerUltimoObjeto().getCiudad();
-        this.ruta1 = ruta1;
+        this.precio = precio;
+        //this.Salida = ciudades_Ruta.obetenerPrimerObjeto().getCiudad();
+        //this.LLegada = ciudades_Ruta.obetenerUltimoObjeto().getCiudad();       
         this.bus = bus;
-
+/*
         Lista<Ciudad> temp = ruta1;
         Nodo<Ciudad> temp2 = temp.ObetenerPrimerNodo();
         while (temp2 != null) {
             distancia_Ruta = distancia_Ruta + temp2.valor.getDistanciaSigteCiudad();
             temp2 = temp2.siguiente;
-        }
+        }*/
     }
 
     
 
-    public Ruta(int ID_ruta, Lista<Ciudad> ruta1, Bus bus, float precio) {
+    public Ruta(int ID_ruta, Lista<Ciudad> ciudades_Ruta, Bus bus, float precio) {
         this.ID_ruta = ID_ruta;
         this.precio = precio;
-        this.Salida = ruta1.obetenerPrimerObjeto().getCiudad();
-        this.LLegada = ruta1.obetenerUltimoObjeto().getCiudad();
-        this.ruta1 = ruta1;
+        this.Salida = ciudades_Ruta.obetenerPrimerObjeto().getCiudad();
+        this.LLegada = ciudades_Ruta.obetenerUltimoObjeto().getCiudad();
+        this.ciudades_Ruta = ciudades_Ruta;
         this.bus = bus;
 
-        Lista<Ciudad> temp = ruta1;
+        Lista<Ciudad> temp = ciudades_Ruta;
         Nodo<Ciudad> temp2 = temp.ObetenerPrimerNodo();
         while (temp2 != null) {
             distancia_Ruta = distancia_Ruta + temp2.valor.getDistanciaSigteCiudad();
@@ -83,14 +84,18 @@ public class Ruta {
         this.LLegada = LLegada;
     }
 
-    public Lista<Ciudad> getRuta1() {
-        return ruta1;
+    public Lista<Ciudad> getCiudades_Ruta() {
+        return ciudades_Ruta;
     }
 
-    public void setRuta1(Lista<Ciudad> ruta1) {
-        this.ruta1 = ruta1;
+    public void setCiudades_Ruta(Lista<Ciudad> ruta1) {
+        this.ciudades_Ruta = ruta1;
     }
 
+    public void setDistancia_Ruta(float distancia_Ruta) {
+        this.distancia_Ruta = distancia_Ruta;
+    }
+    
     public float getDistancia_Ruta() {
         return distancia_Ruta;
     }
@@ -111,14 +116,11 @@ public class Ruta {
         this.precio = precio;
     }
     
-    
-    
-    
-    
+
     
     //Metodos:
     public void ciudadesLista() {
-        Lista<Ciudad> temp = ruta1;
+        Lista<Ciudad> temp = ciudades_Ruta;
         Nodo<Ciudad> temp2 = temp.ObetenerPrimerNodo();
         System.out.print("Ciudad: ");
         while (temp2 != null) {
@@ -129,7 +131,7 @@ public class Ruta {
     }
     
     public String mostrarCiudadesRuta() {
-        Lista<Ciudad> temp = ruta1;
+        Lista<Ciudad> temp = ciudades_Ruta;
         Nodo<Ciudad> temp2 = temp.ObetenerPrimerNodo();
         System.out.print("Ciudad: ");
         String ciudad = "";
@@ -140,6 +142,15 @@ public class Ruta {
         }
         System.out.println("");
         return ciudad;
+    }
+    
+    
+    public String obtenerPrimerCiudad(){
+        return ciudades_Ruta.obetenerPrimerObjeto().getCiudad();
+    }
+    
+    public String obtenerUltimaCiudad(){
+        return ciudades_Ruta.obetenerUltimoObjeto().getCiudad();
     }
     
 
@@ -165,7 +176,7 @@ public class Ruta {
      */
     public Ciudad Busqueda_Ciudad(String Ciudad_Buscada) {
         boolean encontro = false;
-        Nodo<Ciudad> temp = ruta1.ObetenerPrimerNodo();
+        Nodo<Ciudad> temp = ciudades_Ruta.ObetenerPrimerNodo();
         Ciudad c = null;
         while (temp != null && !encontro) {
             if (temp.valor.getCiudad().equals(Ciudad_Buscada)) {
@@ -180,6 +191,10 @@ public class Ruta {
             return null;
         }
     }
+    
+    public void ingresarCiudad(Ciudad C){
+        ciudades_Ruta.insertarInicio(C);
+    } 
 
     public String toString() {
 

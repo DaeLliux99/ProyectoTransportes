@@ -18,7 +18,7 @@ public class Lista<G> {
     //Atributos
     Nodo cabeza;
     Nodo ultimo;
-    int longitud;
+    public int longitud;
 
     //Constructor
     public Lista() {
@@ -38,7 +38,7 @@ public class Lista<G> {
         }
         this.longitud++;
     }
-
+    //Por practicidad
     public void insertarFinal(G dato) {
         Nodo<G> nodo = new Nodo<>(dato);
         if (this.cabeza == null) {
@@ -46,6 +46,7 @@ public class Lista<G> {
             this.ultimo = nodo;
         } else {
             ultimo.siguiente = nodo;
+            ultimo = nodo;
         }
         this.longitud++;
     }
