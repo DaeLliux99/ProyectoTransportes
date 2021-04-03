@@ -27,8 +27,13 @@ public class ClassCollector {
         
         
         Chofer C = new Chofer(730,"Pepito");
+        Chofer C2 = new Chofer(555,"Jose");
         
         Bus B = new Bus(1234,20,80,C);
+        
+        
+        Bus B2 = new Bus(4321,15,50,C2);
+        Lista_buses.insertarFinal(B);
         
         Ruta r = new Ruta(1, Lista_ciudades,B,28);
         
@@ -44,7 +49,7 @@ public class ClassCollector {
         Lista_ciudades2.insertarInicio(new Ciudad(005, "AB", 50));
         Lista_ciudades2.insertarInicio(new Ciudad(006, "TT", 50));
         Lista_ciudades2.insertarInicio(new Ciudad(007, "RR", 50));
-        Ruta r2 = new Ruta(2, Lista_ciudades2,B,30);
+        Ruta r2 = new Ruta(2, Lista_ciudades2,B2,30);
         Lista_rutas.insertarInicio(r2);
         
     }

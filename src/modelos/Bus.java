@@ -12,33 +12,30 @@ import estructuras.*;
  * @author LEONARDO
  */
 public class Bus {
-    
+
     private int matricula;
     private int NumAsientos;
     private int PesoMaximo;
     private Chofer ID_chofer;
+    private int Ocupado = 0;
 
-    Lista<Pasajero> Lista_Pasajero = new Lista<>();
+    Cola<Pasajero> Cola_Pasajero = new Cola<>();
 
     //Recordar que la lista debe ser meno o igual a la cantidad de asientos
     //colocar un if afuera cuando se llene para que no se llene de mas
-
     public Bus(int matricula, int NumAsientos, int PesoMaximo, Chofer ID_chofer) {
         this.matricula = matricula;
         this.NumAsientos = NumAsientos;
         this.PesoMaximo = PesoMaximo;
         this.ID_chofer = ID_chofer;
     }
-    
-    
-    
-    
-    public Bus(int matricula, int NumAsientos, int PesoMaximo, Chofer ID_chofer, Lista<Pasajero> Lista_Pasajero ) {
-    this.matricula = matricula;
-    this.NumAsientos = NumAsientos;
-    this.PesoMaximo = PesoMaximo;
-    this.ID_chofer= ID_chofer;
-    this.Lista_Pasajero = Lista_Pasajero;
+
+    public Bus(int matricula, int NumAsientos, int PesoMaximo, Chofer ID_chofer, Cola<Pasajero> Cola_Pasajero) {
+        this.matricula = matricula;
+        this.NumAsientos = NumAsientos;
+        this.PesoMaximo = PesoMaximo;
+        this.ID_chofer = ID_chofer;
+        this.Cola_Pasajero = Cola_Pasajero;
     }
 
     public int getMatricula() {
@@ -52,15 +49,15 @@ public class Bus {
     public int getNumAsientos() {
         return NumAsientos;
     }
-     
+
     public void setNumAsientos(int NumAsientos) {
         this.NumAsientos = NumAsientos;
     }
-     
+
     public int getPesoMaximo() {
         return PesoMaximo;
     }
-     
+
     public void setPesoMaximo(int PesoMaximo) {
         this.PesoMaximo = PesoMaximo;
     }
@@ -72,10 +69,32 @@ public class Bus {
     public void setID_chofer(Chofer ID_chofer) {
         this.ID_chofer = ID_chofer;
     }
-       
+
+    public int getOcupado() {
+        return Ocupado;
+    }
+
+    public void setOcupado(int Ocupado) {
+        this.Ocupado = Ocupado;
+    }
+
+    public Cola<Pasajero> getCola_Pasajero() {
+        return Cola_Pasajero;
+    }
+
+    public void setCola_Pasajero(Cola<Pasajero> Cola_Pasajero) {
+        this.Cola_Pasajero = Cola_Pasajero;
+    }
+
     
     
     
     
     
+    public void ocuparAsiento() {
+        Ocupado++;       
+    }
+    
+    
+
 }

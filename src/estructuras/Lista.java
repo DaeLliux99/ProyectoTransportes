@@ -121,6 +121,10 @@ public class Lista<G> {
         }
         return null;
     }
+    
+    public int obtenerLongitud(){
+        return longitud;
+    }
 
     public G obetenerPrimerObjeto() {
         Object obj = cabeza.getValor();

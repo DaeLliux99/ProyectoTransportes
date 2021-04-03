@@ -1,5 +1,11 @@
 package Interfaz.Empleado;
+
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import main.ClassCollector;
+import estructuras.*;
+import modelos.*;
+import nodos.Nodo;
 
 /**
  *
@@ -7,19 +13,38 @@ import javax.swing.JOptionPane;
  */
 public class RegistroV2 extends javax.swing.JFrame {
 
+    ClassCollector Principal;
+    int ID_bus;
 
-    public RegistroV2() {
+    public RegistroV2(String Salida, String llegada, int bus, ClassCollector A) {
 
         initComponents();
+        Principal = A;
+        ID_bus = bus;
+        CSalida.setText(Salida);
+        Cllegada.setText(llegada);
         setLocationRelativeTo(null);
 
     }
+
     public void limpiar() {
         Cdni.setText("");
         Cnombre.setText("");
-        Cfecha.setText("");
+        Cllegada.setText("");
+        CSalida.setText("");
         //combo_tipodoc.setSelectedItem("Seleccionar Tipo Documento");
 
+    }
+
+    public Bus encontrarBus() {
+        Nodo<Bus> temp = Principal.Lista_buses.ObetenerPrimerNodo();       
+        while (temp != null) {
+            if (temp.valor.getMatricula() == ID_bus) {
+                return temp.valor;
+            }
+            temp = temp.siguiente;
+        }
+        return null;
     }
 
     @SuppressWarnings("unchecked")
@@ -37,9 +62,12 @@ public class RegistroV2 extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         Cnombre = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        Cfecha = new javax.swing.JTextField();
+        Cllegada = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        Cfecha1 = new javax.swing.JTextField();
+        CSalida = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TextoEquipaje = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -107,22 +135,33 @@ public class RegistroV2 extends javax.swing.JFrame {
         jLabel6.setText("Destino");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, -1, -1));
 
-        Cfecha.addActionListener(new java.awt.event.ActionListener() {
+        Cllegada.setEditable(false);
+        Cllegada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CfechaActionPerformed(evt);
+                CllegadaActionPerformed(evt);
             }
         });
-        jPanel1.add(Cfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 250, -1));
+        jPanel1.add(Cllegada, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 250, -1));
 
-        jLabel7.setText("Destino");
+        jLabel7.setText("Salida");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
-        Cfecha1.addActionListener(new java.awt.event.ActionListener() {
+        CSalida.setEditable(false);
+        CSalida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Cfecha1ActionPerformed(evt);
+                CSalidaActionPerformed(evt);
             }
         });
-        jPanel1.add(Cfecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 150, -1));
+        jPanel1.add(CSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 150, -1));
+
+        TextoEquipaje.setColumns(20);
+        TextoEquipaje.setRows(5);
+        jScrollPane1.setViewportView(TextoEquipaje);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 450, 120));
+
+        jLabel2.setText("Descripción Equipaje");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 500, 310));
 
@@ -130,6 +169,43 @@ public class RegistroV2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void regclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regclienteActionPerformed
+/*
+        Bus tempB = encontrarBus();
+        if(tempB == null){
+            Principal.Cola_clientes.
+        }else{
+            JOptionPane.showMessageDialog(null, "No hay bus", "No se puede realizaar registro aun BUS", JOptionPane.INFORMATION_MESSAGE);
+        }
+        */
+
+        //int ID_pasajero, String nombre, String lugar_Destino, boolean paquetes, String descripcion_Paquete
+        int dni = Integer.parseInt(Cdni.getText());
+        boolean equipaje = false;
+        if(TextoEquipaje != null){
+            equipaje = true;
+        }
+         Pasajero p1 = new Pasajero(dni,Cnombre.getText(),Cllegada.getText(),equipaje,TextoEquipaje.getText());
+            encontrarBus().getCola_Pasajero().push(p1);     
+            encontrarBus().ocuparAsiento();
+        /*
+        if(encontrarBus().getOcupado() < encontrarBus().getNumAsientos()){
+            Pasajero p1 = new Pasajero(dni,Cnombre.getText(),Cllegada.getText(),equipaje,TextoEquipaje.getText());
+            encontrarBus().getCola_Pasajero().push(p1);     
+            encontrarBus().ocuparAsiento();
+        }else{
+            JOptionPane.showMessageDialog(null, "Bus lleno", "Bus lleno", JOptionPane.INFORMATION_MESSAGE);
+        }
+        */
+        /*
+        Horarios UU = new Horarios(Principal);
+        this.setVisible(false);
+        U.setVisible(true);
+        */
+        
+       
+        
+        
+        
 
     }//GEN-LAST:event_regclienteActionPerformed
 
@@ -154,29 +230,33 @@ public class RegistroV2 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CnombreActionPerformed
 
-    private void CfechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CfechaActionPerformed
+    private void CllegadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CllegadaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CfechaActionPerformed
+    }//GEN-LAST:event_CllegadaActionPerformed
 
-    private void Cfecha1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cfecha1ActionPerformed
+    private void CSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CSalidaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Cfecha1ActionPerformed
+    }//GEN-LAST:event_CSalidaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField CSalida;
     private javax.swing.JTextField Cdni;
-    private javax.swing.JTextField Cfecha;
-    private javax.swing.JTextField Cfecha1;
+    private javax.swing.JTextField Cllegada;
     private javax.swing.JTextField Cnombre;
+    private javax.swing.JTextArea TextoEquipaje;
     private javax.swing.JButton cancelcli;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton regcliente;
     private javax.swing.JButton salir;
     private javax.swing.JButton salirclijButton3;
     // End of variables declaration//GEN-END:variables
+
 }
