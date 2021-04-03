@@ -245,6 +245,7 @@ public class Horarios extends javax.swing.JFrame {
         salidaTXT = (String) modelo.getValueAt(fila, 0);
         llegadaTXT = (String) Casilla_Buscar_Ruta.getText();
         bus = (int) modelo.getValueAt(fila, 2);
+        System.out.println(bus);
         JOptionPane.showMessageDialog(null, "Salida: " + salidaTXT + " llegada: " + llegadaTXT, "INFORMACION DE SELECCION", JOptionPane.INFORMATION_MESSAGE);
 
         /*

@@ -33,7 +33,7 @@ public class ClassCollector {
         
         
         Bus B2 = new Bus(4321,15,50,C2);
-        Lista_buses.insertarFinal(B);
+        
         
         Ruta r = new Ruta(1, Lista_ciudades,B,28);
         
@@ -51,6 +51,10 @@ public class ClassCollector {
         Lista_ciudades2.insertarInicio(new Ciudad(007, "RR", 50));
         Ruta r2 = new Ruta(2, Lista_ciudades2,B2,30);
         Lista_rutas.insertarInicio(r2);
+        
+        
+        Lista_buses.insertarFinal(B);
+        Lista_buses.insertarFinal(B2);
         
     }
 }

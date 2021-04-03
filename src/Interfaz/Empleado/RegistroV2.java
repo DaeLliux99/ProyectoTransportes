@@ -37,13 +37,19 @@ public class RegistroV2 extends javax.swing.JFrame {
     }
 
     public Bus encontrarBus() {
-        Nodo<Bus> temp = Principal.Lista_buses.ObetenerPrimerNodo();       
+        
+        Nodo<Bus> temp = Principal.Lista_buses.ObetenerPrimerNodo();
         while (temp != null) {
             if (temp.valor.getMatricula() == ID_bus) {
-                return temp.valor;
+                System.out.println("Bus ENCONTRADO");
+                return temp.getValor();
             }
+            System.out.println(ID_bus);
+            System.out.println(temp.valor.getMatricula());
             temp = temp.siguiente;
         }
+        System.out.println("Bus NOMNO ENCONTRADO");
+
         return null;
     }
 
@@ -169,43 +175,29 @@ public class RegistroV2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void regclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regclienteActionPerformed
-/*
-        Bus tempB = encontrarBus();
-        if(tempB == null){
-            Principal.Cola_clientes.
-        }else{
-            JOptionPane.showMessageDialog(null, "No hay bus", "No se puede realizaar registro aun BUS", JOptionPane.INFORMATION_MESSAGE);
-        }
-        */
-
-        //int ID_pasajero, String nombre, String lugar_Destino, boolean paquetes, String descripcion_Paquete
+        
         int dni = Integer.parseInt(Cdni.getText());
         boolean equipaje = false;
-        if(TextoEquipaje != null){
+
+        if (TextoEquipaje != null) {
             equipaje = true;
         }
-         Pasajero p1 = new Pasajero(dni,Cnombre.getText(),Cllegada.getText(),equipaje,TextoEquipaje.getText());
-            encontrarBus().getCola_Pasajero().push(p1);     
-            encontrarBus().ocuparAsiento();
-        /*
-        if(encontrarBus().getOcupado() < encontrarBus().getNumAsientos()){
+        Bus busUsado =encontrarBus() ;
+        
+        if(busUsado.getOcupado() < busUsado.getNumAsientos()){
             Pasajero p1 = new Pasajero(dni,Cnombre.getText(),Cllegada.getText(),equipaje,TextoEquipaje.getText());
-            encontrarBus().getCola_Pasajero().push(p1);     
-            encontrarBus().ocuparAsiento();
+            busUsado.getCola_Pasajero().push(p1);     
+            busUsado.ocuparAsiento();
         }else{
             JOptionPane.showMessageDialog(null, "Bus lleno", "Bus lleno", JOptionPane.INFORMATION_MESSAGE);
         }
-        */
-        /*
+         
+ 
         Horarios UU = new Horarios(Principal);
         this.setVisible(false);
-        U.setVisible(true);
-        */
-        
-       
-        
-        
-        
+        UU.setVisible(true);
+         
+
 
     }//GEN-LAST:event_regclienteActionPerformed
 
