@@ -53,5 +53,11 @@ public class Cola <G>{
             System.out.println(puntero.valor.toString());
             puntero = puntero.siguiente;
         }
-    } 
+    }
+
+    public int getLongitud() {
+        return longitud;
+    }
+    
+    
 }
