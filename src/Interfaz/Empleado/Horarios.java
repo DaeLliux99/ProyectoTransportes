@@ -17,10 +17,10 @@ public class Horarios extends javax.swing.JFrame {
     /**
      * Creates new form GUI_BuscarProveedores
      */
-    ClassCollector Principal;
+    ClassCollector principal;
     String rutaA;
     Ruta ruta1;
-    Lista<Ruta> ListRuta = new Lista<>();
+    Lista<Ruta> listaRuta = new Lista<>();
 
     String salidaTXT;
     String llegadaTXT;
@@ -29,7 +29,7 @@ public class Horarios extends javax.swing.JFrame {
     public Horarios(ClassCollector A) {
 
         initComponents();
-        Principal = A;
+        principal = A;
         this.setLocationRelativeTo(null);
     }
 
@@ -187,7 +187,7 @@ public class Horarios extends javax.swing.JFrame {
     private void regclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regclienteActionPerformed
         if (salidaTXT != null && llegadaTXT != null) {
 
-            RegistroV2 r = new RegistroV2(salidaTXT, llegadaTXT, bus, Principal);
+            RegistroV2 r = new RegistroV2(salidaTXT, llegadaTXT, bus, principal);
             this.setVisible(false);
             r.setVisible(true);
         } else {
@@ -213,25 +213,21 @@ public class Horarios extends javax.swing.JFrame {
             jTable1.getModel().setValueAt("", i, 4);
             jTable1.getModel().setValueAt("", i, 5);
         }
-
         
-        Nodo<Bus> temp = Principal.listaBuses.ObetenerPrimerNodo();
-
         int i = 0;
-        while (temp != null) {
-            if (temp.valor.getRuta().Busqueda_Ciudad(Casilla_Buscar_Ruta.getText()) != null) {
-                jTable1.getModel().setValueAt(temp.valor.getRuta().obtenerPrimerCiudad(), i, 0);
-                jTable1.getModel().setValueAt(temp.valor.getRuta().obtenerUltimaCiudad(), i, 1);
-                jTable1.getModel().setValueAt(temp.valor.getMatricula(), i, 2);   //
-                jTable1.getModel().setValueAt(temp.valor.getRuta().mostrarCiudadesRuta(), i, 3);
-                jTable1.getModel().setValueAt(temp.valor.getRuta().getPrecio(), i, 4);
-
-                jTable1.getModel().setValueAt(temp.valor.getNumeroAsientos()-temp.valor.getOcupado(), i, 5);            
+        for(Bus b: principal.listaBuses){
+            if (b.getRuta().Busqueda_Ciudad(Casilla_Buscar_Ruta.getText()) != null) {
+                jTable1.getModel().setValueAt(b.getRuta().obtenerPrimerCiudad(), i, 0);
+                jTable1.getModel().setValueAt(b.getRuta().obtenerUltimaCiudad(), i, 1);
+                jTable1.getModel().setValueAt(b.getMatricula(), i, 2);   //
+                jTable1.getModel().setValueAt(b.getRuta().mostrarCiudadesRuta(), i, 3);
+                jTable1.getModel().setValueAt(b.getRuta().getPrecio(), i, 4);
+                jTable1.getModel().setValueAt(b.getNumeroAsientos()-b.getOcupado(), i, 5);            
                 i++;
 
             }
-            temp = temp.siguiente;
         }
+       
         
         //JOptionPane.showMessageDialog(null, "No se puede realizar la busqueda!", "NO HAY REGISTROS", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_Buscar_Ruta_BotonActionPerformed
@@ -259,7 +255,7 @@ public class Horarios extends javax.swing.JFrame {
 
     private void mostrarPasajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarPasajeroActionPerformed
         // TODO add your handling code here:
-        MostrarPasajero a = new MostrarPasajero(Principal);
+        MostrarPasajero a = new MostrarPasajero(principal);
         a.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_mostrarPasajeroActionPerformed

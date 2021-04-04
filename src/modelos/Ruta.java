@@ -14,8 +14,6 @@ import nodos.*;
  */
 public class Ruta {
 
-
-    
     private int idRuta;
     private String salida;
     private String llegada;
@@ -73,15 +71,7 @@ public class Ruta {
     public float getDistanciaRuta() {
         return distanciaRuta;
     }
-/*
-    public Bus getBus() {
-        return bus;
-    }
 
-    public void setBus(Bus bus) {
-        this.bus = bus;
-    }
-*/
     public float getPrecio() {
         return precio;
     }

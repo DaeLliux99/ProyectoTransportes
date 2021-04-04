@@ -5,24 +5,59 @@
  */
 package Interfaz.Empleado;
 
+import estructuras.Cola;
+import main.ClassCollector;
+import modelos.Bus;
+import modelos.Pasajero;
+
 /**
  *
  * @author T800
  */
-public class ticket extends javax.swing.JPanel implements java.beans.Customizer {
+public class ticket extends javax.swing.JPanel  {
+
     
-    private Object bean;
+
+    
+    int dni;
+    Bus bus;
 
     /**
      * Creates new customizer ticket
      */
-    public ticket() {
+    public ticket( int documento, Bus b) {
         initComponents();
+        
+        dni = documento;
+        bus = b;
+        busquedaPasajero();
+        
     }
+
+    public void busquedaPasajero() {
+        
+        Cola<Pasajero> a = bus.getColaPasajero();
+        Pasajero p;
+
+        for (int i = 0; i < a.getLongitud(); i++) {
+            p = a.pop();
+            if(p.getIdPasajero() == dni){
+                CCosto.setText(""+bus.getRuta().getPrecio());
+                CAsiento.setText(""+p.getAsiento());
+                CDNI.setText(""+dni);
+                CDescripccion.setText(p.getDescripcionPaquetes());
+                CDestino.setText(p.getLugarDestino());
+                CEquipaje.setText(p.isPaquetes()? "Si":"No");
+                CNombresyAp.setText(p.getNombre());
+                CNumeroTicket.setText(""+1015874);
+                CSalida.setText(""+bus.getMatricula());
+                Cmatricula.setText(""+bus.getMatricula()); 
+            }
+            a.push(p);
+        }
+    }
+
     
-    public void setObject(Object bean) {
-        this.bean = bean;
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,6 +91,7 @@ public class ticket extends javax.swing.JPanel implements java.beans.Customizer 
         jLabel10 = new javax.swing.JLabel();
         CDNI = new javax.swing.JTextField();
         CCosto = new javax.swing.JTextField();
+        Cmatricula = new javax.swing.JTextField();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -63,10 +99,10 @@ public class ticket extends javax.swing.JPanel implements java.beans.Customizer 
         jLabel1.setText("TICKET Nº");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 130, 50));
 
-        jLabel2.setText("informacion de compra:");
+        jLabel2.setText("Matricula del bus:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
-        jLabel3.setText("Asiento Nº");
+        jLabel3.setText("Asiento Nº:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         jLabel4.setText("Nombres y apellidos:");
@@ -94,10 +130,20 @@ public class ticket extends javax.swing.JPanel implements java.beans.Customizer 
 
         CEquipaje.setEditable(false);
         CEquipaje.setText("Si");
+        CEquipaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CEquipajeActionPerformed(evt);
+            }
+        });
         add(CEquipaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 230, -1));
 
         CAsiento.setEditable(false);
         CAsiento.setText("75465210");
+        CAsiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CAsientoActionPerformed(evt);
+            }
+        });
         add(CAsiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 230, -1));
 
         CNombresyAp.setEditable(false);
@@ -147,30 +193,52 @@ public class ticket extends javax.swing.JPanel implements java.beans.Customizer 
 
         CDNI.setEditable(false);
         CDNI.setText("75465210");
+        CDNI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CDNIActionPerformed(evt);
+            }
+        });
         add(CDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 230, -1));
 
         CCosto.setEditable(false);
         CCosto.setText("20");
         add(CCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 230, -1));
+
+        Cmatricula.setEditable(false);
+        add(Cmatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 230, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnImprimirActionPerformed
-        int numeroticket=Integer.parseInt(CNumeroTicket.getText());
-        int dni= Integer.parseInt(CAsiento.getText());
-        String nombres=CNombresyAp.getText();
-        String salida=CSalida.getText();
-        String llegada=CDestino.getText();
-        int numeroAsiento=Integer.parseInt(CAsiento.getText());
-        int importe=Integer.parseInt(CEquipaje.getText());
-        String equipaje=CEquipaje.getText();
-        String descripcion=CDescripccion.getText();
-        
-        
+        int numeroticket = Integer.parseInt(CNumeroTicket.getText());
+        int dni = Integer.parseInt(CAsiento.getText());
+        String nombres = CNombresyAp.getText();
+        String salida = CSalida.getText();
+        String llegada = CDestino.getText();
+        int numeroAsiento = Integer.parseInt(CAsiento.getText());
+        int importe = Integer.parseInt(CEquipaje.getText());
+        String equipaje = CEquipaje.getText();
+        String descripcion = CDescripccion.getText();
+
+
     }//GEN-LAST:event_BtnImprimirActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void CEquipajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CEquipajeActionPerformed
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_CEquipajeActionPerformed
+
+    private void CAsientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CAsientoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CAsientoActionPerformed
+
+    private void CDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CDNIActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CDNIActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -185,6 +253,7 @@ public class ticket extends javax.swing.JPanel implements java.beans.Customizer 
     private javax.swing.JTextField CNombresyAp4;
     private javax.swing.JTextField CNumeroTicket;
     private javax.swing.JTextField CSalida;
+    private javax.swing.JTextField Cmatricula;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -199,4 +268,6 @@ public class ticket extends javax.swing.JPanel implements java.beans.Customizer 
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    
 }

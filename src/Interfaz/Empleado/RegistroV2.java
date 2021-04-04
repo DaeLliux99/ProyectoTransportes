@@ -61,10 +61,10 @@ public class RegistroV2 extends javax.swing.JFrame {
     
     public void sacar(){
         Bus busUsado =encontrarBus() ;
-        if(busUsado.getCola_Pasajero()==null){
+        if(busUsado.getColaPasajero()==null){
             System.out.println("vacio");
         }else{
-            Cola<Pasajero> a=busUsado.getCola_Pasajero();
+            Cola<Pasajero> a=busUsado.getColaPasajero();
             Pasajero b;
             for(int i=0; i<a.getLongitud(); i++){
                 b=a.pop();
@@ -214,7 +214,7 @@ public class RegistroV2 extends javax.swing.JFrame {
         
         if(busUsado.getOcupado() < busUsado.getNumeroAsientos() && asiento.getSelectedItem()!=null){
             Pasajero p1 = new Pasajero(dni,Cnombre.getText(),Cllegada.getText(),equipaje,TextoEquipaje.getText(), (int)asiento.getSelectedItem());
-            busUsado.getCola_Pasajero().push(p1);     
+            busUsado.getColaPasajero().push(p1);     
             busUsado.ocuparAsiento();
         }else if(asiento.getSelectedItem()==null){
             JOptionPane.showMessageDialog(null, "No selecciono asiento, no se registro pasajero", "No selecciono asiento, no se registro pasajero", JOptionPane.INFORMATION_MESSAGE);

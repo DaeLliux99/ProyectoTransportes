@@ -20,12 +20,9 @@ public class Bus {
     private int ocupado = 0;
     
     private Ruta ruta;
-    
-
+   
     Cola<Pasajero> colaPasajero = new Cola<>();
 
-    //Recordar que la lista debe ser meno o igual a la cantidad de asientos
-    //colocar un if afuera cuando se llene para que no se llene de mas
     public Bus(int matricula, int NumAsientos, int PesoMaximo, Chofer ID_chofer, Ruta ruta) {
         this.matricula = matricula;
         this.numeroAsientos = NumAsientos;
@@ -74,14 +71,6 @@ public class Bus {
         this.ocupado = Ocupado;
     }
 
-    public Cola<Pasajero> getCola_Pasajero() {
-        return colaPasajero;
-    }
-
-    public void setCola_Pasajero(Cola<Pasajero> Cola_Pasajero) {
-        this.colaPasajero = Cola_Pasajero;
-    }
-    
     public Chofer getIdChofer() {
         return idChofer;
     }
@@ -105,13 +94,7 @@ public class Bus {
     public void setColaPasajero(Cola<Pasajero> colaPasajero) {
         this.colaPasajero = colaPasajero;
     }
-    
-    
-    
-    
-    
-    
-    
+
     public void ocuparAsiento() {
         ocupado++;       
     }
