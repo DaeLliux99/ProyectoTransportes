@@ -14,52 +14,26 @@ import nodos.*;
  */
 public class Ruta {
 
+
+    
     private int idRuta;
     private String salida;
     private String llegada;
     private float distanciaRuta = 0;
-    //private Bus bus;
+    
     private float precio;
-    
-    
+       
     Lista<Ciudad> ciudadesRuta = new Lista<>();
+
 
     public Ruta() {
     }
 
-    public Ruta(int ID_ruta/*, Bus bus*/, float precio) {
+    public Ruta(int ID_ruta, float precio) {
         this.idRuta = ID_ruta;
-        this.precio = precio;
-        //this.salida = ciudadesRuta.obetenerPrimerObjeto().getCiudad();
-        //this.llegada = ciudadesRuta.obetenerUltimoObjeto().getCiudad();       
-        //this.bus = bus;
-/*
-        Lista<Ciudad> temp = ruta1;
-        Nodo<Ciudad> temp2 = temp.ObetenerPrimerNodo();
-        while (temp2 != null) {
-            distanciaRuta = distanciaRuta + temp2.valor.getDistanciaSigteCiudad();
-            temp2 = temp2.siguiente;
-        }*/
+        this.precio = precio;   
     }
 
-    /*
-
-    public Ruta(int ID_ruta, Lista<Ciudad> ciudades_Ruta, float precio) {
-        this.idRuta = ID_ruta;
-        this.precio = precio;
-        this.salida = ciudades_Ruta.obetenerPrimerObjeto().getCiudad();
-        this.llegada = ciudades_Ruta.obetenerUltimoObjeto().getCiudad();
-        this.ciudadesRuta = ciudades_Ruta;
-        //this.bus = bus;
-
-        Lista<Ciudad> temp = ciudades_Ruta;
-        Nodo<Ciudad> temp2 = temp.ObetenerPrimerNodo();
-        while (temp2 != null) {
-            distanciaRuta = distanciaRuta + temp2.valor.getDistanciaSigteCiudad();
-            temp2 = temp2.siguiente;
-        }
-    }
-*/
     public int getIdRuta() {
         return idRuta;
     }
@@ -115,35 +89,14 @@ public class Ruta {
     public void setPrecio(float precio) {
         this.precio = precio;
     }
-    
 
-    
     //Metodos:
     public void ciudadesLista() {
-        Lista<Ciudad> temp = ciudadesRuta;
-        Nodo<Ciudad> temp2 = temp.ObetenerPrimerNodo();
-        System.out.print("Ciudad: ");
-        while (temp2 != null) {
-            System.out.print(temp2.valor.toString());
-            temp2 = temp2.siguiente;
+        for (Ciudad c: ciudadesRuta) {
+            System.out.println(c.toString());
         }
         System.out.println("");
-    }
-    
-    public String mostrarCiudadesRuta() {
-        Lista<Ciudad> temp = ciudadesRuta;
-        Nodo<Ciudad> temp2 = temp.ObetenerPrimerNodo();
-        System.out.print("Ciudad: ");
-        String ciudad = "";
-        while (temp2 != null) {
-            ciudad = ciudad+ " "+ temp2.valor.toString();
-            //System.out.print(temp2.valor.toString());
-            temp2 = temp2.siguiente;
-        }
-        System.out.println("");
-        return ciudad;
-    }
-    
+    }    
     
     public String obtenerPrimerCiudad(){
         return ciudadesRuta.obetenerPrimerObjeto().getCiudad();
@@ -153,48 +106,27 @@ public class Ruta {
         return ciudadesRuta.obetenerUltimoObjeto().getCiudad();
     }
     
-
-    /*
     public Ciudad Busqueda_Ciudad(String Ciudad_Buscada) {
-        boolean encontro = false;
-        Nodo<Ciudad> temp = ruta1.ObetenerPrimerNodo();
-        while (temp != null && !encontro) {
-            if ((temp.valor.getCiudad()).equals(Ciudad_Buscada)) {
-                encontro = true;
-                System.out.println("Se encontro ");
+        for (Ciudad c: ciudadesRuta) {
+            if (c.getCiudad().equals(Ciudad_Buscada)) {
+                return c;
             }
-            temp = temp.siguiente;
         }
-        if (encontro) {
-            return temp.valor;
-        } else {
-            System.out.println("\nNo se ha encontrado la ciudad en los archivos ....");
-            return null;
-        }
-
-    }
-     */
-    public Ciudad Busqueda_Ciudad(String Ciudad_Buscada) {
-        boolean encontro = false;
-        Nodo<Ciudad> temp = ciudadesRuta.ObetenerPrimerNodo();
-        Ciudad c = null;
-        while (temp != null && !encontro) {
-            if (temp.valor.getCiudad().equals(Ciudad_Buscada)) {
-                encontro = true;
-                c = temp.valor;
-            }
-            temp = temp.siguiente;
-        }
-        if (encontro == true) {
-            return c;
-        } else {
-            return null;
-        }
+        return null;
     }
     
     public void ingresarCiudad(Ciudad C){
         ciudadesRuta.insertarInicio(C);
     } 
+    
+    public String mostrarCiudadesRuta(){
+        StringBuilder builder = new StringBuilder();
+        for (Ciudad c: ciudadesRuta) {
+            builder.append(c.getCiudad() + " - ");        
+            builder.append("\n");
+        }
+        return (builder.toString());
+    }
 
     public String toString() {
 

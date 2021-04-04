@@ -5,15 +5,17 @@
  */
 package estructuras;
 
+import java.util.Collections;
 import nodos.Nodo;
 import modelos.*;
-
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 /**
  *
  * @author Carlos Esteban
  * @param <G>
  */
-public class Lista<G> {
+public class Lista <G> implements Iterable<G>{
 
     //Atributos
     Nodo cabeza;
@@ -153,5 +155,33 @@ public class Lista<G> {
             System.out.println(puntero.valor.toString());
             puntero = puntero.siguiente;
         }
+    }
+
+    @Override
+    public Iterator<G> iterator() {
+        if (this.cabeza == null) {
+            return Collections.<G>emptyList().iterator();
+        }
+        return new Iterator<G>() {
+            private Nodo <G> nodoActual = null;
+            @Override
+            public boolean hasNext() {
+                return nodoActual != ultimo;
+            }
+
+            @Override
+            public G next() {
+                if (nodoActual == null) {
+                    nodoActual = cabeza;
+                    return nodoActual.valor;
+                }
+                if (nodoActual.siguiente == null) {
+                    throw new NoSuchElementException();
+                }
+                nodoActual = nodoActual.siguiente;
+                return nodoActual.valor;
+            }
+            
+        };
     }
 }

@@ -108,6 +108,10 @@ public class Bus {
     
     
     
+    
+    
+    
+    
     public void ocuparAsiento() {
         ocupado++;       
     }
