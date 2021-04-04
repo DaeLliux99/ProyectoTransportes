@@ -6,7 +6,6 @@
 
 package estructuras;
 import java.util.*;
-import nodos.Nodo;
 /**
  * 
  * @author CODIGO LAGARTO
@@ -59,15 +58,35 @@ public class Grafo <G>{
         return contador;
     }
     
+    public Lista<G> obtenerVertices() {
+        Lista <G> lista = new Lista<>();
+        for (G v : map.keySet()) {
+            lista.insertarFinal(v);
+        }
+        return lista;
+    }
+    
+    public Lista<G> obtenerDato(G dato) {
+        Lista <G> lista = new Lista<>();
+        for (Arista v: map.get(dato)) {
+            lista.insertarFinal((G) v.destino);
+        }
+        return lista;
+    }
+    
+    
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
         for (G v: map.keySet()) {
             builder.append(v.toString() + ": ");
-            Nodo puntero = map.get(v).cabeza;
+            /*Nodo puntero = map.get(v).cabeza;
             while (puntero != null) {
                 builder.append(puntero.valor.toString() + " ");
                 puntero = puntero.siguiente;
+            }*/
+            for (Arista w: map.get(v)) {
+                 builder.append(w.destino.toString() + " ");
             }
             builder.append("\n");
         }

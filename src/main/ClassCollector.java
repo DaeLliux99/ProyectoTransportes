@@ -46,13 +46,21 @@ public class ClassCollector {
         Lista_rutas.BuscarXDato(a2).ingresarCiudad(new Ciudad(005, "TT", 50));
         Lista_rutas.BuscarXDato(a2).ingresarCiudad(new Ciudad(006, "RR", 60));
         
-        Grafo <Ciudad> region = new Grafo<>();
-        region.agregarVertice(new Ciudad(001, "AB", 10));
-        region.agregarVertice(new Ciudad(002, "CD", 20));
-        region.agregarVertice(new Ciudad(003, "EF", 30));
-        region.agregarVertice(new Ciudad(004, "FG", 40));
-        region.agregarVertice(new Ciudad(005, "HI", 50));
-        System.out.println(region.toString());
+        Region reg = new Region();
+        reg.agregarCiudad(new Ciudad(001, "AA", 10));
+        reg.agregarCiudad(new Ciudad(002, "CD", 20));
+        reg.agregarCiudad(new Ciudad(003, "EF", 30));
+        reg.agregarCiudad(new Ciudad(004, "FG", 40));
+        reg.agregarCiudad(new Ciudad(005, "HI", 50));
+        reg.agregarCamino(1, 4, 50);
+        reg.agregarCamino(2, 3, 50);
+        reg.agregarCamino(1, 3, 50);
+        reg.agregarCamino(5, 1, 50);
+        reg.agregarCamino(2, 4, 50);
+        System.out.println(reg.toString());
+        Ciudad c = reg.buscarCiudad(1);
+        Lista <Ciudad> ccc = reg.obtenerCiudadesAdya(c);
+        ccc.mostrarLista();
         /*
         Lista_rutas.BuscarXDato(a1).getCiudades_Ruta().insertarFinal(new Ciudad(001, "AB", 10));
         Lista_rutas.BuscarXDato(a1).getCiudades_Ruta().insertarFinal(new Ciudad(002, "CD", 20));

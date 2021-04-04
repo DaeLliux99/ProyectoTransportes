@@ -215,18 +215,18 @@ public class Horarios extends javax.swing.JFrame {
             jTable1.getModel().setValueAt("", i, 4);
             jTable1.getModel().setValueAt("", i, 5);
         }
-
+        
         Nodo<Ruta> temp = Principal.Lista_rutas.ObetenerPrimerNodo();
         int i = 0;
         while (temp != null) {
             if (temp.valor.Busqueda_Ciudad(Casilla_Buscar_Ruta.getText()) != null) {
-                jTable1.getModel().setValueAt(temp.valor.obtenerPrimerCiudad(), i, 0);
+                /*jTable1.getModel().setValueAt(temp.valor.obtenerPrimerCiudad(), i, 0);
                 jTable1.getModel().setValueAt(temp.valor.obtenerUltimaCiudad(), i, 1);
                 jTable1.getModel().setValueAt(temp.valor.getBus().getMatricula(), i, 2);   //
                 jTable1.getModel().setValueAt(temp.valor.mostrarCiudadesRuta(), i, 3);
                 jTable1.getModel().setValueAt(temp.valor.getPrecio(), i, 4);
                 jTable1.getModel().setValueAt(temp.valor.getBus().getNumAsientos()-temp.valor.getBus().getOcupado(), i, 5);            
-                i++;
+                i++;*/
             }
             temp = temp.siguiente;
         }

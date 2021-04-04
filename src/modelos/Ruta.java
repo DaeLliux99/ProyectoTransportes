@@ -28,35 +28,8 @@ public class Ruta {
 
     public Ruta(int ID_ruta, Bus bus, float precio) {
         this.ID_ruta = ID_ruta;
-        this.precio = precio;
-        //this.Salida = ciudades_Ruta.obetenerPrimerObjeto().getCiudad();
-        //this.LLegada = ciudades_Ruta.obetenerUltimoObjeto().getCiudad();       
+        this.precio = precio;   
         this.bus = bus;
-/*
-        Lista<Ciudad> temp = ruta1;
-        Nodo<Ciudad> temp2 = temp.ObetenerPrimerNodo();
-        while (temp2 != null) {
-            distancia_Ruta = distancia_Ruta + temp2.valor.getDistanciaSigteCiudad();
-            temp2 = temp2.siguiente;
-        }*/
-    }
-
-    
-
-    public Ruta(int ID_ruta, Lista<Ciudad> ciudades_Ruta, Bus bus, float precio) {
-        this.ID_ruta = ID_ruta;
-        this.precio = precio;
-        this.Salida = ciudades_Ruta.obetenerPrimerObjeto().getCiudad();
-        this.LLegada = ciudades_Ruta.obetenerUltimoObjeto().getCiudad();
-        this.ciudades_Ruta = ciudades_Ruta;
-        this.bus = bus;
-
-        Lista<Ciudad> temp = ciudades_Ruta;
-        Nodo<Ciudad> temp2 = temp.ObetenerPrimerNodo();
-        while (temp2 != null) {
-            distancia_Ruta = distancia_Ruta + temp2.valor.getDistanciaSigteCiudad();
-            temp2 = temp2.siguiente;
-        }
     }
 
     public int getID_ruta() {
@@ -114,35 +87,14 @@ public class Ruta {
     public void setPrecio(float precio) {
         this.precio = precio;
     }
-    
 
-    
     //Metodos:
     public void ciudadesLista() {
-        Lista<Ciudad> temp = ciudades_Ruta;
-        Nodo<Ciudad> temp2 = temp.ObetenerPrimerNodo();
-        System.out.print("Ciudad: ");
-        while (temp2 != null) {
-            System.out.print(temp2.valor.toString());
-            temp2 = temp2.siguiente;
+        for (Ciudad c: ciudades_Ruta) {
+            System.out.println(c.toString());
         }
         System.out.println("");
-    }
-    
-    public String mostrarCiudadesRuta() {
-        Lista<Ciudad> temp = ciudades_Ruta;
-        Nodo<Ciudad> temp2 = temp.ObetenerPrimerNodo();
-        System.out.print("Ciudad: ");
-        String ciudad = "";
-        while (temp2 != null) {
-            ciudad = ciudad+ " "+ temp2.valor.toString();
-            //System.out.print(temp2.valor.toString());
-            temp2 = temp2.siguiente;
-        }
-        System.out.println("");
-        return ciudad;
-    }
-    
+    }    
     
     public String obtenerPrimerCiudad(){
         return ciudades_Ruta.obetenerPrimerObjeto().getCiudad();
@@ -152,43 +104,13 @@ public class Ruta {
         return ciudades_Ruta.obetenerUltimoObjeto().getCiudad();
     }
     
-
-    /*
     public Ciudad Busqueda_Ciudad(String Ciudad_Buscada) {
-        boolean encontro = false;
-        Nodo<Ciudad> temp = ruta1.ObetenerPrimerNodo();
-        while (temp != null && !encontro) {
-            if ((temp.valor.getCiudad()).equals(Ciudad_Buscada)) {
-                encontro = true;
-                System.out.println("Se encontro ");
+        for (Ciudad c: ciudades_Ruta) {
+            if (c.getCiudad().equals(Ciudad_Buscada)) {
+                return c;
             }
-            temp = temp.siguiente;
         }
-        if (encontro) {
-            return temp.valor;
-        } else {
-            System.out.println("\nNo se ha encontrado la ciudad en los archivos ....");
-            return null;
-        }
-
-    }
-     */
-    public Ciudad Busqueda_Ciudad(String Ciudad_Buscada) {
-        boolean encontro = false;
-        Nodo<Ciudad> temp = ciudades_Ruta.ObetenerPrimerNodo();
-        Ciudad c = null;
-        while (temp != null && !encontro) {
-            if (temp.valor.getCiudad().equals(Ciudad_Buscada)) {
-                encontro = true;
-                c = temp.valor;
-            }
-            temp = temp.siguiente;
-        }
-        if (encontro == true) {
-            return c;
-        } else {
-            return null;
-        }
+        return null;
     }
     
     public void ingresarCiudad(Ciudad C){
