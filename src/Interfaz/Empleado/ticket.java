@@ -6,6 +6,7 @@
 package Interfaz.Empleado;
 
 import estructuras.Cola;
+import java.awt.Dimension;
 import main.ClassCollector;
 import modelos.Bus;
 import modelos.Pasajero;
@@ -21,6 +22,8 @@ public class ticket extends javax.swing.JFrame  {
         dni = documento;
         bus = b;
         busquedaPasajero();
+        this.setSize(new Dimension(470, 522));
+        this.setMinimumSize(new Dimension(470, 522));
         this.setLocationRelativeTo(null);
     }
 
@@ -85,7 +88,8 @@ public class ticket extends javax.swing.JFrame  {
         CCosto = new javax.swing.JTextField();
         Cmatricula = new javax.swing.JTextField();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setAlwaysOnTop(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -206,7 +210,7 @@ public class ticket extends javax.swing.JFrame  {
         Cmatricula.setEditable(false);
         jPanel2.add(Cmatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 230, -1));
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 490));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 490));
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnImprimirActionPerformed
