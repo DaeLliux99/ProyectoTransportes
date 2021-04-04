@@ -9,12 +9,12 @@ package Interfaz.Administrador;
  *
  * @author LEONARDO
  */
-public class RegistrarBus extends javax.swing.JFrame {
+public class ConstruccionBus extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
      */
-    public RegistrarBus() {
+    public ConstruccionBus() {
         initComponents();
     }
 

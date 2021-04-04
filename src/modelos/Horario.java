@@ -5,10 +5,6 @@
  */
 package modelos;
 
-/**
- *
- * @author LEONARDO
- */
 public class Horario {
     private Bus bus;
     private String horaSalida;

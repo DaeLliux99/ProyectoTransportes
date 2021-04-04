@@ -4,7 +4,7 @@ import java.util.*;
 import nodos.Nodo;
 /**
  * 
- * @author CODIGO LAGARTO
+ * @author LEONARDO
  * @param <G>
  */
 public class Grafo <G>{

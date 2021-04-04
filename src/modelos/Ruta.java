@@ -10,7 +10,7 @@ import nodos.*;
 
 /**
  *
- * @author Sistema
+ * @author Leonardo
  */
 public class Ruta {
 
@@ -42,9 +42,9 @@ public class Ruta {
         }*/
     }
 
-    
+    /*
 
-    public Ruta(int ID_ruta, Lista<Ciudad> ciudades_Ruta/*, Bus bus*/, float precio) {
+    public Ruta(int ID_ruta, Lista<Ciudad> ciudades_Ruta, float precio) {
         this.idRuta = ID_ruta;
         this.precio = precio;
         this.salida = ciudades_Ruta.obetenerPrimerObjeto().getCiudad();
@@ -59,7 +59,7 @@ public class Ruta {
             temp2 = temp2.siguiente;
         }
     }
-
+*/
     public int getIdRuta() {
         return idRuta;
     }

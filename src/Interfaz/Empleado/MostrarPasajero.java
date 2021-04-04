@@ -157,7 +157,15 @@ public class MostrarPasajero extends javax.swing.JFrame {
             new String [] {
                 "NOMBRE Y APELLIDO", "ASIENTO", "DOCUMENTO"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         atras.setText("Atras");

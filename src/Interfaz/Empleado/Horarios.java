@@ -152,8 +152,8 @@ public class Horarios extends javax.swing.JFrame {
         });
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setText("Rura");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
+        jLabel7.setText("Ciudad");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
 
         Buscar_Ruta_Boton.setText("Buscar");
         Buscar_Ruta_Boton.addActionListener(new java.awt.event.ActionListener() {
