@@ -14,28 +14,32 @@ import estructuras.*;
 public class Bus {
 
     private int matricula;
-    private int NumAsientos;
-    private int PesoMaximo;
-    private Chofer ID_chofer;
-    private int Ocupado = 0;
+    private int numeroAsientos;
+    private int pesoMaximo;
+    private Chofer idChofer;
+    private int ocupado = 0;
+    
+    private Ruta ruta;
+    
 
-    Cola<Pasajero> Cola_Pasajero = new Cola<>();
+    Cola<Pasajero> colaPasajero = new Cola<>();
 
     //Recordar que la lista debe ser meno o igual a la cantidad de asientos
     //colocar un if afuera cuando se llene para que no se llene de mas
-    public Bus(int matricula, int NumAsientos, int PesoMaximo, Chofer ID_chofer) {
+    public Bus(int matricula, int NumAsientos, int PesoMaximo, Chofer ID_chofer, Ruta ruta) {
         this.matricula = matricula;
-        this.NumAsientos = NumAsientos;
-        this.PesoMaximo = PesoMaximo;
-        this.ID_chofer = ID_chofer;
+        this.numeroAsientos = NumAsientos;
+        this.pesoMaximo = PesoMaximo;
+        this.idChofer = ID_chofer;
+        this.ruta = ruta;
     }
 
     public Bus(int matricula, int NumAsientos, int PesoMaximo, Chofer ID_chofer, Cola<Pasajero> Cola_Pasajero) {
         this.matricula = matricula;
-        this.NumAsientos = NumAsientos;
-        this.PesoMaximo = PesoMaximo;
-        this.ID_chofer = ID_chofer;
-        this.Cola_Pasajero = Cola_Pasajero;
+        this.numeroAsientos = NumAsientos;
+        this.pesoMaximo = PesoMaximo;
+        this.idChofer = ID_chofer;
+        this.colaPasajero = Cola_Pasajero;
     }
 
     public int getMatricula() {
@@ -46,55 +50,70 @@ public class Bus {
         this.matricula = matricula;
     }
 
-    public int getNumAsientos() {
-        return NumAsientos;
+    public int getNumeroAsientos() {
+        return numeroAsientos;
     }
 
-    public void setNumAsientos(int NumAsientos) {
-        this.NumAsientos = NumAsientos;
+    public void setNumeroAsientos(int numeroAsientos) {
+        this.numeroAsientos = numeroAsientos;
     }
 
     public int getPesoMaximo() {
-        return PesoMaximo;
+        return pesoMaximo;
     }
 
     public void setPesoMaximo(int PesoMaximo) {
-        this.PesoMaximo = PesoMaximo;
-    }
-
-    public Chofer getID_chofer() {
-        return ID_chofer;
-    }
-
-    public void setID_chofer(Chofer ID_chofer) {
-        this.ID_chofer = ID_chofer;
+        this.pesoMaximo = PesoMaximo;
     }
 
     public int getOcupado() {
-        return Ocupado;
+        return ocupado;
     }
 
     public void setOcupado(int Ocupado) {
-        this.Ocupado = Ocupado;
+        this.ocupado = Ocupado;
     }
 
     public Cola<Pasajero> getCola_Pasajero() {
-        return Cola_Pasajero;
+        return colaPasajero;
     }
 
     public void setCola_Pasajero(Cola<Pasajero> Cola_Pasajero) {
-        this.Cola_Pasajero = Cola_Pasajero;
+        this.colaPasajero = Cola_Pasajero;
+    }
+    
+    public Chofer getIdChofer() {
+        return idChofer;
+    }
+
+    public void setIdChofer(Chofer idChofer) {
+        this.idChofer = idChofer;
+    }
+
+    public Ruta getRuta() {
+        return ruta;
+    }
+
+    public void setRuta(Ruta ruta) {
+        this.ruta = ruta;
+    }
+
+    public Cola<Pasajero> getColaPasajero() {
+        return colaPasajero;
+    }
+
+    public void setColaPasajero(Cola<Pasajero> colaPasajero) {
+        this.colaPasajero = colaPasajero;
     }
     
     
-
     
     
     
     
     
     public void ocuparAsiento() {
-        Ocupado++;       
+        ocupado++;       
     }
     
     

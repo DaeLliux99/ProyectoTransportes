@@ -27,10 +27,10 @@ public class Region {
         Ciudad inicio = null, fin = null;
         Lista<Ciudad> listaCiudades = reg.obtenerVertices();
         for (Ciudad c: listaCiudades) {
-            if (c.getID_ciudad() == idCiudadInicio) {
+            if (c.getIdCiudad() == idCiudadInicio) {
                 inicio = c;
             }
-            if (c.getID_ciudad() == idCiudadFinal) {
+            if (c.getIdCiudad() == idCiudadFinal) {
                 fin = c;
             }
         }
@@ -51,7 +51,7 @@ public class Region {
     
     public Ciudad buscarCiudad(int idCiudad) {
         for (Ciudad c: reg.obtenerVertices()) {
-            if (c.getID_ciudad() == idCiudad) {
+            if (c.getIdCiudad() == idCiudad) {
                 return c;
             }
         }

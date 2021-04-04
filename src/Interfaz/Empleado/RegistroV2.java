@@ -40,7 +40,7 @@ public class RegistroV2 extends javax.swing.JFrame {
 
     public Bus encontrarBus() {
         
-        Nodo<Bus> temp = Principal.Lista_buses.ObetenerPrimerNodo();
+        Nodo<Bus> temp = Principal.listaBuses.ObetenerPrimerNodo();
         while (temp != null) {
             if (temp.valor.getMatricula() == ID_bus) {             
                 return temp.getValor();
@@ -54,7 +54,7 @@ public class RegistroV2 extends javax.swing.JFrame {
     
     public void llenar(){
         Bus busUsado =encontrarBus() ;
-        for(int i=0; i<busUsado.getNumAsientos();i++){
+        for(int i=0; i<busUsado.getNumeroAsientos();i++){
             asiento.addItem(i+1);
         }
     }
@@ -212,7 +212,7 @@ public class RegistroV2 extends javax.swing.JFrame {
         }
         Bus busUsado =encontrarBus() ;
         
-        if(busUsado.getOcupado() < busUsado.getNumAsientos() && asiento.getSelectedItem()!=null){
+        if(busUsado.getOcupado() < busUsado.getNumeroAsientos() && asiento.getSelectedItem()!=null){
             Pasajero p1 = new Pasajero(dni,Cnombre.getText(),Cllegada.getText(),equipaje,TextoEquipaje.getText(), (int)asiento.getSelectedItem());
             busUsado.getCola_Pasajero().push(p1);     
             busUsado.ocuparAsiento();
@@ -233,6 +233,11 @@ public class RegistroV2 extends javax.swing.JFrame {
 
     private void cancelcliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelcliActionPerformed
 
+        
+        Horarios UU = new Horarios(Principal);
+        this.setVisible(false);
+        UU.setVisible(true);
+
     }//GEN-LAST:event_cancelcliActionPerformed
 
     private void salirclijButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirclijButton3ActionPerformed
@@ -241,7 +246,9 @@ public class RegistroV2 extends javax.swing.JFrame {
     }//GEN-LAST:event_salirclijButton3ActionPerformed
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-
+        
+       System.exit(0);
+        
     }//GEN-LAST:event_salirActionPerformed
 
     private void CdniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CdniActionPerformed

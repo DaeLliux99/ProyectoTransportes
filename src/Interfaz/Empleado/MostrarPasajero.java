@@ -37,7 +37,7 @@ public class MostrarPasajero extends javax.swing.JFrame {
     
      */
     private void llenar(){
-        Nodo<Bus> b = Principal.Lista_buses.ObetenerPrimerNodo();
+        Nodo<Bus> b = Principal.listaBuses.ObetenerPrimerNodo();
         while(b!=null){
             buses.addItem(b.valor.getMatricula());
             b=b.siguiente;
@@ -46,7 +46,7 @@ public class MostrarPasajero extends javax.swing.JFrame {
     
     public Bus encontrarBus() {
         
-        Nodo<Bus> temp = Principal.Lista_buses.ObetenerPrimerNodo();
+        Nodo<Bus> temp = Principal.listaBuses.ObetenerPrimerNodo();
         while (temp != null && buses.getSelectedItem()!=null) {
             if (temp.valor.getMatricula() == (int)buses.getSelectedItem()) {             
                 return temp.getValor();
@@ -69,7 +69,7 @@ public class MostrarPasajero extends javax.swing.JFrame {
                 b=a.pop();
                 jTable1.getModel().setValueAt(b.getNombre(), i, 0);
                 jTable1.getModel().setValueAt(b.getAsiento(), i, 1);
-                jTable1.getModel().setValueAt(b.getID_pasajero(), i, 2);   //
+                jTable1.getModel().setValueAt(b.getIdPasajero(), i, 2);   //
                 a.push(b);
             }
       
@@ -77,8 +77,8 @@ public class MostrarPasajero extends javax.swing.JFrame {
     }
     
     private void limpiar(){
-        int a=encontrarBus().getNumAsientos();
-        if(encontrarBus().getNumAsientos()<=30){
+        int a=encontrarBus().getNumeroAsientos();
+        if(encontrarBus().getNumeroAsientos()<=30){
             for(int i=0; i<a; i++){
                 
                 jTable1.getModel().setValueAt(" ", i, 0);
@@ -157,7 +157,15 @@ public class MostrarPasajero extends javax.swing.JFrame {
             new String [] {
                 "NOMBRE Y APELLIDO", "ASIENTO", "DOCUMENTO"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         atras.setText("Atras");

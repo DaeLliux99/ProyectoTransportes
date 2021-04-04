@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,11 +7,7 @@
 
 package estructuras;
 import java.util.*;
-/**
- * 
- * @author CODIGO LAGARTO
- * @param <G>
- */
+
 public class Grafo <G>{
     
     class Arista <G>{
@@ -75,16 +72,12 @@ public class Grafo <G>{
     }
     
     
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
         for (G v: map.keySet()) {
             builder.append(v.toString() + ": ");
-            /*Nodo puntero = map.get(v).cabeza;
-            while (puntero != null) {
-                builder.append(puntero.valor.toString() + " ");
-                puntero = puntero.siguiente;
-            }*/
             for (Arista w: map.get(v)) {
                  builder.append(w.destino.toString() + " ");
             }

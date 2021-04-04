@@ -12,7 +12,7 @@ package modelos;
  * @author Sistema
  */
 public class Ciudad {
-    private int ID_ciudad;
+    private int idCiudad;
     private String ciudad;
     private int distanciaSigteCiudad;
     
@@ -21,17 +21,17 @@ public class Ciudad {
     }
     
     public Ciudad(int ID_ciudad, String ciudad, int distanciaSigteCiudad) {
-        this.ID_ciudad = ID_ciudad;
+        this.idCiudad = ID_ciudad;
         this.ciudad = ciudad;
         this.distanciaSigteCiudad = distanciaSigteCiudad;
     }
 
-    public int getID_ciudad() {
-        return ID_ciudad;
+    public int getIdCiudad() {
+        return idCiudad;
     }
 
-    public void setID_ciudad(int ID_ciudad) {
-        this.ID_ciudad = ID_ciudad;
+    public void setIdCiudad(int idCiudad) {
+        this.idCiudad = idCiudad;
     }
 
     public String getCiudad() {
