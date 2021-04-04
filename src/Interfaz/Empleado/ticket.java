@@ -10,28 +10,18 @@ import main.ClassCollector;
 import modelos.Bus;
 import modelos.Pasajero;
 
-/**
- *
- * @author T800
- */
-public class ticket extends javax.swing.JPanel  {
+public class ticket extends javax.swing.JFrame  {
 
-    
-
-    
     int dni;
     Bus bus;
 
-    /**
-     * Creates new customizer ticket
-     */
     public ticket( int documento, Bus b) {
         initComponents();
         
         dni = documento;
         bus = b;
         busquedaPasajero();
-        
+        this.setLocationRelativeTo(null);
     }
 
     public void busquedaPasajero() {
@@ -67,6 +57,8 @@ public class ticket extends javax.swing.JPanel  {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -95,38 +87,45 @@ public class ticket extends javax.swing.JPanel  {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setText("TICKET Nº");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 130, 50));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 130, 50));
 
         jLabel2.setText("Matricula del bus:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
         jLabel3.setText("Asiento Nº:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         jLabel4.setText("Nombres y apellidos:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
         jLabel5.setText("Destino:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
 
         jLabel6.setText("Salida:");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
         CNumeroTicket.setEditable(false);
         CNumeroTicket.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         CNumeroTicket.setText("00012323");
-        add(CNumeroTicket, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 230, -1));
+        CNumeroTicket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CNumeroTicketActionPerformed(evt);
+            }
+        });
+        jPanel2.add(CNumeroTicket, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 230, -1));
 
         jLabel7.setText("Importe(S/):");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
 
         jLabel8.setText("Equipaje:");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
 
         jLabel9.setText("Descripccion:");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
 
         CEquipaje.setEditable(false);
         CEquipaje.setText("Si");
@@ -135,7 +134,7 @@ public class ticket extends javax.swing.JPanel  {
                 CEquipajeActionPerformed(evt);
             }
         });
-        add(CEquipaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 230, -1));
+        jPanel2.add(CEquipaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 230, -1));
 
         CAsiento.setEditable(false);
         CAsiento.setText("75465210");
@@ -144,22 +143,22 @@ public class ticket extends javax.swing.JPanel  {
                 CAsientoActionPerformed(evt);
             }
         });
-        add(CAsiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 230, -1));
+        jPanel2.add(CAsiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 230, -1));
 
         CNombresyAp.setEditable(false);
         CNombresyAp.setText("Nestor Soto");
-        add(CNombresyAp, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 230, -1));
+        jPanel2.add(CNombresyAp, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 230, -1));
 
         CSalida.setEditable(false);
         CSalida.setText("casa");
-        add(CSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 230, -1));
+        jPanel2.add(CSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 230, -1));
 
         CDestino.setEditable(false);
         CDestino.setText("UNMSM");
-        add(CDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 230, -1));
+        jPanel2.add(CDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 230, -1));
 
         CNombresyAp4.setEditable(false);
-        add(CNombresyAp4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 230, -1));
+        jPanel2.add(CNombresyAp4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 230, -1));
 
         CDescripccion.setEditable(false);
         CDescripccion.setColumns(20);
@@ -167,7 +166,7 @@ public class ticket extends javax.swing.JPanel  {
         CDescripccion.setText("esto es temporal");
         jScrollPane1.setViewportView(CDescripccion);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 400, 100));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 400, 100));
 
         BtnImprimir.setText("Imprimir");
         BtnImprimir.addActionListener(new java.awt.event.ActionListener() {
@@ -175,10 +174,10 @@ public class ticket extends javax.swing.JPanel  {
                 BtnImprimirActionPerformed(evt);
             }
         });
-        add(BtnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, -1, -1));
+        jPanel2.add(BtnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, -1, -1));
 
         jButton1.setText("Salir");
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 430, -1, -1));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 430, -1, -1));
 
         jButton2.setText("Realizar nueva compra");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -186,10 +185,10 @@ public class ticket extends javax.swing.JPanel  {
                 jButton2ActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, -1, -1));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, -1, -1));
 
         jLabel10.setText("DNI de cliente:");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
         CDNI.setEditable(false);
         CDNI.setText("75465210");
@@ -198,14 +197,16 @@ public class ticket extends javax.swing.JPanel  {
                 CDNIActionPerformed(evt);
             }
         });
-        add(CDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 230, -1));
+        jPanel2.add(CDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 230, -1));
 
         CCosto.setEditable(false);
         CCosto.setText("20");
-        add(CCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 230, -1));
+        jPanel2.add(CCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 230, -1));
 
         Cmatricula.setEditable(false);
-        add(Cmatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 230, -1));
+        jPanel2.add(Cmatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 230, -1));
+
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 490));
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnImprimirActionPerformed
@@ -240,6 +241,10 @@ public class ticket extends javax.swing.JPanel  {
         // TODO add your handling code here:
     }//GEN-LAST:event_CDNIActionPerformed
 
+    private void CNumeroTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CNumeroTicketActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CNumeroTicketActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnImprimir;
@@ -266,6 +271,8 @@ public class ticket extends javax.swing.JPanel  {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
