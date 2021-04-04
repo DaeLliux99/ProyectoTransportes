@@ -136,13 +136,13 @@ public class Horarios extends javax.swing.JFrame {
         });
         getContentPane().add(cancelcli, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 440, -1, -1));
 
-        salir.setText("Salir");
+        salir.setText("Cerrar sesión");
         salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salirActionPerformed(evt);
             }
         });
-        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, -1, -1));
+        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 370, -1, -1));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Buscar destino", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
         jPanel3.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -200,7 +200,13 @@ public class Horarios extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelcliActionPerformed
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-        System.exit(0);
+        LogIn a = new LogIn(principal);
+        a.setVisible(true);
+        this.setVisible(false);
+        
+        
+        
+        
     }//GEN-LAST:event_salirActionPerformed
 
     private void Buscar_Ruta_BotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar_Ruta_BotonActionPerformed
@@ -250,7 +256,7 @@ public class Horarios extends javax.swing.JFrame {
         llegadaTXT = (String) Casilla_Buscar_Ruta.getText();
         bus = (int) modelo.getValueAt(fila, 2);
         System.out.println(bus);
-        JOptionPane.showMessageDialog(null, "Salida: " + salidaTXT + " llegada: " + llegadaTXT, "INFORMACION DE SELECCION", JOptionPane.INFORMATION_MESSAGE);
+        //JOptionPane.showMessageDialog(null, "Salida: " + salidaTXT + " llegada: " + llegadaTXT, "INFORMACION DE SELECCION", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void mostrarPasajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarPasajeroActionPerformed

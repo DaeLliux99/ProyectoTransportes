@@ -9,12 +9,19 @@ public class ClassCollector {
     public Lista<Ciudad> listaCiudades = new Lista<>();
     //public Lista<Ciudad> Lista_ciudades2 = new Lista<>();
     public Lista<Ruta> listaRutas = new Lista<>();
+    public Lista<Usuario> listaUsuarios = new Lista<>();
     public Lista<Chofer> listaChoferes = new Lista<>();
     public Lista<Bus> listaBuses = new Lista<>();
     public Cola<Pasajero> colaClientes = new Cola<>();
     public Pila<Horario> pilaHorario = new Pila<>();
 
     public ClassCollector() {
+        //String username, String password, boolean managent
+        Usuario u1 = new Usuario("username","password",true);
+        Usuario u2 = new Usuario("abc","abc",false);
+        
+        listaUsuarios.insertarFinal(u1);
+        listaUsuarios.insertarFinal(u2);
 
         Chofer C = new Chofer(730, "Pepito");
         Chofer C2 = new Chofer(555, "Jose");
@@ -44,6 +51,9 @@ public class ClassCollector {
         listaRutas.BuscarXDato(a2).ingresarCiudad(new Ciudad(004, "AB", 40));
         listaRutas.BuscarXDato(a2).ingresarCiudad(new Ciudad(005, "TT", 50));
         listaRutas.BuscarXDato(a2).ingresarCiudad(new Ciudad(006, "RR", 60));
+        
+        
+        
         
         Region reg = new Region();
         reg.agregarCiudad(new Ciudad(001, "AA", 10));

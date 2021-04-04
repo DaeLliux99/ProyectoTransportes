@@ -32,7 +32,7 @@ public class MostrarPasajero extends javax.swing.JFrame {
         //busEncontrado=encontrarBus();
         llenar();
         mostrar();
-        
+
         this.setLocationRelativeTo(null);
     }
 
@@ -53,6 +53,15 @@ public class MostrarPasajero extends javax.swing.JFrame {
 
     public final Bus encontrarBus() {
 
+        for (Bus B : principal.listaBuses) {
+           if (B.getMatricula() == (int) buses.getSelectedItem()) {
+                return B;
+            }
+            System.out.println(B.getMatricula());
+
+        }
+        return null;
+/*
         Nodo<Bus> temp = principal.listaBuses.ObetenerPrimerNodo();
         while (temp != null && buses.getSelectedItem() != null) {
             if (temp.valor.getMatricula() == (int) buses.getSelectedItem()) {
@@ -62,11 +71,11 @@ public class MostrarPasajero extends javax.swing.JFrame {
             temp = temp.siguiente;
         }
         return null;
-         
+*/
     }
 
     private void mostrar() {
-        busEncontrado=encontrarBus();
+        busEncontrado = encontrarBus();
         limpiar();
         if (buses.getSelectedItem() != null) {
             Cola<Pasajero> a = busEncontrado.getColaPasajero();
@@ -243,14 +252,12 @@ public class MostrarPasajero extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
 
         documentoPersona = (int) modelo.getValueAt(fila, 2);
-        
-        
-        ticket t = new ticket(documentoPersona, encontrarBus());
-        
+
+        ticket t = new ticket(documentoPersona, encontrarBus(), principal);
+
         t.setVisible(true);
-        
+
         this.dispose();
-        
 
 
     }//GEN-LAST:event_jTable1MouseClicked
