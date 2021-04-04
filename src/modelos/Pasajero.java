@@ -10,28 +10,28 @@ package modelos;
  * @author LEONARDO
  */
 public class Pasajero {
-    protected int ID_pasajero;
+    protected int idPasajero;
     protected String nombre;
-    protected String lugar_Destino;
+    protected String lugarDestino;
     protected boolean paquetes;
-    protected String descripcion_Paquete;
+    protected String descripcionPaquetes;
     protected int asiento;
 
     public Pasajero(int ID_pasajero, String nombre, String lugar_Destino, boolean paquetes, String descripcion_Paquete, int asiento) {
-        this.ID_pasajero = ID_pasajero;
+        this.idPasajero = ID_pasajero;
         this.nombre = nombre;
-        this.lugar_Destino = lugar_Destino;
+        this.lugarDestino = lugar_Destino;
         this.paquetes = paquetes;
-        this.descripcion_Paquete = descripcion_Paquete;
+        this.descripcionPaquetes = descripcion_Paquete;
         this.asiento=asiento;
     }
 
-    public int getID_pasajero() {
-        return ID_pasajero;
+    public int getIdPasajero() {
+        return idPasajero;
     }
 
-    public void setID_pasajero(int ID_pasajero) {
-        this.ID_pasajero = ID_pasajero;
+    public void setIdPasajero(int idPasajero) {
+        this.idPasajero = idPasajero;
     }
 
     public String getNombre() {
@@ -42,12 +42,12 @@ public class Pasajero {
         this.nombre = nombre;
     }
 
-    public String getLugar_Destino() {
-        return lugar_Destino;
+    public String getLugarDestino() {
+        return lugarDestino;
     }
 
-    public void setLugar_Destino(String lugar_Destino) {
-        this.lugar_Destino = lugar_Destino;
+    public void setLugarDestino(String lugarDestino) {
+        this.lugarDestino = lugarDestino;
     }
 
     public boolean isPaquetes() {
@@ -58,12 +58,12 @@ public class Pasajero {
         this.paquetes = paquetes;
     }
 
-    public String getDescripcion_Paquete() {
-        return descripcion_Paquete;
+    public String getDescripcionPaquetes() {
+        return descripcionPaquetes;
     }
 
-    public void setDescripcion_Paquete(String descripcion_Paquete) {
-        this.descripcion_Paquete = descripcion_Paquete;
+    public void setDescripcionPaquetes(String descripcionPaquetes) {
+        this.descripcionPaquetes = descripcionPaquetes;
     }
     
 /*

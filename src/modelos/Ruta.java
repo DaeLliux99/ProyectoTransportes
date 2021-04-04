@@ -14,92 +14,92 @@ import nodos.*;
  */
 public class Ruta {
 
-    private int ID_ruta;
-    private String Salida;
-    private String LLegada;
-    private float distancia_Ruta = 0;
-    private Bus bus;
+    private int idRuta;
+    private String salida;
+    private String llegada;
+    private float distanciaRuta = 0;
+    //private Bus bus;
     private float precio;
     
     
-    Lista<Ciudad> ciudades_Ruta = new Lista<>();
+    Lista<Ciudad> ciudadesRuta = new Lista<>();
 
     public Ruta() {
     }
 
-    public Ruta(int ID_ruta, Bus bus, float precio) {
-        this.ID_ruta = ID_ruta;
+    public Ruta(int ID_ruta/*, Bus bus*/, float precio) {
+        this.idRuta = ID_ruta;
         this.precio = precio;
-        //this.Salida = ciudades_Ruta.obetenerPrimerObjeto().getCiudad();
-        //this.LLegada = ciudades_Ruta.obetenerUltimoObjeto().getCiudad();       
-        this.bus = bus;
+        //this.salida = ciudadesRuta.obetenerPrimerObjeto().getCiudad();
+        //this.llegada = ciudadesRuta.obetenerUltimoObjeto().getCiudad();       
+        //this.bus = bus;
 /*
         Lista<Ciudad> temp = ruta1;
         Nodo<Ciudad> temp2 = temp.ObetenerPrimerNodo();
         while (temp2 != null) {
-            distancia_Ruta = distancia_Ruta + temp2.valor.getDistanciaSigteCiudad();
+            distanciaRuta = distanciaRuta + temp2.valor.getDistanciaSigteCiudad();
             temp2 = temp2.siguiente;
         }*/
     }
 
     
 
-    public Ruta(int ID_ruta, Lista<Ciudad> ciudades_Ruta, Bus bus, float precio) {
-        this.ID_ruta = ID_ruta;
+    public Ruta(int ID_ruta, Lista<Ciudad> ciudades_Ruta/*, Bus bus*/, float precio) {
+        this.idRuta = ID_ruta;
         this.precio = precio;
-        this.Salida = ciudades_Ruta.obetenerPrimerObjeto().getCiudad();
-        this.LLegada = ciudades_Ruta.obetenerUltimoObjeto().getCiudad();
-        this.ciudades_Ruta = ciudades_Ruta;
-        this.bus = bus;
+        this.salida = ciudades_Ruta.obetenerPrimerObjeto().getCiudad();
+        this.llegada = ciudades_Ruta.obetenerUltimoObjeto().getCiudad();
+        this.ciudadesRuta = ciudades_Ruta;
+        //this.bus = bus;
 
         Lista<Ciudad> temp = ciudades_Ruta;
         Nodo<Ciudad> temp2 = temp.ObetenerPrimerNodo();
         while (temp2 != null) {
-            distancia_Ruta = distancia_Ruta + temp2.valor.getDistanciaSigteCiudad();
+            distanciaRuta = distanciaRuta + temp2.valor.getDistanciaSigteCiudad();
             temp2 = temp2.siguiente;
         }
     }
 
-    public int getID_ruta() {
-        return ID_ruta;
+    public int getIdRuta() {
+        return idRuta;
     }
 
-    public void setID_ruta(int ID_ruta) {
-        this.ID_ruta = ID_ruta;
+    public void setIdRuta(int idRuta) {
+        this.idRuta = idRuta;
     }
 
     public String getSalida() {
-        return Salida;
+        return salida;
     }
 
     public void setSalida(String Salida) {
-        this.Salida = Salida;
+        this.salida = Salida;
     }
 
-    public String getLLegada() {
-        return LLegada;
+    public String getLlegada() {
+        return llegada;
     }
 
-    public void setLLegada(String LLegada) {
-        this.LLegada = LLegada;
+    public void setLlegada(String llegada) {
+        this.llegada = llegada;
     }
 
-    public Lista<Ciudad> getCiudades_Ruta() {
-        return ciudades_Ruta;
+    public Lista<Ciudad> getCiudadesRuta() {
+        return ciudadesRuta;
     }
 
-    public void setCiudades_Ruta(Lista<Ciudad> ruta1) {
-        this.ciudades_Ruta = ruta1;
+    public void setCiudadesRuta(Lista<Ciudad> ruta1) {
+        this.ciudadesRuta = ruta1;
     }
 
-    public void setDistancia_Ruta(float distancia_Ruta) {
-        this.distancia_Ruta = distancia_Ruta;
+    public void setDistanciaRuta(float distanciaRuta) {
+        this.distanciaRuta = distanciaRuta;
     }
     
-    public float getDistancia_Ruta() {
-        return distancia_Ruta;
+    public float getDistanciaRuta() {
+        return distanciaRuta;
     }
-
+/*
     public Bus getBus() {
         return bus;
     }
@@ -107,7 +107,7 @@ public class Ruta {
     public void setBus(Bus bus) {
         this.bus = bus;
     }
-
+*/
     public float getPrecio() {
         return precio;
     }
@@ -120,7 +120,7 @@ public class Ruta {
     
     //Metodos:
     public void ciudadesLista() {
-        Lista<Ciudad> temp = ciudades_Ruta;
+        Lista<Ciudad> temp = ciudadesRuta;
         Nodo<Ciudad> temp2 = temp.ObetenerPrimerNodo();
         System.out.print("Ciudad: ");
         while (temp2 != null) {
@@ -131,7 +131,7 @@ public class Ruta {
     }
     
     public String mostrarCiudadesRuta() {
-        Lista<Ciudad> temp = ciudades_Ruta;
+        Lista<Ciudad> temp = ciudadesRuta;
         Nodo<Ciudad> temp2 = temp.ObetenerPrimerNodo();
         System.out.print("Ciudad: ");
         String ciudad = "";
@@ -146,11 +146,11 @@ public class Ruta {
     
     
     public String obtenerPrimerCiudad(){
-        return ciudades_Ruta.obetenerPrimerObjeto().getCiudad();
+        return ciudadesRuta.obetenerPrimerObjeto().getCiudad();
     }
     
     public String obtenerUltimaCiudad(){
-        return ciudades_Ruta.obetenerUltimoObjeto().getCiudad();
+        return ciudadesRuta.obetenerUltimoObjeto().getCiudad();
     }
     
 
@@ -176,7 +176,7 @@ public class Ruta {
      */
     public Ciudad Busqueda_Ciudad(String Ciudad_Buscada) {
         boolean encontro = false;
-        Nodo<Ciudad> temp = ciudades_Ruta.ObetenerPrimerNodo();
+        Nodo<Ciudad> temp = ciudadesRuta.ObetenerPrimerNodo();
         Ciudad c = null;
         while (temp != null && !encontro) {
             if (temp.valor.getCiudad().equals(Ciudad_Buscada)) {
@@ -193,15 +193,15 @@ public class Ruta {
     }
     
     public void ingresarCiudad(Ciudad C){
-        ciudades_Ruta.insertarInicio(C);
+        ciudadesRuta.insertarInicio(C);
     } 
 
     public String toString() {
 
-        return ("\nId Ruta: " + this.getID_ruta()
-                + "\n\tDistancia Ruta: " + this.distancia_Ruta
+        return ("\nId Ruta: " + this.getIdRuta()
+                + "\n\tDistancia Ruta: " + this.distanciaRuta
                 + "\n\tSalida: " + this.getSalida()
-                + "\n\tDestino: " + getLLegada());
+                + "\n\tDestino: " + getLlegada());
 
     }
 

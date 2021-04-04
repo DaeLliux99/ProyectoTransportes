@@ -11,13 +11,13 @@ package modelos;
  */
 public class Horario {
     private Bus bus;
-    private String Hora_Salida;
-    private String Hora_Llegada;
+    private String horaSalida;
+    private String horaLlegada;
 
     public Horario(Bus bus, String Hora_Salida, String Hora_Llegada) {
         this.bus = bus;
-        this.Hora_Salida = Hora_Salida;
-        this.Hora_Llegada = Hora_Llegada;
+        this.horaSalida = Hora_Salida;
+        this.horaLlegada = Hora_Llegada;
     }
 
     public Bus getBus() {
@@ -28,20 +28,20 @@ public class Horario {
         this.bus = bus;
     }
 
-    public String getHora_Salida() {
-        return Hora_Salida;
+    public String getHoraSalida() {
+        return horaSalida;
     }
 
-    public void setHora_Salida(String Hora_Salida) {
-        this.Hora_Salida = Hora_Salida;
+    public void setHoraSalida(String horaSalida) {
+        this.horaSalida = horaSalida;
     }
 
-    public String getHora_Llegada() {
-        return Hora_Llegada;
+    public String getHoraLlegada() {
+        return horaLlegada;
     }
 
-    public void setHora_Llegada(String Hora_Llegada) {
-        this.Hora_Llegada = Hora_Llegada;
+    public void setHoraLlegada(String horaLlegada) {
+        this.horaLlegada = horaLlegada;
     }
  
 }

@@ -1,6 +1,6 @@
 package Interfaz.Empleado;
 
-import Interfaz.Administrador.RegistrarPasajero;
+import Interfaz.Administrador.RegistrarHorario;
 import static java.lang.System.exit;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;

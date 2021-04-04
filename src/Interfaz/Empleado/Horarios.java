@@ -214,7 +214,23 @@ public class Horarios extends javax.swing.JFrame {
             jTable1.getModel().setValueAt("", i, 5);
         }
 
-        Nodo<Ruta> temp = Principal.Lista_rutas.ObetenerPrimerNodo();
+         Nodo<Bus> temp = Principal.listaBuses.ObetenerPrimerNodo();
+        int i = 0;
+        while (temp != null) {
+            if (temp.valor.getRuta().Busqueda_Ciudad(Casilla_Buscar_Ruta.getText()) != null) {
+                jTable1.getModel().setValueAt(temp.valor.getRuta().obtenerPrimerCiudad(), i, 0);
+                jTable1.getModel().setValueAt(temp.valor.getRuta().obtenerUltimaCiudad(), i, 1);
+                jTable1.getModel().setValueAt(temp.valor.getMatricula(), i, 2);   //
+                jTable1.getModel().setValueAt(temp.valor.getRuta().mostrarCiudadesRuta(), i, 3);
+                jTable1.getModel().setValueAt(temp.valor.getRuta().getPrecio(), i, 4);
+                jTable1.getModel().setValueAt(temp.valor.getNumeroAsientos() - temp.valor.getOcupado(), i, 5);
+                i++;
+            }
+            temp = temp.siguiente;
+        }
+        
+        /*
+        Nodo<Ruta> temp = Principal.listaRutas.ObetenerPrimerNodo();
         int i = 0;
         while (temp != null) {
             if (temp.valor.Busqueda_Ciudad(Casilla_Buscar_Ruta.getText()) != null) {
@@ -223,11 +239,12 @@ public class Horarios extends javax.swing.JFrame {
                 jTable1.getModel().setValueAt(temp.valor.getBus().getMatricula(), i, 2);   //
                 jTable1.getModel().setValueAt(temp.valor.mostrarCiudadesRuta(), i, 3);
                 jTable1.getModel().setValueAt(temp.valor.getPrecio(), i, 4);
-                jTable1.getModel().setValueAt(temp.valor.getBus().getNumAsientos() - temp.valor.getBus().getOcupado(), i, 5);
+                jTable1.getModel().setValueAt(temp.valor.getBus().getNumeroAsientos() - temp.valor.getBus().getOcupado(), i, 5);
                 i++;
             }
             temp = temp.siguiente;
         }
+        */
         //JOptionPane.showMessageDialog(null, "No se puede realizar la busqueda!", "NO HAY REGISTROS", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_Buscar_Ruta_BotonActionPerformed
 
