@@ -233,6 +233,11 @@ public class RegistroV2 extends javax.swing.JFrame {
 
     private void cancelcliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelcliActionPerformed
 
+        
+        Horarios UU = new Horarios(Principal);
+        this.setVisible(false);
+        UU.setVisible(true);
+
     }//GEN-LAST:event_cancelcliActionPerformed
 
     private void salirclijButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirclijButton3ActionPerformed
@@ -241,7 +246,9 @@ public class RegistroV2 extends javax.swing.JFrame {
     }//GEN-LAST:event_salirclijButton3ActionPerformed
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-
+        
+       System.exit(0);
+        
     }//GEN-LAST:event_salirActionPerformed
 
     private void CdniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CdniActionPerformed
