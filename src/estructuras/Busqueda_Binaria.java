@@ -11,40 +11,43 @@ import nodos.Nodo;
 /**
  *
  * @author LEONARDO
+ * @param <G>
  */
-public class Busqueda_Binaria {
-
-    public void PreparandoBusqueda(Lista T, int valorBuscado) {
-        int inferior = 1; //Primer dato
-        int superior = T.longitud;
+public class Busqueda_Binaria <G extends Comparable<G>> {
+    
+    private Nodo sacarMedio(Nodo inicio, Nodo fin) {
+        if (inicio == null) {
+            return null;
+        }
+        Nodo lento = inicio;
+        Nodo rapido = inicio.siguiente;
+        
+        while (rapido != fin) {
+            rapido = rapido.siguiente;
+            if (rapido != fin) {
+                lento = lento.siguiente;
+                rapido = rapido.siguiente;
+            }
+        }
+        return lento;
     }
-
-    public void BusquedaBinaria(Lista T, int valorBuscado, int lo, int hi) {
-        if (lo > hi) {
-            System.out.println("\nNo se encontro el archivo ...\n");
-        }
-        int medio = (lo + hi) / 2;
-
-        Nodo puntero = T.cabeza;
-        int buscador = 1;
-        while (buscador < medio && puntero != null) {
-            puntero = puntero.siguiente;
-            buscador++;
-        }
-        if (puntero == null) {
-            System.out.println("\nNo se encontro el archivo ...\n");
-        }
-
-        if (valorBuscado == (int) puntero.valor) {
-            System.out.println("\nEl elemento " + valorBuscado + " ha sido encontrado en la posicion : " + buscador + " \n");
-        }
-        if (valorBuscado < (int) puntero.valor) {
-            BusquedaBinaria(T, valorBuscado, lo, (medio - 1));
-        }
-        if (valorBuscado > (int) puntero.valor) {
-            BusquedaBinaria(T, valorBuscado, (medio + 1), hi);
-        }
-
+    
+    public G busquedaBinaria(Lista<? extends Comparable> lista, G valor) {
+        Nodo inicio = lista.cabeza;
+        Nodo fin = null;
+        do {
+            Nodo <G> medio = sacarMedio(inicio, fin);
+            if (medio == null) {
+                return null;
+            }
+            if (medio.valor.compareTo(valor) == 0) {
+                return medio.valor;
+            } else if (medio.valor.compareTo(valor) == 1) {
+                inicio = medio.siguiente;
+            } else if (medio.valor.compareTo(valor) == -1) {
+                fin = medio;
+            }
+        } while (fin == null || fin != inicio);
+        return null;
     }
-
 }

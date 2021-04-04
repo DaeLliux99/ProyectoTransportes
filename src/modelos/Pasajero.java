@@ -15,13 +15,15 @@ public class Pasajero {
     protected String lugar_Destino;
     protected boolean paquetes;
     protected String descripcion_Paquete;
+    protected int asiento;
 
-    public Pasajero(int ID_pasajero, String nombre, String lugar_Destino, boolean paquetes, String descripcion_Paquete) {
+    public Pasajero(int ID_pasajero, String nombre, String lugar_Destino, boolean paquetes, String descripcion_Paquete, int asiento) {
         this.ID_pasajero = ID_pasajero;
         this.nombre = nombre;
         this.lugar_Destino = lugar_Destino;
         this.paquetes = paquetes;
         this.descripcion_Paquete = descripcion_Paquete;
+        this.asiento=asiento;
     }
 
     public int getID_pasajero() {
@@ -75,4 +77,12 @@ public class Pasajero {
                 "\nPeso del Paquete:"+ getPesoPaquetes());
     }
 */
+
+    public int getAsiento() {
+        return asiento;
+    }
+
+    public void setAsiento(int asiento) {
+        this.asiento = asiento;
+    }
 }

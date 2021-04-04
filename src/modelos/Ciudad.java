@@ -15,7 +15,11 @@ public class Ciudad {
     private int ID_ciudad;
     private String ciudad;
     private int distanciaSigteCiudad;
-
+    
+    public Ciudad(){
+        
+    }
+    
     public Ciudad(int ID_ciudad, String ciudad, int distanciaSigteCiudad) {
         this.ID_ciudad = ID_ciudad;
         this.ciudad = ciudad;

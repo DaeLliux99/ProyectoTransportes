@@ -8,7 +8,6 @@ import javax.swing.JOptionPane;
 import modelos.*;
 import nodos.*;
 import estructuras.*;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import main.ClassCollector;
@@ -22,6 +21,11 @@ public class Horarios extends javax.swing.JFrame {
     String rutaA;
     Ruta ruta1;
     Lista<Ruta> ListRuta = new Lista<>();
+    
+    
+    String salidaTXT;
+    String llegadaTXT; 
+    int bus;
 
     public Horarios(ClassCollector A) {
 
@@ -30,9 +34,6 @@ public class Horarios extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
-    public void MostrarHorarios() {
-
-    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -48,6 +49,7 @@ public class Horarios extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         Buscar_Ruta_Boton = new javax.swing.JButton();
         Casilla_Buscar_Ruta = new javax.swing.JTextField();
+        mostrarPasajero = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -60,47 +62,54 @@ public class Horarios extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Salida", "Llegada", "Bus", "Ruta", "Precio"
+                "Salida", "Llegada", "Bus", "Ruta", "Precio", "Asientos Disponibles"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -127,7 +136,7 @@ public class Horarios extends javax.swing.JFrame {
                 cancelcliActionPerformed(evt);
             }
         });
-        getContentPane().add(cancelcli, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, -1, -1));
+        getContentPane().add(cancelcli, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, -1, -1));
 
         salir.setText("Salir");
         salir.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +144,7 @@ public class Horarios extends javax.swing.JFrame {
                 salirActionPerformed(evt);
             }
         });
-        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 370, -1, -1));
+        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 430, -1, -1));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Buscar destino", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
         jPanel3.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -166,13 +175,26 @@ public class Horarios extends javax.swing.JFrame {
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 670, 70));
         jPanel3.getAccessibleContext().setAccessibleDescription("");
 
+        mostrarPasajero.setText("Mostrar Pasajeros");
+        mostrarPasajero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarPasajeroActionPerformed(evt);
+            }
+        });
+        getContentPane().add(mostrarPasajero, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 370, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void regclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regclienteActionPerformed
-        RegistroV2 r = new RegistroV2();
-        this.setVisible(false);
-        r.setVisible(true);
+        if (salidaTXT != null && llegadaTXT!= null) {
+            
+            RegistroV2 r = new RegistroV2(salidaTXT, llegadaTXT,bus,Principal);
+            this.setVisible(false);
+            r.setVisible(true);
+        } else {
+               JOptionPane.showMessageDialog(null, "No se ha seleccionado nada", "No se puede realizaar registro", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_regclienteActionPerformed
 
     private void cancelcliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelcliActionPerformed
@@ -191,22 +213,23 @@ public class Horarios extends javax.swing.JFrame {
             jTable1.getModel().setValueAt("", i, 2);   //
             jTable1.getModel().setValueAt("", i, 3);
             jTable1.getModel().setValueAt("", i, 4);
+            jTable1.getModel().setValueAt("", i, 5);
         }
-
+        
         Nodo<Ruta> temp = Principal.Lista_rutas.ObetenerPrimerNodo();
         int i = 0;
         while (temp != null) {
             if (temp.valor.Busqueda_Ciudad(Casilla_Buscar_Ruta.getText()) != null) {
-                jTable1.getModel().setValueAt(temp.valor.getSalida(), i, 0);
-                jTable1.getModel().setValueAt(temp.valor.getLLegada(), i, 1);
-                jTable1.getModel().setValueAt("DEBE IR BUS", i, 2);   //
-                jTable1.getModel().setValueAt("asd", i, 3);
-                jTable1.getModel().setValueAt("DEBE IR PRECIO", i, 4);
-                i++;
+                /*jTable1.getModel().setValueAt(temp.valor.obtenerPrimerCiudad(), i, 0);
+                jTable1.getModel().setValueAt(temp.valor.obtenerUltimaCiudad(), i, 1);
+                jTable1.getModel().setValueAt(temp.valor.getBus().getMatricula(), i, 2);   //
+                jTable1.getModel().setValueAt(temp.valor.mostrarCiudadesRuta(), i, 3);
+                jTable1.getModel().setValueAt(temp.valor.getPrecio(), i, 4);
+                jTable1.getModel().setValueAt(temp.valor.getBus().getNumAsientos()-temp.valor.getBus().getOcupado(), i, 5);            
+                i++;*/
             }
             temp = temp.siguiente;
         }
-
         //JOptionPane.showMessageDialog(null, "No se puede realizar la busqueda!", "NO HAY REGISTROS", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_Buscar_Ruta_BotonActionPerformed
 
@@ -220,20 +243,23 @@ public class Horarios extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel3PropertyChange
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        int fila= jTable1.getSelectedRow();
-        DefaultTableModel modelo=(DefaultTableModel) jTable1.getModel();
-        
-           String salidaTXT= (String) modelo.getValueAt(fila, 0);
-           String llegadaTXT= (String) modelo.getValueAt(fila, 1);
-           String bus=(String) modelo.getValueAt(fila, 2);
-           JOptionPane.showMessageDialog(null, "Salida: "+salidaTXT+" llegada: "+llegadaTXT, "INFORMACION DE SELECCION", JOptionPane.INFORMATION_MESSAGE);
-        
-        /*
-        RegistroV2 r = new RegistroV2();
-        this.setVisible(false);
-        r.setVisible(true);
-*/
+        // TODO add your handling code here:
+        int fila = jTable1.getSelectedRow();
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+
+        salidaTXT = (String) modelo.getValueAt(fila, 0);
+        llegadaTXT = (String) Casilla_Buscar_Ruta.getText();
+        bus = (int) modelo.getValueAt(fila, 2);
+        System.out.println(bus);
+        JOptionPane.showMessageDialog(null, "Salida: " + salidaTXT + " llegada: " + llegadaTXT, "INFORMACION DE SELECCION", JOptionPane.INFORMATION_MESSAGE); 
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void mostrarPasajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarPasajeroActionPerformed
+        // TODO add your handling code here:
+        MostrarPasajero a=new MostrarPasajero(Principal);
+        a.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_mostrarPasajeroActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -245,6 +271,7 @@ public class Horarios extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JButton mostrarPasajero;
     private javax.swing.JButton regcliente;
     private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables

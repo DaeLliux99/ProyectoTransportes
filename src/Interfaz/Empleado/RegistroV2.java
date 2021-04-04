@@ -1,5 +1,11 @@
 package Interfaz.Empleado;
+
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import main.ClassCollector;
+import estructuras.*;
+import modelos.*;
+import nodos.Nodo;
 
 /**
  *
@@ -7,21 +13,67 @@ import javax.swing.JOptionPane;
  */
 public class RegistroV2 extends javax.swing.JFrame {
 
+    ClassCollector Principal;
+    int ID_bus;
 
-    public RegistroV2() {
+    public RegistroV2(String Salida, String llegada, int bus, ClassCollector A) {
 
         initComponents();
+        Principal = A;
+        ID_bus = bus;
+        CSalida.setText(Salida);
+        Cllegada.setText(llegada);
+        llenar();
+        sacar();
         setLocationRelativeTo(null);
 
     }
+
     public void limpiar() {
         Cdni.setText("");
         Cnombre.setText("");
-        Cfecha.setText("");
+        Cllegada.setText("");
+        CSalida.setText("");
         //combo_tipodoc.setSelectedItem("Seleccionar Tipo Documento");
 
     }
 
+    public Bus encontrarBus() {
+        
+        Nodo<Bus> temp = Principal.Lista_buses.ObetenerPrimerNodo();
+        while (temp != null) {
+            if (temp.valor.getMatricula() == ID_bus) {             
+                return temp.getValor();
+            }
+            System.out.println(ID_bus);
+            System.out.println(temp.valor.getMatricula());
+            temp = temp.siguiente;
+        }       
+        return null;
+    }
+    
+    public void llenar(){
+        Bus busUsado =encontrarBus() ;
+        for(int i=0; i<busUsado.getNumAsientos();i++){
+            asiento.addItem(i+1);
+        }
+    }
+    
+    public void sacar(){
+        Bus busUsado =encontrarBus() ;
+        if(busUsado.getCola_Pasajero()==null){
+            System.out.println("vacio");
+        }else{
+            Cola<Pasajero> a=busUsado.getCola_Pasajero();
+            Pasajero b;
+            for(int i=0; i<a.getLongitud(); i++){
+                b=a.pop();
+                asiento.removeItem(b.getAsiento());
+                a.push(b);
+            }
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -37,9 +89,14 @@ public class RegistroV2 extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         Cnombre = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        Cfecha = new javax.swing.JTextField();
+        Cllegada = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        Cfecha1 = new javax.swing.JTextField();
+        CSalida = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TextoEquipaje = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        asiento = new javax.swing.JComboBox();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -107,22 +164,38 @@ public class RegistroV2 extends javax.swing.JFrame {
         jLabel6.setText("Destino");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, -1, -1));
 
-        Cfecha.addActionListener(new java.awt.event.ActionListener() {
+        Cllegada.setEditable(false);
+        Cllegada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CfechaActionPerformed(evt);
+                CllegadaActionPerformed(evt);
             }
         });
-        jPanel1.add(Cfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 250, -1));
+        jPanel1.add(Cllegada, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 250, -1));
 
-        jLabel7.setText("Destino");
+        jLabel7.setText("Salida");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
-        Cfecha1.addActionListener(new java.awt.event.ActionListener() {
+        CSalida.setEditable(false);
+        CSalida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Cfecha1ActionPerformed(evt);
+                CSalidaActionPerformed(evt);
             }
         });
-        jPanel1.add(Cfecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 150, -1));
+        jPanel1.add(CSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 150, -1));
+
+        TextoEquipaje.setColumns(20);
+        TextoEquipaje.setRows(5);
+        jScrollPane1.setViewportView(TextoEquipaje);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 450, 110));
+
+        jLabel2.setText("Descripción Equipaje");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
+
+        jPanel1.add(asiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, -1, -1));
+
+        jLabel3.setText("Asiento");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 500, 310));
 
@@ -130,6 +203,31 @@ public class RegistroV2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void regclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regclienteActionPerformed
+        
+        int dni = Integer.parseInt(Cdni.getText());
+        boolean equipaje = false;
+
+        if (TextoEquipaje != null) {
+            equipaje = true;
+        }
+        Bus busUsado =encontrarBus() ;
+        
+        if(busUsado.getOcupado() < busUsado.getNumAsientos() && asiento.getSelectedItem()!=null){
+            Pasajero p1 = new Pasajero(dni,Cnombre.getText(),Cllegada.getText(),equipaje,TextoEquipaje.getText(), (int)asiento.getSelectedItem());
+            busUsado.getCola_Pasajero().push(p1);     
+            busUsado.ocuparAsiento();
+        }else if(asiento.getSelectedItem()==null){
+            JOptionPane.showMessageDialog(null, "No selecciono asiento, no se registro pasajero", "No selecciono asiento, no se registro pasajero", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(null, "Bus lleno", "Bus lleno", JOptionPane.INFORMATION_MESSAGE);
+        }
+         
+ 
+        Horarios UU = new Horarios(Principal);
+        this.setVisible(false);
+        UU.setVisible(true);
+         
+
 
     }//GEN-LAST:event_regclienteActionPerformed
 
@@ -154,29 +252,35 @@ public class RegistroV2 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CnombreActionPerformed
 
-    private void CfechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CfechaActionPerformed
+    private void CllegadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CllegadaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CfechaActionPerformed
+    }//GEN-LAST:event_CllegadaActionPerformed
 
-    private void Cfecha1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cfecha1ActionPerformed
+    private void CSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CSalidaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Cfecha1ActionPerformed
+    }//GEN-LAST:event_CSalidaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField CSalida;
     private javax.swing.JTextField Cdni;
-    private javax.swing.JTextField Cfecha;
-    private javax.swing.JTextField Cfecha1;
+    private javax.swing.JTextField Cllegada;
     private javax.swing.JTextField Cnombre;
+    private javax.swing.JTextArea TextoEquipaje;
+    private javax.swing.JComboBox asiento;
     private javax.swing.JButton cancelcli;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton regcliente;
     private javax.swing.JButton salir;
     private javax.swing.JButton salirclijButton3;
     // End of variables declaration//GEN-END:variables
+
 }
