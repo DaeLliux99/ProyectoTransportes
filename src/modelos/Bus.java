@@ -16,9 +16,9 @@ public class Bus {
     private int matricula;
     private int numeroAsientos;
     private int pesoMaximo;
-    private Chofer idChofer;
     private int ocupado = 0;
     
+    private Chofer idChofer;
     private Ruta ruta;
    
     Cola<Pasajero> colaPasajero = new Cola<>();

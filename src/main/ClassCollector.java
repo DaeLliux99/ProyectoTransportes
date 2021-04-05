@@ -1,3 +1,13 @@
+/*
+
+Autores:
+
+    Chachi Meza, Leonardo Juan      18200060
+    Palomino Martinez, Luis Alberto 18200173
+    Carlos Joyo, Esteban Adrian     18200233
+    Soto Piñares, Nestor Raul       18200116
+
+ */
 package main;
 
 import estructuras.*;
@@ -17,26 +27,29 @@ public class ClassCollector {
 
     public ClassCollector() {
         //String username, String password, boolean managent
-        Usuario u1 = new Usuario("username","password",true);
-        Usuario u2 = new Usuario("abc","abc",false);
-        
+        Usuario u1 = new Usuario("username", "password", true);
+        Usuario u2 = new Usuario("abc", "abc", false);
+
         listaUsuarios.insertarFinal(u1);
         listaUsuarios.insertarFinal(u2);
 
         Chofer C = new Chofer(730, "Pepito");
         Chofer C2 = new Chofer(555, "Jose");
 
+        listaChoferes.insertarFinal(C);
+        listaChoferes.insertarFinal(C2);
+
         Ruta a1 = new Ruta(1, /*B,*/ 40);
         Ruta a2 = new Ruta(2, /*B2,*/ 50);
-        
-        Bus B = new Bus(1234, 20, 80, C,a1);
-        Bus B2 = new Bus(4321, 15, 50, C2,a2);
+
+        listaRutas.insertarInicio(a1);
+        listaRutas.insertarInicio(a2);
+
+        Bus B = new Bus(1234, 20, 80, C, a1);
+        Bus B2 = new Bus(4321, 15, 50, C2, a2);
 
         listaBuses.insertarFinal(B);
         listaBuses.insertarFinal(B2);
-        
-        listaRutas.insertarInicio(a1);
-        listaRutas.insertarInicio(a2);
 
         listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(001, "AB", 10));
         listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(002, "CD", 20));
@@ -51,10 +64,7 @@ public class ClassCollector {
         listaRutas.BuscarXDato(a2).ingresarCiudad(new Ciudad(004, "AB", 40));
         listaRutas.BuscarXDato(a2).ingresarCiudad(new Ciudad(005, "TT", 50));
         listaRutas.BuscarXDato(a2).ingresarCiudad(new Ciudad(006, "RR", 60));
-        
-        
-        
-        
+
         Region reg = new Region();
         reg.agregarCiudad(new Ciudad(001, "AA", 10));
         reg.agregarCiudad(new Ciudad(002, "CD", 20));
@@ -69,9 +79,8 @@ public class ClassCollector {
 
         System.out.println(reg.toString());
         Ciudad c = reg.buscarCiudad(1);
-        Lista <Ciudad> ccc = reg.obtenerCiudadesAdya(c);
+        Lista<Ciudad> ccc = reg.obtenerCiudadesAdya(c);
         ccc.mostrarLista();
 
-        
     }
 }

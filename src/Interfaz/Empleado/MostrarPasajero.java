@@ -25,6 +25,7 @@ public class MostrarPasajero extends javax.swing.JFrame {
     ClassCollector principal;
     int documentoPersona;
     Bus busEncontrado;
+    int contador;
 
     public MostrarPasajero(ClassCollector a) {
         initComponents();
@@ -54,14 +55,14 @@ public class MostrarPasajero extends javax.swing.JFrame {
     public final Bus encontrarBus() {
 
         for (Bus B : principal.listaBuses) {
-           if (B.getMatricula() == (int) buses.getSelectedItem()) {
+            if (B.getMatricula() == (int) buses.getSelectedItem()) {
                 return B;
             }
             System.out.println(B.getMatricula());
 
         }
         return null;
-/*
+        /*
         Nodo<Bus> temp = principal.listaBuses.ObetenerPrimerNodo();
         while (temp != null && buses.getSelectedItem() != null) {
             if (temp.valor.getMatricula() == (int) buses.getSelectedItem()) {
@@ -71,24 +72,35 @@ public class MostrarPasajero extends javax.swing.JFrame {
             temp = temp.siguiente;
         }
         return null;
-*/
+         */
     }
 
     private void mostrar() {
         busEncontrado = encontrarBus();
         limpiar();
+        
         if (buses.getSelectedItem() != null) {
+            contador = 0;
+            Cola<Pasajero> a = busEncontrado.getColaPasajero();
+            for(Pasajero b: a){
+                jTable1.getModel().setValueAt(b.getNombre(), contador, 0);
+                jTable1.getModel().setValueAt(b.getAsiento(), contador, 1);
+                jTable1.getModel().setValueAt(b.getIdPasajero(), contador, 2);   //
+                contador++;
+            }
+            
+            /*
             Cola<Pasajero> a = busEncontrado.getColaPasajero();
             Pasajero b;
-
             for (int i = 0; i < a.getLongitud(); i++) {
                 b = a.pop();
                 jTable1.getModel().setValueAt(b.getNombre(), i, 0);
                 jTable1.getModel().setValueAt(b.getAsiento(), i, 1);
                 jTable1.getModel().setValueAt(b.getIdPasajero(), i, 2);   //
                 a.push(b);
+                contador++;
             }
-
+*/
         }
     }
 
@@ -251,13 +263,17 @@ public class MostrarPasajero extends javax.swing.JFrame {
         int fila = jTable1.getSelectedRow();
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
 
-        documentoPersona = (int) modelo.getValueAt(fila, 2);
+        if (fila > contador - 1) {
+            JOptionPane.showMessageDialog(null, "No ha seleccionado nada", "Casilla vacia", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            documentoPersona = (int) modelo.getValueAt(fila, 2);
 
-        ticket t = new ticket(documentoPersona, encontrarBus(), principal);
+            ticket t = new ticket(documentoPersona, encontrarBus(), principal);
 
-        t.setVisible(true);
+            t.setVisible(true);
 
-        this.dispose();
+            this.dispose();
+        }
 
 
     }//GEN-LAST:event_jTable1MouseClicked

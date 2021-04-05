@@ -18,8 +18,8 @@ public class LogIn extends javax.swing.JFrame {
     public LogIn(ClassCollector B) {
         initComponents();
         A = B;
-        
-
+        CCampoUsuario.setText("abc");
+        CCampoAdministrador.setText("abc");
         this.setLocationRelativeTo(null);
         //ValidarIngresoDimension(passw, 15);
     }
@@ -31,10 +31,10 @@ public class LogIn extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        CCampoUsuario = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        passw = new javax.swing.JPasswordField();
+        CCampoAdministrador = new javax.swing.JPasswordField();
         jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -52,7 +52,7 @@ public class LogIn extends javax.swing.JFrame {
 
         jLabel2.setText("USUARIO:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 14, -1, -1));
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 11, 179, -1));
+        jPanel1.add(CCampoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 11, 179, -1));
 
         jLabel3.setText("CONTRASEÑA:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
@@ -64,7 +64,7 @@ public class LogIn extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
-        jPanel1.add(passw, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 37, 179, -1));
+        jPanel1.add(CCampoAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 37, 179, -1));
 
         jButton2.setText("Salir");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -101,15 +101,17 @@ public class LogIn extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String nombre_usuario = jTextField3.getText();
-        String pass = passw.getText();
+        String nombre_usuario = CCampoUsuario.getText();
+        String pass = CCampoAdministrador.getText();
         boolean loggeado = false;
         for (Usuario u : A.listaUsuarios) {
             if (nombre_usuario.equalsIgnoreCase(u.getUsername()) && pass.equalsIgnoreCase(u.getPassword()) && !loggeado) {
                 loggeado = true;
                 if (u.isManagent()) {
                     JOptionPane.showMessageDialog(null, "Es administrador");
-
+                    Horarios h = new Horarios(A);
+                    this.setVisible(false);
+                    h.setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "Bienvenido");
                     Horarios h = new Horarios(A);
@@ -143,6 +145,8 @@ public class LogIn extends javax.swing.JFrame {
     }
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPasswordField CCampoAdministrador;
+    private javax.swing.JTextField CCampoUsuario;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -151,7 +155,5 @@ public class LogIn extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JPasswordField passw;
     // End of variables declaration//GEN-END:variables
 }

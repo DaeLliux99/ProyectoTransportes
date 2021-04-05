@@ -21,7 +21,7 @@ public class Horarios extends javax.swing.JFrame {
     String rutaA;
     Ruta ruta1;
     Lista<Ruta> listaRuta = new Lista<>();
-
+    int contador ;
     String salidaTXT;
     String llegadaTXT;
     int bus;
@@ -41,7 +41,6 @@ public class Horarios extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         regcliente = new javax.swing.JButton();
-        cancelcli = new javax.swing.JButton();
         salir = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -128,14 +127,6 @@ public class Horarios extends javax.swing.JFrame {
         });
         getContentPane().add(regcliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 140, -1));
 
-        cancelcli.setText("Cancelar");
-        cancelcli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelcliActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cancelcli, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 440, -1, -1));
-
         salir.setText("Cerrar sesión");
         salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,18 +186,12 @@ public class Horarios extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_regclienteActionPerformed
 
-    private void cancelcliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelcliActionPerformed
-
-    }//GEN-LAST:event_cancelcliActionPerformed
-
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
         LogIn a = new LogIn(principal);
         a.setVisible(true);
         this.setVisible(false);
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_salirActionPerformed
 
     private void Buscar_Ruta_BotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar_Ruta_BotonActionPerformed
@@ -214,27 +199,25 @@ public class Horarios extends javax.swing.JFrame {
         for (int i = 0; i <= 10; i++) {
             jTable1.getModel().setValueAt("", i, 0);
             jTable1.getModel().setValueAt("", i, 1);
-            jTable1.getModel().setValueAt("", i, 2);   
+            jTable1.getModel().setValueAt("", i, 2);
             jTable1.getModel().setValueAt("", i, 3);
             jTable1.getModel().setValueAt("", i, 4);
             jTable1.getModel().setValueAt("", i, 5);
         }
         
-        int i = 0;
-        for(Bus b: principal.listaBuses){
+        contador = 0;
+        for (Bus b : principal.listaBuses) {
             if (b.getRuta().Busqueda_Ciudad(Casilla_Buscar_Ruta.getText()) != null) {
-                jTable1.getModel().setValueAt(b.getRuta().obtenerPrimerCiudad(), i, 0);
-                jTable1.getModel().setValueAt(b.getRuta().obtenerUltimaCiudad(), i, 1);
-                jTable1.getModel().setValueAt(b.getMatricula(), i, 2);   //
-                jTable1.getModel().setValueAt(b.getRuta().mostrarCiudadesRuta(), i, 3);
-                jTable1.getModel().setValueAt(b.getRuta().getPrecio(), i, 4);
-                jTable1.getModel().setValueAt(b.getNumeroAsientos()-b.getOcupado(), i, 5);            
-                i++;
-
+                jTable1.getModel().setValueAt(b.getRuta().obtenerPrimerCiudad(), contador, 0);
+                jTable1.getModel().setValueAt(b.getRuta().obtenerUltimaCiudad(), contador, 1);
+                jTable1.getModel().setValueAt(b.getMatricula(), contador, 2);   //
+                jTable1.getModel().setValueAt(b.getRuta().mostrarCiudadesRuta(), contador, 3);
+                jTable1.getModel().setValueAt(b.getRuta().getPrecio(), contador, 4);
+                jTable1.getModel().setValueAt(b.getNumeroAsientos() - b.getOcupado(), contador, 5);            
+                contador++;
             }
         }
-       
-        
+
         //JOptionPane.showMessageDialog(null, "No se puede realizar la busqueda!", "NO HAY REGISTROS", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_Buscar_Ruta_BotonActionPerformed
 
@@ -251,11 +234,20 @@ public class Horarios extends javax.swing.JFrame {
         // TODO add your handling code here:
         int fila = jTable1.getSelectedRow();
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-
+        
+        if (fila > contador-1 ) {
+            JOptionPane.showMessageDialog(null, "No ha seleccionado nada", "Casilla vacia", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            salidaTXT =  modelo.getValueAt(fila, 0).toString();
+            llegadaTXT = /*(String)*/ Casilla_Buscar_Ruta.getText().toString();
+            bus = (int) modelo.getValueAt(fila, 2) ;
+        }
+        /*
         salidaTXT = (String) modelo.getValueAt(fila, 0);
         llegadaTXT = (String) Casilla_Buscar_Ruta.getText();
         bus = (int) modelo.getValueAt(fila, 2);
         System.out.println(bus);
+         */
         //JOptionPane.showMessageDialog(null, "Salida: " + salidaTXT + " llegada: " + llegadaTXT, "INFORMACION DE SELECCION", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jTable1MouseClicked
 
@@ -270,7 +262,6 @@ public class Horarios extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Buscar_Ruta_Boton;
     private javax.swing.JTextField Casilla_Buscar_Ruta;
-    private javax.swing.JButton cancelcli;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel3;
