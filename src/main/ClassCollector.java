@@ -51,19 +51,19 @@ public class ClassCollector {
         listaBuses.insertarFinal(B);
         listaBuses.insertarFinal(B2);
 
-        listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(001, "AB", 10));
-        listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(002, "CD", 20));
-        listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(003, "EF", 30));
-        listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(004, "FG", 40));
-        listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(005, "HI", 50));
-        listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(006, "JK", 60));
+        listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(001, "Lima", 10));
+        listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(002, "Huancayo", 20));
+        listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(003, "Pichanaki", 30));
+        listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(004, "Trujillo", 40));
+        listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(005, "Puno", 50));
+        listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(006, "Cajamarca", 60));
 
-        listaRutas.BuscarXDato(a2).ingresarCiudad(new Ciudad(001, "AA", 10));
-        listaRutas.BuscarXDato(a2).ingresarCiudad(new Ciudad(002, "BB", 20));
-        listaRutas.BuscarXDato(a2).ingresarCiudad(new Ciudad(003, "CC", 30));
-        listaRutas.BuscarXDato(a2).ingresarCiudad(new Ciudad(004, "AB", 40));
-        listaRutas.BuscarXDato(a2).ingresarCiudad(new Ciudad(005, "TT", 50));
-        listaRutas.BuscarXDato(a2).ingresarCiudad(new Ciudad(006, "RR", 60));
+        listaRutas.BuscarXDato(a2).ingresarCiudad(new Ciudad(001, "Arequipa", 10));
+        listaRutas.BuscarXDato(a2).ingresarCiudad(new Ciudad(002, "Huancayo", 20));
+        listaRutas.BuscarXDato(a2).ingresarCiudad(new Ciudad(003, "Tarapoto", 30));
+        listaRutas.BuscarXDato(a2).ingresarCiudad(new Ciudad(004, "Iquitos", 40));
+        listaRutas.BuscarXDato(a2).ingresarCiudad(new Ciudad(005, "Chiclayo", 50));
+        listaRutas.BuscarXDato(a2).ingresarCiudad(new Ciudad(006, "La libertad", 60));
 
         Region reg = new Region();
         reg.agregarCiudad(new Ciudad(001, "AA", 10));

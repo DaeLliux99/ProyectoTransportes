@@ -55,7 +55,7 @@ public class Horarios extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Horarios");
         jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 11, 670, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 11, 870, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -91,11 +91,11 @@ public class Horarios extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Salida", "Llegada", "Bus", "Ruta", "Precio", "Asientos Disponibles"
+                "Salida", "Llegada", "Bus", ".                                                                       Ruta", "Precio", "Asientos Disponibles"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false
@@ -109,6 +109,7 @@ public class Horarios extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -116,8 +117,16 @@ public class Horarios extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(70);
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(70);
+            jTable1.getColumnModel().getColumn(2).setPreferredWidth(70);
+            jTable1.getColumnModel().getColumn(3).setPreferredWidth(460);
+            jTable1.getColumnModel().getColumn(4).setPreferredWidth(70);
+            jTable1.getColumnModel().getColumn(5).setPreferredWidth(120);
+        }
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 670, 210));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 880, 260));
 
         regcliente.setText("Registrar pasajero");
         regcliente.addActionListener(new java.awt.event.ActionListener() {
@@ -125,7 +134,7 @@ public class Horarios extends javax.swing.JFrame {
                 regclienteActionPerformed(evt);
             }
         });
-        getContentPane().add(regcliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 140, -1));
+        getContentPane().add(regcliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 140, -1));
 
         salir.setText("Cerrar sesión");
         salir.addActionListener(new java.awt.event.ActionListener() {
@@ -133,7 +142,7 @@ public class Horarios extends javax.swing.JFrame {
                 salirActionPerformed(evt);
             }
         });
-        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 370, -1, -1));
+        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 410, -1, -1));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Buscar destino", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
         jPanel3.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -143,8 +152,9 @@ public class Horarios extends javax.swing.JFrame {
         });
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("Ciudad");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         Buscar_Ruta_Boton.setText("Buscar");
         Buscar_Ruta_Boton.addActionListener(new java.awt.event.ActionListener() {
@@ -152,16 +162,16 @@ public class Horarios extends javax.swing.JFrame {
                 Buscar_Ruta_BotonActionPerformed(evt);
             }
         });
-        jPanel3.add(Buscar_Ruta_Boton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, -1, -1));
+        jPanel3.add(Buscar_Ruta_Boton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 30, -1, -1));
 
         Casilla_Buscar_Ruta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Casilla_Buscar_RutaActionPerformed(evt);
             }
         });
-        jPanel3.add(Casilla_Buscar_Ruta, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 430, -1));
+        jPanel3.add(Casilla_Buscar_Ruta, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 530, -1));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 670, 70));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 880, 70));
         jPanel3.getAccessibleContext().setAccessibleDescription("");
 
         mostrarPasajero.setText("Mostrar Pasajeros");
@@ -170,7 +180,7 @@ public class Horarios extends javax.swing.JFrame {
                 mostrarPasajeroActionPerformed(evt);
             }
         });
-        getContentPane().add(mostrarPasajero, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, -1, -1));
+        getContentPane().add(mostrarPasajero, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 410, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

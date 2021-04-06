@@ -98,7 +98,7 @@ public class Ruta {
     
     public Ciudad Busqueda_Ciudad(String Ciudad_Buscada) {
         for (Ciudad c: ciudadesRuta) {
-            if (c.getCiudad().equals(Ciudad_Buscada)) {
+            if (c.getCiudad().equalsIgnoreCase(Ciudad_Buscada)) {
                 return c;
             }
         }

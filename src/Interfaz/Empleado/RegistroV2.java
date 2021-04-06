@@ -38,42 +38,56 @@ public class RegistroV2 extends javax.swing.JFrame {
 
     }
 
+    public static boolean isNumeric(String cadena) {
+
+        boolean resultado;
+
+        try {
+            Integer.parseInt(cadena);
+            resultado = true;
+        } catch (NumberFormatException excepcion) {
+            resultado = false;
+        }
+
+        return resultado;
+    }
+
     public Bus encontrarBus() {
-        
+
         Nodo<Bus> temp = Principal.listaBuses.ObetenerPrimerNodo();
         while (temp != null) {
-            if (temp.valor.getMatricula() == ID_bus) {             
+            if (temp.valor.getMatricula() == ID_bus) {
                 return temp.getValor();
             }
             System.out.println(ID_bus);
             System.out.println(temp.valor.getMatricula());
             temp = temp.siguiente;
-        }       
+        }
         return null;
     }
-    
-    public void llenar(){
-        Bus busUsado =encontrarBus() ;
-        for(int i=0; i<busUsado.getNumeroAsientos();i++){
-            asiento.addItem(i+1);
+
+    public void llenar() {
+        Bus busUsado = encontrarBus();
+        for (int i = 0; i < busUsado.getNumeroAsientos(); i++) {
+            asiento.addItem(i + 1);
         }
     }
-    
-    public void sacar(){
-        Bus busUsado =encontrarBus() ;
-        if(busUsado.getColaPasajero()==null){
+
+    public void sacar() {
+        Bus busUsado = encontrarBus();
+        if (busUsado.getColaPasajero() == null) {
             System.out.println("vacio");
-        }else{
-            Cola<Pasajero> a=busUsado.getColaPasajero();
+        } else {
+            Cola<Pasajero> a = busUsado.getColaPasajero();
             Pasajero b;
-            for(int i=0; i<a.getLongitud(); i++){
-                b=a.pop();
+            for (int i = 0; i < a.getLongitud(); i++) {
+                b = a.pop();
                 asiento.removeItem(b.getAsiento());
                 a.push(b);
             }
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -203,37 +217,41 @@ public class RegistroV2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void regclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regclienteActionPerformed
-        
-        int dni = Integer.parseInt(Cdni.getText());
-        boolean equipaje = false;
 
-        if (TextoEquipaje != null) {
-            equipaje = true;
+        if (Cdni.getText().isEmpty() && Cnombre.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Casilla de DNI y NOMBRE vacia", "Casilla de DNI y NOMBRE vacia", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            if (isNumeric(Cdni.getText())) {
+                int dni = Integer.parseInt(Cdni.getText());
+                boolean equipaje = false;
+
+                if (TextoEquipaje != null) {
+                    equipaje = true;
+                }
+                Bus busUsado = encontrarBus();
+                if (busUsado.getOcupado() < busUsado.getNumeroAsientos() && asiento.getSelectedItem() != null) {
+                    Pasajero p1 = new Pasajero(dni, Cnombre.getText(), Cllegada.getText(), equipaje, TextoEquipaje.getText(), (int) asiento.getSelectedItem());
+                    busUsado.getColaPasajero().push(p1);
+                    busUsado.ocuparAsiento();
+                } else if (asiento.getSelectedItem() == null) {
+                    JOptionPane.showMessageDialog(null, "No selecciono asiento, no se registro pasajero", "No selecciono asiento, no se registro pasajero", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Bus lleno", "Bus lleno", JOptionPane.INFORMATION_MESSAGE);
+                }
+                Horarios UU = new Horarios(Principal);
+                this.setVisible(false);
+                UU.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "ERROR EN LA CASILLA DNI", "ESTA INTRODUCIENDO LETRAS", JOptionPane.INFORMATION_MESSAGE);
+            }
+
         }
-        Bus busUsado =encontrarBus() ;
-        
-        if(busUsado.getOcupado() < busUsado.getNumeroAsientos() && asiento.getSelectedItem()!=null){
-            Pasajero p1 = new Pasajero(dni,Cnombre.getText(),Cllegada.getText(),equipaje,TextoEquipaje.getText(), (int)asiento.getSelectedItem());
-            busUsado.getColaPasajero().push(p1);     
-            busUsado.ocuparAsiento();
-        }else if(asiento.getSelectedItem()==null){
-            JOptionPane.showMessageDialog(null, "No selecciono asiento, no se registro pasajero", "No selecciono asiento, no se registro pasajero", JOptionPane.INFORMATION_MESSAGE);
-        }else{
-            JOptionPane.showMessageDialog(null, "Bus lleno", "Bus lleno", JOptionPane.INFORMATION_MESSAGE);
-        }
-         
- 
-        Horarios UU = new Horarios(Principal);
-        this.setVisible(false);
-        UU.setVisible(true);
-         
 
 
     }//GEN-LAST:event_regclienteActionPerformed
 
     private void cancelcliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelcliActionPerformed
 
-        
         Horarios UU = new Horarios(Principal);
         this.setVisible(false);
         UU.setVisible(true);
@@ -246,9 +264,9 @@ public class RegistroV2 extends javax.swing.JFrame {
     }//GEN-LAST:event_salirclijButton3ActionPerformed
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-        
-       System.exit(0);
-        
+
+        System.exit(0);
+
     }//GEN-LAST:event_salirActionPerformed
 
     private void CdniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CdniActionPerformed
