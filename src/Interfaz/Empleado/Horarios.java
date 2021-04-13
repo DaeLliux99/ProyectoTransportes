@@ -248,8 +248,8 @@ public class Horarios extends javax.swing.JFrame {
         if (fila > contador-1 ) {
             JOptionPane.showMessageDialog(null, "No ha seleccionado nada", "Casilla vacia", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            salidaTXT =  modelo.getValueAt(fila, 0).toString();
-            llegadaTXT = /*(String)*/ Casilla_Buscar_Ruta.getText().toString();
+            salidaTXT =  (String) modelo.getValueAt(fila, 0);
+            llegadaTXT = /*(String)*/ Casilla_Buscar_Ruta.getText();
             bus = (int) modelo.getValueAt(fila, 2) ;
         }
         /*

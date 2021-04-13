@@ -78,17 +78,17 @@ public class MostrarPasajero extends javax.swing.JFrame {
     private void mostrar() {
         busEncontrado = encontrarBus();
         limpiar();
-        
+
         if (buses.getSelectedItem() != null) {
             contador = 0;
             Cola<Pasajero> a = busEncontrado.getColaPasajero();
-            for(Pasajero b: a){
+            for (Pasajero b : a) {
                 jTable1.getModel().setValueAt(b.getNombre(), contador, 0);
                 jTable1.getModel().setValueAt(b.getAsiento(), contador, 1);
                 jTable1.getModel().setValueAt(b.getIdPasajero(), contador, 2);   //
                 contador++;
             }
-            
+
             /*
             Cola<Pasajero> a = busEncontrado.getColaPasajero();
             Pasajero b;
@@ -100,11 +100,19 @@ public class MostrarPasajero extends javax.swing.JFrame {
                 a.push(b);
                 contador++;
             }
-*/
+             */
         }
     }
 
     private void limpiar() {
+        for (int i = 0; i < 30; i++) {
+
+            jTable1.getModel().setValueAt(" ", i, 0);
+            jTable1.getModel().setValueAt(" ", i, 1);
+            jTable1.getModel().setValueAt(" ", i, 2);   //
+
+        }
+/*
         int a = busEncontrado.getNumeroAsientos();
         if (a <= 30) {
             for (int i = 0; i < a; i++) {
@@ -124,7 +132,7 @@ public class MostrarPasajero extends javax.swing.JFrame {
             }
             System.out.println("limite revasado, limpiando el limite");
         }
-
+*/
     }
 
     @SuppressWarnings("unchecked")

@@ -19,6 +19,7 @@ public class RegistroV2 extends javax.swing.JFrame {
     public RegistroV2(String Salida, String llegada, int bus, ClassCollector A) {
 
         initComponents();
+        
         Principal = A;
         ID_bus = bus;
         CSalida.setText(Salida);
@@ -31,7 +32,7 @@ public class RegistroV2 extends javax.swing.JFrame {
 
     public void limpiar() {
         Cdni.setText("");
-        Cnombre.setText("");
+        Cnombre.setText(null);
         Cllegada.setText("");
         CSalida.setText("");
         //combo_tipodoc.setSelectedItem("Seleccionar Tipo Documento");
@@ -217,9 +218,9 @@ public class RegistroV2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void regclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regclienteActionPerformed
-
-        if (Cdni.getText().isEmpty() && Cnombre.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Casilla de DNI y NOMBRE vacia", "Casilla de DNI y NOMBRE vacia", JOptionPane.INFORMATION_MESSAGE);
+        
+        if (Cdni.getText().isEmpty() || Cnombre.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "ERROR EN LAS CASILLA DNI Y NOMBRE", "Casilla de DNI y NOMBRE vacia", JOptionPane.INFORMATION_MESSAGE);
         } else {
             if (isNumeric(Cdni.getText())) {
                 int dni = Integer.parseInt(Cdni.getText());

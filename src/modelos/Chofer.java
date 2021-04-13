@@ -43,10 +43,14 @@ public class Chofer {
         this.estado = estado;
     }
 
+    @Override
+    public String toString() {
+        return "Chofer{" + "dniChofer=" + dniChofer + ", nombre=" + nombre + ", estado=" + estado+ '}';
+    }
+
     
     
-   
-    
+
     
     
 }

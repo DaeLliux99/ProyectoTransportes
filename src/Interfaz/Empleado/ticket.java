@@ -41,7 +41,7 @@ public class ticket extends javax.swing.JFrame {
                 CEquipaje.setText(p.isPaquetes() ? "Si" : "No");
                 CNombresyAp.setText(p.getNombre());
                 CNumeroTicket.setText("" + 1015874);
-                CSalida.setText(bus.getRuta().getSalida());
+                CSalida.setText(bus.getRuta().obtenerPrimerCiudad());
                 Cmatricula.setText("" + bus.getMatricula());
             }
         }
@@ -66,9 +66,7 @@ public class ticket extends javax.swing.JFrame {
         CEquipaje = new javax.swing.JTextField();
         CAsiento = new javax.swing.JTextField();
         CNombresyAp = new javax.swing.JTextField();
-        CSalida = new javax.swing.JTextField();
         CDestino = new javax.swing.JTextField();
-        CNombresyAp4 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         CDescripccion = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
@@ -78,6 +76,7 @@ public class ticket extends javax.swing.JFrame {
         CCosto = new javax.swing.JTextField();
         Cmatricula = new javax.swing.JTextField();
         CAtras = new javax.swing.JButton();
+        CSalida = new javax.swing.JTextField();
 
         BtnImprimir.setText("Imprimir");
         BtnImprimir.addActionListener(new java.awt.event.ActionListener() {
@@ -151,16 +150,9 @@ public class ticket extends javax.swing.JFrame {
         CNombresyAp.setText("Nestor Soto");
         jPanel2.add(CNombresyAp, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 230, -1));
 
-        CSalida.setEditable(false);
-        CSalida.setText("casa");
-        jPanel2.add(CSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 230, -1));
-
         CDestino.setEditable(false);
         CDestino.setText("UNMSM");
         jPanel2.add(CDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 230, -1));
-
-        CNombresyAp4.setEditable(false);
-        jPanel2.add(CNombresyAp4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 230, -1));
 
         CDescripccion.setEditable(false);
         CDescripccion.setColumns(20);
@@ -212,6 +204,10 @@ public class ticket extends javax.swing.JFrame {
             }
         });
         jPanel2.add(CAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 430, -1, -1));
+
+        CSalida.setEditable(false);
+        CSalida.setText("jTextField1");
+        jPanel2.add(CSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 230, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 490));
     }// </editor-fold>//GEN-END:initComponents
@@ -287,7 +283,6 @@ public class ticket extends javax.swing.JFrame {
     private javax.swing.JTextField CDestino;
     private javax.swing.JTextField CEquipaje;
     private javax.swing.JTextField CNombresyAp;
-    private javax.swing.JTextField CNombresyAp4;
     private javax.swing.JTextField CNumeroTicket;
     private javax.swing.JTextField CSalida;
     private javax.swing.JTextField Cmatricula;

@@ -15,7 +15,7 @@ import java.util.NoSuchElementException;
  * @author Carlos Esteban
  * @param <G>
  */
-public class Lista <G> implements Iterable<G>{
+public class Lista <G> implements Iterable<G> {
 
     //Atributos
     Nodo cabeza;
@@ -78,12 +78,14 @@ public class Lista <G> implements Iterable<G>{
 
     public void eliminar(G dato){
         Nodo<G> temp, cabeza1=cabeza;
+        
         if(cabeza==null){
             System.out.println("lista vacia");
         }else{
             if(cabeza1.valor==dato){
                 cabeza1=cabeza1.siguiente;
                 System.out.println("eliminado");
+                
             }else{
                 temp=cabeza1;
                 cabeza1=cabeza1.siguiente;
@@ -158,7 +160,9 @@ public class Lista <G> implements Iterable<G>{
     }
 
     @Override
+    
     public Iterator<G> iterator() {
+        
         if (this.cabeza == null) {
             return Collections.<G>emptyList().iterator();
         }
@@ -170,11 +174,13 @@ public class Lista <G> implements Iterable<G>{
             }
 
             @Override
+            
             public G next() {
                 if (nodoActual == null) {
                     nodoActual = cabeza;
                     return nodoActual.valor;
                 }
+                
                 if (nodoActual.siguiente == null) {
                     throw new NoSuchElementException();
                 }

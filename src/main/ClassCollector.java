@@ -24,6 +24,9 @@ public class ClassCollector {
     public Lista<Bus> listaBuses = new Lista<>();
     public Cola<Pasajero> colaClientes = new Cola<>();
     public Pila<Horario> pilaHorario = new Pila<>();
+    
+    
+    
 
     public ClassCollector() {
         //String username, String password, boolean managent
@@ -81,6 +84,8 @@ public class ClassCollector {
         Ciudad c = reg.buscarCiudad(1);
         Lista<Ciudad> ccc = reg.obtenerCiudadesAdya(c);
         ccc.mostrarLista();
+        
+       
 
     }
 }

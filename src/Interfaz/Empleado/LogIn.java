@@ -1,5 +1,6 @@
 package Interfaz.Empleado;
 
+import Interfaz.Administrador.PanelDeControl;
 import Interfaz.Administrador.RegistrarHorario;
 import static java.lang.System.exit;
 import javax.swing.JOptionPane;
@@ -18,8 +19,8 @@ public class LogIn extends javax.swing.JFrame {
     public LogIn(ClassCollector B) {
         initComponents();
         A = B;
-        CCampoUsuario.setText("abc");
-        CCampoAdministrador.setText("abc");
+        CCampoUsuario.setText("username");
+        CCampoAdministrador.setText("password");
         this.setLocationRelativeTo(null);
         //ValidarIngresoDimension(passw, 15);
     }
@@ -109,7 +110,7 @@ public class LogIn extends javax.swing.JFrame {
                 loggeado = true;
                 if (u.isManagent()) {
                     JOptionPane.showMessageDialog(null, "Es administrador");
-                    Horarios h = new Horarios(A);
+                    PanelDeControl h = new PanelDeControl(A);
                     this.setVisible(false);
                     h.setVisible(true);
                 } else {

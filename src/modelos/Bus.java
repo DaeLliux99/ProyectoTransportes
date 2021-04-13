@@ -28,6 +28,7 @@ public class Bus {
         this.numeroAsientos = NumAsientos;
         this.pesoMaximo = PesoMaximo;
         this.idChofer = ID_chofer;
+        this.idChofer.setEstado(false);
         this.ruta = ruta;
     }
 
@@ -36,6 +37,7 @@ public class Bus {
         this.numeroAsientos = NumAsientos;
         this.pesoMaximo = PesoMaximo;
         this.idChofer = ID_chofer;
+        this.idChofer.setEstado(false);
         this.colaPasajero = Cola_Pasajero;
     }
 
