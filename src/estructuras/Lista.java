@@ -93,6 +93,7 @@ public class Lista <G> implements Iterable<G> {
                         System.out.println("eliminado 2");
                     }else if(cabeza1.valor==dato){
                         temp.siguiente=null;
+                        ultimo = temp;
                         System.out.println("eliminado 3");
                     }
                     temp=cabeza1;

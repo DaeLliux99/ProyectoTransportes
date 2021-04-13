@@ -16,6 +16,7 @@ public class GestionarChofer extends javax.swing.JFrame {
     ClassCollector principal;
     int contador;
     int dniEliminar = 0;
+    String asignacionEliminar = "";
 
     public GestionarChofer(ClassCollector A) {
         initComponents();
@@ -226,40 +227,52 @@ public class GestionarChofer extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No ha seleccionado nada", "Casilla vacia", JOptionPane.INFORMATION_MESSAGE);
         } else {
             dniEliminar = (int) modelo.getValueAt(fila, 0);
+            asignacionEliminar = (String) modelo.getValueAt(fila, 2);
         }
     }//GEN-LAST:event_TablaChoferMouseClicked
 
     private void BEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BEliminarActionPerformed
         // TODO add your handling code here:
-        boolean encontro = false;
-        Chofer temp = null;
-        Nodo<Chofer> nodoDeLuis = principal.listaChoferes.ObetenerPrimerNodo();
-        while (nodoDeLuis != null) {
-            if (nodoDeLuis.valor.getDniChofer() == dniEliminar) {
-                temp = nodoDeLuis.valor;
-                encontro = true;
-            }
-            nodoDeLuis = nodoDeLuis.siguiente;
-        }
+        if (asignacionEliminar.equals("Asignado")) {
+            JOptionPane.showMessageDialog(null, "NO SE PUEDE ELMINAR", "El chofer esta asignado", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            boolean encontro = false;
+            Chofer temp = null;
 
-        /*
+            /*
+        //MEDIDA DESESPERADA
+        INSERTAR CHOFER FANTASMON CADA QUE SE ELIMINE Y CAMBIAR EL CONTADOR A MENOS 2
+             */
+            Nodo<Chofer> nodoDeLuis = principal.listaChoferes.ObetenerPrimerNodo();
+            while (nodoDeLuis != null) {
+                if (nodoDeLuis.valor.getDniChofer() == dniEliminar) {
+                    temp = nodoDeLuis.valor;
+                    encontro = true;
+                }
+                nodoDeLuis = nodoDeLuis.siguiente;
+            }
+
+            /*
         for (Chofer C : principal.listaChoferes) {
             if (C.getDniChofer() == dniEliminar) {
                 temp = C;   
                 encontro = true;
             }           
         }
-         */
-        if (!encontro) {
-            JOptionPane.showMessageDialog(null, "No ha seleccionado nada", "No se encontro nada", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            principal.listaChoferes.eliminar(temp);
-            principal.listaChoferes.mostrarLista();
-            dniEliminar = 0;
-            limpiar();
-            mostrar();
+             */
+            if (!encontro) {
+                JOptionPane.showMessageDialog(null, "No ha seleccionado nada", "No se encontro nada", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                principal.listaChoferes.eliminar(temp);
+                principal.listaChoferes.mostrarLista();
+                dniEliminar = 0;
+                limpiar();
+                mostrar();
 
+            }
         }
+
+
     }//GEN-LAST:event_BEliminarActionPerformed
 
 

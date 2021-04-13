@@ -24,7 +24,7 @@ public class ClassCollector {
     public Lista<Bus> listaBuses = new Lista<>();
     public Cola<Pasajero> colaClientes = new Cola<>();
     public Pila<Horario> pilaHorario = new Pila<>();
-    
+    public Region reg = new Region();
     
     
 
@@ -68,7 +68,7 @@ public class ClassCollector {
         listaRutas.BuscarXDato(a2).ingresarCiudad(new Ciudad(005, "Chiclayo", 50));
         listaRutas.BuscarXDato(a2).ingresarCiudad(new Ciudad(006, "La libertad", 60));
 
-        Region reg = new Region();
+        
         reg.agregarCiudad(new Ciudad(001, "AA", 10));
         reg.agregarCiudad(new Ciudad(002, "CD", 20));
         reg.agregarCiudad(new Ciudad(003, "EF", 30));

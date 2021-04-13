@@ -45,7 +45,7 @@ public class PanelDeControl extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Registrar Chofer");
+        jButton1.setText("Gestionar Chofer");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -53,7 +53,7 @@ public class PanelDeControl extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 130, -1));
 
-        jButton6.setText("Registrar ciudades");
+        jButton6.setText("Gestionar Ciudades");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -65,19 +65,19 @@ public class PanelDeControl extends javax.swing.JFrame {
         jLabel1.setText("Panel de control");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
 
-        jButton5.setText("Registrar horario");
+        jButton5.setText("Gestionar Horario");
         jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 130, -1));
 
         jButton4.setText("Salir sesion");
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, -1, -1));
 
-        jButton3.setText("Asignar bus");
+        jButton3.setText("Gestionar Bus");
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 120, -1));
 
         CMostrarRuta.setText("Mostrar ruta");
         jPanel1.add(CMostrarRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 120, -1));
 
-        CConstruirRuta.setText("Construir ruta");
+        CConstruirRuta.setText("Gestionar Ruta");
         CConstruirRuta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CConstruirRutaActionPerformed(evt);
@@ -92,6 +92,10 @@ public class PanelDeControl extends javax.swing.JFrame {
 
     private void CConstruirRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CConstruirRutaActionPerformed
         // TODO add your handling code here:
+        GestionarRuta UU = new GestionarRuta(principal);
+        this.setVisible(false);
+        UU.setVisible(true);
+        
     }//GEN-LAST:event_CConstruirRutaActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed

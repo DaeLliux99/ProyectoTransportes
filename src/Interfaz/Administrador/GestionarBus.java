@@ -11,11 +11,11 @@ import main.ClassCollector;
  *
  * @author LEONARDO
  */
-public class ConstruccionBus extends javax.swing.JFrame {
+public class GestionarBus extends javax.swing.JFrame {
 
     ClassCollector A;
     
-    public ConstruccionBus() {
+    public GestionarBus() {
         initComponents();
     }
 

@@ -1,7 +1,7 @@
 package Interfaz.Empleado;
 
 import Interfaz.Administrador.PanelDeControl;
-import Interfaz.Administrador.RegistrarHorario;
+import Interfaz.Administrador.GestionarHorario;
 import static java.lang.System.exit;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
