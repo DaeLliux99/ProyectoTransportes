@@ -232,38 +232,33 @@ public class GestionarChofer extends javax.swing.JFrame {
     private void BEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BEliminarActionPerformed
         // TODO add your handling code here:
         boolean encontro = false;
-
-        Nodo<Chofer> temp = principal.listaChoferes.ObetenerPrimerNodo();
-        
-        while (temp != null) {
-            if (temp.valor.getDniChofer() == dniEliminar ) {
-                //temp.siguiente=null;
-                principal.listaChoferes.eliminar(temp.valor);
-                principal.listaChoferes.mostrarLista();
-                dniEliminar = 0;
+        Chofer temp = null;
+        Nodo<Chofer> nodoDeLuis = principal.listaChoferes.ObetenerPrimerNodo();
+        while (nodoDeLuis != null) {
+            if (nodoDeLuis.valor.getDniChofer() == dniEliminar) {
+                temp = nodoDeLuis.valor;
                 encontro = true;
-                
-                mostrar();
             }
-            temp = temp.siguiente;
+            nodoDeLuis = nodoDeLuis.siguiente;
         }
-        
+
         /*
         for (Chofer C : principal.listaChoferes) {
             if (C.getDniChofer() == dniEliminar) {
-
-                principal.listaChoferes.eliminar(principal.listaChoferes.BuscarXDato(C));
-                principal.listaChoferes.mostrarLista();
-                dniEliminar = 0;
-                limpiar();
-                mostrar();
+                temp = C;   
                 encontro = true;
-            }
+            }           
         }
-        */
+         */
         if (!encontro) {
-            
             JOptionPane.showMessageDialog(null, "No ha seleccionado nada", "No se encontro nada", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            principal.listaChoferes.eliminar(temp);
+            principal.listaChoferes.mostrarLista();
+            dniEliminar = 0;
+            limpiar();
+            mostrar();
+
         }
     }//GEN-LAST:event_BEliminarActionPerformed
 

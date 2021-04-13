@@ -9,7 +9,7 @@ package modelos;
  *
  * @author LEONARDO
  */
-public class Chofer {
+public class Chofer implements Comparable {
     private int dniChofer;
     private String nombre;
     private boolean estado=true; //true = disponible false= no disponible
@@ -46,6 +46,11 @@ public class Chofer {
     @Override
     public String toString() {
         return "Chofer{" + "dniChofer=" + dniChofer + ", nombre=" + nombre + ", estado=" + estado+ '}';
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     
