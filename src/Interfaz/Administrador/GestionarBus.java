@@ -24,39 +24,41 @@ public class GestionarBus extends javax.swing.JFrame {
     int idRutaSelec;
     int matriBusSelec;
     
+    int contadorChofer;
+    int contadorBus;
+    int contadorRuta;
     
     public GestionarBus(ClassCollector A) {
         initComponents();
         principal = A;
         this.setLocationRelativeTo(null);
         mostrar();
-        System.out.println(tablaChofer.getRowCount());
     }
     
     private void mostrar() {
-        int contador = 0;
+        contadorChofer = 0;
         limpiar();
         for (Chofer b : principal.listaChoferes) {
             if (!b.isEstado()) {
-                tablaChofer.getModel().setValueAt(b.getDniChofer(), contador, 0);
-                tablaChofer.getModel().setValueAt(b.getNombre(), contador, 1);
-                contador++;
+                tablaChofer.getModel().setValueAt(b.getDniChofer(), contadorChofer, 0);
+                tablaChofer.getModel().setValueAt(b.getNombre(), contadorChofer, 1);
+                contadorChofer++;
             }
         }
-        contador = 0;
+        contadorBus = 0;
         for (Bus b : principal.listaBuses) {
             if (b.getIdChofer() != null) {
-                tablaBuses.getModel().setValueAt(b.getMatricula(), contador, 0);
-                tablaBuses.getModel().setValueAt(b.getNumeroAsientos(), contador, 1);
-                contador++;
+                tablaBuses.getModel().setValueAt(b.getMatricula(), contadorBus, 0);
+                tablaBuses.getModel().setValueAt(b.getNumeroAsientos(), contadorBus, 1);
+                contadorBus++;
             }
         }
-        contador = 0;
+        contadorRuta = 0;
         for (Ruta b : principal.listaRutas) {
-            tablaRutas.getModel().setValueAt(b.getIdRuta(), contador, 0);
-            tablaRutas.getModel().setValueAt(b.getPrecio(), contador, 1);
-            tablaRutas.getModel().setValueAt(b.getRuta(), contador, 2);
-            contador++;
+            tablaRutas.getModel().setValueAt(b.getIdRuta(), contadorRuta, 0);
+            tablaRutas.getModel().setValueAt(b.getPrecio(), contadorRuta, 1);
+            tablaRutas.getModel().setValueAt(b.getRuta(), contadorRuta, 2);
+            contadorRuta++;
         }
     }
     
@@ -230,7 +232,7 @@ public class GestionarBus extends javax.swing.JFrame {
         int fila = tablaChofer.getSelectedRow();
         DefaultTableModel modelo = (DefaultTableModel) tablaChofer.getModel();
 
-        if (fila > tablaChofer.getRowCount()) {
+        if (fila > contadorChofer - 1) {
             JOptionPane.showMessageDialog(null, "No ha seleccionado nada", "Casilla vacia", JOptionPane.INFORMATION_MESSAGE);
         } else {
             dniChoferSelec = (int) modelo.getValueAt(fila, 0);
@@ -242,7 +244,7 @@ public class GestionarBus extends javax.swing.JFrame {
         int fila = tablaBuses.getSelectedRow();
         DefaultTableModel modelo = (DefaultTableModel) tablaBuses.getModel();
 
-        if (fila > tablaBuses.getRowCount()) {
+        if (fila > contadorBus - 1) {
             JOptionPane.showMessageDialog(null, "No ha seleccionado nada", "Casilla vacia", JOptionPane.INFORMATION_MESSAGE);
         } else {
             matriBusSelec = (int) modelo.getValueAt(fila, 0);
@@ -254,7 +256,7 @@ public class GestionarBus extends javax.swing.JFrame {
         int fila = tablaRutas.getSelectedRow();
         DefaultTableModel modelo = (DefaultTableModel) tablaRutas.getModel();
 
-        if (fila > tablaRutas.getRowCount()) {
+        if (fila > contadorRuta - 1) {
             JOptionPane.showMessageDialog(null, "No ha seleccionado nada", "Casilla vacia", JOptionPane.INFORMATION_MESSAGE);
         } else {
             idRutaSelec = (int) modelo.getValueAt(fila, 0);
