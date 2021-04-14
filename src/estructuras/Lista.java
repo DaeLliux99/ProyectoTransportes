@@ -15,7 +15,7 @@ import java.util.NoSuchElementException;
  * @author Carlos Esteban
  * @param <G>
  */
-public class Lista <G> implements Iterable<G>{
+public class Lista <G> implements Iterable<G> {
 
     //Atributos
     Nodo cabeza;
@@ -75,25 +75,26 @@ public class Lista <G> implements Iterable<G>{
             this.longitud++;
         }
     }
-
-    public void eliminar(G dato){
+    
+    public <G extends Comparable<? super G>> void eliminar(G dato) {
         Nodo<G> temp, cabeza1=cabeza;
-        if(cabeza==null){
+        if (cabeza == null){
             System.out.println("lista vacia");
-        }else{
-            if(cabeza1.valor==dato){
-                cabeza1=cabeza1.siguiente;
-                System.out.println("eliminado");
-            }else{
+        } else {
+            if (dato.compareTo(cabeza1.valor) == 0){
+                cabeza=cabeza.siguiente;
+                System.out.println("eliminado 1");      
+            } else {
                 temp=cabeza1;
                 cabeza1=cabeza1.siguiente;
                 while(cabeza1!=null){
-                    if(cabeza1.valor==dato && cabeza1.siguiente!=null){
+                    if(dato.compareTo(cabeza1.valor) == 0 && cabeza1.siguiente!=null){
                         temp.siguiente=cabeza1.siguiente;
-                        System.out.println("eliminado");
-                    }else if(cabeza1.valor==dato){
+                        System.out.println("eliminado 2");
+                    } else if (dato.compareTo(cabeza1.valor) == 0) {
                         temp.siguiente=null;
-                        System.out.println("eliminado");
+                        ultimo = temp;
+                        System.out.println("eliminado 3");
                     }
                     temp=cabeza1;
                     cabeza1=cabeza1.siguiente;
@@ -101,6 +102,55 @@ public class Lista <G> implements Iterable<G>{
             }
         }
     }
+    
+    public void eliminarUltimo() {
+        if (this.cabeza != null) {
+            Nodo eliminado;
+            if (this.cabeza.siguiente != null) {
+                Nodo puntero = this.cabeza;
+                while (puntero.siguiente.siguiente != null) {
+                    puntero = puntero.siguiente;
+                }
+                ultimo = puntero;
+                eliminado = puntero.siguiente;
+                puntero.siguiente = null;
+            } else {
+                eliminado = this.cabeza;
+                this.cabeza = null;
+                ultimo = null;
+            }
+            eliminado = null;
+            this.longitud--;
+        }
+    }
+    /*
+    public void eliminar(G dato){
+        Nodo<G> temp, cabeza1=cabeza;
+        if(cabeza==null){
+            System.out.println("lista vacia");
+        }else{
+            if(cabeza1.valor==dato){
+                cabeza=cabeza.siguiente;
+                System.out.println("eliminado 1");      
+            }else{
+                temp=cabeza1;
+                cabeza1=cabeza1.siguiente;
+                while(cabeza1!=null){
+                    if(cabeza1.valor==dato && cabeza1.siguiente!=null){
+                        temp.siguiente=cabeza1.siguiente;
+                        System.out.println("eliminado 2");
+                    }else if(cabeza1.valor==dato){
+                        temp.siguiente=null;
+                        ultimo = temp;
+                        System.out.println("eliminado 3");
+                    }
+                    temp=cabeza1;
+                    cabeza1=cabeza1.siguiente;
+                }
+            }
+        }
+    }
+    */
 
     public G BuscarXDato(G dato) {
         if (this.cabeza == null) {
@@ -130,13 +180,19 @@ public class Lista <G> implements Iterable<G>{
     }
 
     public G obetenerPrimerObjeto() {
-        Object obj = cabeza.getValor();
-        return (G) obj;
+        if (cabeza != null) {
+            Object obj = cabeza.getValor();
+            return (G) obj;
+        }
+        return null;
     }
 
     public G obetenerUltimoObjeto() {
-        Object obj = ultimo.getValor();
-        return (G) obj;
+        if (ultimo != null) {
+            Object obj = ultimo.getValor();
+            return (G) obj;
+        }
+        return null;
     }
 
     public Nodo ObetenerPrimerNodo() {
@@ -158,7 +214,8 @@ public class Lista <G> implements Iterable<G>{
     }
 
     @Override
-    public Iterator<G> iterator() {
+    
+    public Iterator<G> iterator() {    
         if (this.cabeza == null) {
             return Collections.<G>emptyList().iterator();
         }
@@ -168,8 +225,7 @@ public class Lista <G> implements Iterable<G>{
             public boolean hasNext() {
                 return nodoActual != ultimo;
             }
-
-            @Override
+            @Override   
             public G next() {
                 if (nodoActual == null) {
                     nodoActual = cabeza;
@@ -180,8 +236,7 @@ public class Lista <G> implements Iterable<G>{
                 }
                 nodoActual = nodoActual.siguiente;
                 return nodoActual.valor;
-            }
-            
+            }        
         };
     }
 }

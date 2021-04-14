@@ -9,7 +9,7 @@ package modelos;
  *
  * @author LEONARDO
  */
-public class Chofer {
+public class Chofer implements Comparable<Chofer> {
     private int dniChofer;
     private String nombre;
     private boolean estado=true; //true = disponible false= no disponible
@@ -43,10 +43,22 @@ public class Chofer {
         this.estado = estado;
     }
 
+    @Override
+    public String toString() {
+        return "Chofer{" + "dniChofer=" + dniChofer + ", nombre=" + nombre + ", estado=" + estado+ '}';
+    }
+
+    @Override
+    public int compareTo(Chofer o) {
+        if (this.dniChofer == o.dniChofer) {
+            return 0;
+        }
+        return -1;
+    }
+
     
     
-   
-    
+
     
     
 }

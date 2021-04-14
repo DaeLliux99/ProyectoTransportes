@@ -9,12 +9,12 @@ package Interfaz.Administrador;
  *
  * @author LEONARDO
  */
-public class RegistrarHorario extends javax.swing.JFrame {
+public class GestionarHorario extends javax.swing.JFrame {
 
     /**
      * Creates new form RegistrarPasajero
      */
-    public RegistrarHorario() {
+    public GestionarHorario() {
         initComponents();
     }
 
@@ -111,7 +111,7 @@ public class RegistrarHorario extends javax.swing.JFrame {
        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistrarHorario().setVisible(true);
+                new GestionarHorario().setVisible(true);
             }
         });
     }

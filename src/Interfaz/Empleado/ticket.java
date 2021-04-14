@@ -41,7 +41,7 @@ public class ticket extends javax.swing.JFrame {
                 CEquipaje.setText(p.isPaquetes() ? "Si" : "No");
                 CNombresyAp.setText(p.getNombre());
                 CNumeroTicket.setText("" + 1015874);
-                CSalida.setText(bus.getRuta().getSalida());
+                CSalida.setText(bus.getRuta().obtenerPrimerCiudad());
                 Cmatricula.setText("" + bus.getMatricula());
             }
         }
@@ -51,6 +51,7 @@ public class ticket extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        BtnImprimir = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -65,18 +66,24 @@ public class ticket extends javax.swing.JFrame {
         CEquipaje = new javax.swing.JTextField();
         CAsiento = new javax.swing.JTextField();
         CNombresyAp = new javax.swing.JTextField();
-        CSalida = new javax.swing.JTextField();
         CDestino = new javax.swing.JTextField();
-        CNombresyAp4 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         CDescripccion = new javax.swing.JTextArea();
-        BtnImprimir = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         CDNI = new javax.swing.JTextField();
         CCosto = new javax.swing.JTextField();
         Cmatricula = new javax.swing.JTextField();
+        CAtras = new javax.swing.JButton();
+        CSalida = new javax.swing.JTextField();
+
+        BtnImprimir.setText("Imprimir");
+        BtnImprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnImprimirActionPerformed(evt);
+            }
+        });
 
         setAlwaysOnTop(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -143,16 +150,9 @@ public class ticket extends javax.swing.JFrame {
         CNombresyAp.setText("Nestor Soto");
         jPanel2.add(CNombresyAp, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 230, -1));
 
-        CSalida.setEditable(false);
-        CSalida.setText("casa");
-        jPanel2.add(CSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 230, -1));
-
         CDestino.setEditable(false);
         CDestino.setText("UNMSM");
         jPanel2.add(CDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 230, -1));
-
-        CNombresyAp4.setEditable(false);
-        jPanel2.add(CNombresyAp4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 230, -1));
 
         CDescripccion.setEditable(false);
         CDescripccion.setColumns(20);
@@ -160,15 +160,7 @@ public class ticket extends javax.swing.JFrame {
         CDescripccion.setText("esto es temporal");
         jScrollPane1.setViewportView(CDescripccion);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 400, 100));
-
-        BtnImprimir.setText("Imprimir");
-        BtnImprimir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnImprimirActionPerformed(evt);
-            }
-        });
-        jPanel2.add(BtnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, -1, -1));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 410, 100));
 
         jButton1.setText("Salir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -176,7 +168,7 @@ public class ticket extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 430, -1, -1));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 430, -1, -1));
 
         jButton2.setText("Realizar nueva compra");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -184,7 +176,7 @@ public class ticket extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, -1, -1));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, -1, -1));
 
         jLabel10.setText("DNI de cliente:");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
@@ -205,10 +197,24 @@ public class ticket extends javax.swing.JFrame {
         Cmatricula.setEditable(false);
         jPanel2.add(Cmatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 230, -1));
 
+        CAtras.setText("Atras");
+        CAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CAtrasActionPerformed(evt);
+            }
+        });
+        jPanel2.add(CAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 430, -1, -1));
+
+        CSalida.setEditable(false);
+        CSalida.setText("jTextField1");
+        jPanel2.add(CSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 230, -1));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 490));
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnImprimirActionPerformed
+        
+        
         int numeroticket = Integer.parseInt(CNumeroTicket.getText());
         int dni = Integer.parseInt(CAsiento.getText());
         String nombres = CNombresyAp.getText();
@@ -218,6 +224,12 @@ public class ticket extends javax.swing.JFrame {
         int importe = Integer.parseInt(CEquipaje.getText());
         String equipaje = CEquipaje.getText();
         String descripcion = CDescripccion.getText();
+        
+        
+        
+        
+        
+        
     }//GEN-LAST:event_BtnImprimirActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -253,17 +265,24 @@ public class ticket extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void CAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CAtrasActionPerformed
+        // TODO add your handling code here:
+        MostrarPasajero h = new MostrarPasajero(principal);
+        this.setVisible(false);
+        h.setVisible(true);
+    }//GEN-LAST:event_CAtrasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnImprimir;
     private javax.swing.JTextField CAsiento;
+    private javax.swing.JButton CAtras;
     private javax.swing.JTextField CCosto;
     private javax.swing.JTextField CDNI;
     private javax.swing.JTextArea CDescripccion;
     private javax.swing.JTextField CDestino;
     private javax.swing.JTextField CEquipaje;
     private javax.swing.JTextField CNombresyAp;
-    private javax.swing.JTextField CNombresyAp4;
     private javax.swing.JTextField CNumeroTicket;
     private javax.swing.JTextField CSalida;
     private javax.swing.JTextField Cmatricula;

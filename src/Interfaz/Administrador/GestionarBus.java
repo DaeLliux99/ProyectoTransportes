@@ -5,16 +5,17 @@
  */
 package Interfaz.Administrador;
 
+import main.ClassCollector;
+
 /**
  *
  * @author LEONARDO
  */
-public class ConstruccionBus extends javax.swing.JFrame {
+public class GestionarBus extends javax.swing.JFrame {
 
-    /**
-     * Creates new form NewJFrame
-     */
-    public ConstruccionBus() {
+    ClassCollector A;
+    
+    public GestionarBus() {
         initComponents();
     }
 
