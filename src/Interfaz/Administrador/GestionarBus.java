@@ -39,7 +39,7 @@ public class GestionarBus extends javax.swing.JFrame {
         contadorChofer = 0;
         limpiar();
         for (Chofer b : principal.listaChoferes) {
-            if (!b.isEstado()) {
+            if (b.isEstado()) {
                 tablaChofer.getModel().setValueAt(b.getDniChofer(), contadorChofer, 0);
                 tablaChofer.getModel().setValueAt(b.getNombre(), contadorChofer, 1);
                 contadorChofer++;
@@ -47,7 +47,7 @@ public class GestionarBus extends javax.swing.JFrame {
         }
         contadorBus = 0;
         for (Bus b : principal.listaBuses) {
-            if (b.getIdChofer() != null) {
+            if (b.getIdChofer() == null) {
                 tablaBuses.getModel().setValueAt(b.getMatricula(), contadorBus, 0);
                 tablaBuses.getModel().setValueAt(b.getNumeroAsientos(), contadorBus, 1);
                 contadorBus++;
@@ -92,7 +92,7 @@ public class GestionarBus extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         botonRegistrar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        botonSalir = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -194,14 +194,23 @@ public class GestionarBus extends javax.swing.JFrame {
         });
         getContentPane().add(botonRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, -1, -1));
 
-        jButton2.setText("Salir");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 320, 80, -1));
+        botonSalir.setText("Salir");
+        botonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSalirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 320, 80, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarActionPerformed
         // TODO add your handling code here:
+        if (this.dniChoferSelec == -1 || this.idRutaSelec == -1 || this.matriBusSelec == -1) {
+            JOptionPane.showMessageDialog(null, "No ha seleccionado nada", "No se encontro nada", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
         Chofer choferSelec = null;
         Bus busSelec = null;
         Ruta rutaSelec = null;
@@ -234,6 +243,7 @@ public class GestionarBus extends javax.swing.JFrame {
 
         if (fila > contadorChofer - 1) {
             JOptionPane.showMessageDialog(null, "No ha seleccionado nada", "Casilla vacia", JOptionPane.INFORMATION_MESSAGE);
+            dniChoferSelec = -1;
         } else {
             dniChoferSelec = (int) modelo.getValueAt(fila, 0);
         }
@@ -246,6 +256,7 @@ public class GestionarBus extends javax.swing.JFrame {
 
         if (fila > contadorBus - 1) {
             JOptionPane.showMessageDialog(null, "No ha seleccionado nada", "Casilla vacia", JOptionPane.INFORMATION_MESSAGE);
+            matriBusSelec = -1;
         } else {
             matriBusSelec = (int) modelo.getValueAt(fila, 0);
         }
@@ -258,10 +269,18 @@ public class GestionarBus extends javax.swing.JFrame {
 
         if (fila > contadorRuta - 1) {
             JOptionPane.showMessageDialog(null, "No ha seleccionado nada", "Casilla vacia", JOptionPane.INFORMATION_MESSAGE);
+            idRutaSelec = -1;
         } else {
             idRutaSelec = (int) modelo.getValueAt(fila, 0);
         }
     }//GEN-LAST:event_tablaRutasMouseClicked
+
+    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+        // TODO add your handling code here:
+        PanelDeControl UU = new PanelDeControl(principal);
+        this.setVisible(false);
+        UU.setVisible(true);
+    }//GEN-LAST:event_botonSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -270,7 +289,7 @@ public class GestionarBus extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonRegistrar;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton botonSalir;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
