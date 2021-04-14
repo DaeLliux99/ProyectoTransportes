@@ -40,7 +40,7 @@ public class GestionarChofer extends javax.swing.JFrame {
         return resultado;
     }
 
-    public void mostrar() {
+    private void mostrar() {
         contador = 0;
         limpiar();
         for (Chofer b : principal.listaChoferes) {
@@ -52,15 +52,11 @@ public class GestionarChofer extends javax.swing.JFrame {
     }
 
     private void limpiar() {
-
         for (int i = 0; i < 30; i++) {
-
             TablaChofer.getModel().setValueAt(" ", i, 0);
             TablaChofer.getModel().setValueAt(" ", i, 1);
             TablaChofer.getModel().setValueAt(" ", i, 2);   //
-
         }
-
     }
 
     @SuppressWarnings("unchecked")

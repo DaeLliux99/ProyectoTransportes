@@ -212,6 +212,17 @@ public class Lista <G> implements Iterable<G> {
             puntero = puntero.siguiente;
         }
     }
+    
+    public String getListaString() {
+        Nodo puntero = cabeza;
+        String s = "";
+        while (puntero != null) {
+            System.out.println(puntero.valor.toString());
+            s = s + puntero.valor.toString();
+            puntero = puntero.siguiente;
+        }
+        return s;
+    }
 
     @Override
     
