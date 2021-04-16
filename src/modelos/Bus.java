@@ -22,7 +22,15 @@ public class Bus {
     private Ruta ruta;
    
     Cola<Pasajero> colaPasajero = new Cola<>();
-
+    
+    public Bus(int matricula, int NumAsientos, int PesoMaximo) {
+        this.matricula = matricula;
+        this.numeroAsientos = NumAsientos;
+        this.pesoMaximo = PesoMaximo;
+        this.idChofer = null;
+        this.ruta = null;
+    }
+    
     public Bus(int matricula, int NumAsientos, int PesoMaximo, Chofer ID_chofer, Ruta ruta) {
         this.matricula = matricula;
         this.numeroAsientos = NumAsientos;

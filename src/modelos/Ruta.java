@@ -126,5 +126,9 @@ public class Ruta {
                 + "\n\tDestino: " + getLlegada());
 
     }
+    
+    public String getRuta() {
+        return ciudadesRuta.getListaString();
+    }
 
 }

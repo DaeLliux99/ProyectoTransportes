@@ -9,7 +9,7 @@ package modelos;
  *
  * @author LEONARDO
  */
-public class Chofer implements Comparable {
+public class Chofer implements Comparable<Chofer> {
     private int dniChofer;
     private String nombre;
     private boolean estado=true; //true = disponible false= no disponible
@@ -49,8 +49,11 @@ public class Chofer implements Comparable {
     }
 
     @Override
-    public int compareTo(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int compareTo(Chofer o) {
+        if (this.dniChofer == o.dniChofer) {
+            return 0;
+        }
+        return -1;
     }
 
     

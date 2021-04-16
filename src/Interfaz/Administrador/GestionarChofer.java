@@ -40,7 +40,7 @@ public class GestionarChofer extends javax.swing.JFrame {
         return resultado;
     }
 
-    public void mostrar() {
+    private void mostrar() {
         contador = 0;
         limpiar();
         for (Chofer b : principal.listaChoferes) {
@@ -52,15 +52,11 @@ public class GestionarChofer extends javax.swing.JFrame {
     }
 
     private void limpiar() {
-
         for (int i = 0; i < 30; i++) {
-
             TablaChofer.getModel().setValueAt(" ", i, 0);
             TablaChofer.getModel().setValueAt(" ", i, 1);
             TablaChofer.getModel().setValueAt(" ", i, 2);   //
-
         }
-
     }
 
     @SuppressWarnings("unchecked")
@@ -239,27 +235,12 @@ public class GestionarChofer extends javax.swing.JFrame {
             boolean encontro = false;
             Chofer temp = null;
 
-            /*
-        //MEDIDA DESESPERADA
-        INSERTAR CHOFER FANTASMON CADA QUE SE ELIMINE Y CAMBIAR EL CONTADOR A MENOS 2
-             */
-            Nodo<Chofer> nodoDeLuis = principal.listaChoferes.ObetenerPrimerNodo();
-            while (nodoDeLuis != null) {
-                if (nodoDeLuis.valor.getDniChofer() == dniEliminar) {
-                    temp = nodoDeLuis.valor;
+            for (Chofer C : principal.listaChoferes) {
+                if (C.getDniChofer() == dniEliminar) {
+                    temp = C;
                     encontro = true;
                 }
-                nodoDeLuis = nodoDeLuis.siguiente;
             }
-
-            /*
-        for (Chofer C : principal.listaChoferes) {
-            if (C.getDniChofer() == dniEliminar) {
-                temp = C;   
-                encontro = true;
-            }           
-        }
-             */
             if (!encontro) {
                 JOptionPane.showMessageDialog(null, "No ha seleccionado nada", "No se encontro nada", JOptionPane.INFORMATION_MESSAGE);
             } else {

@@ -75,9 +75,57 @@ public class Lista <G> implements Iterable<G> {
             this.longitud++;
         }
     }
-
+    
+    public <G extends Comparable<? super G>> void eliminar(G dato) {
+        Nodo<G> temp, cabeza1=cabeza;
+        if (cabeza == null){
+            System.out.println("lista vacia");
+        } else {
+            if (dato.compareTo(cabeza1.valor) == 0){
+                cabeza=cabeza.siguiente;
+                System.out.println("eliminado 1");      
+            } else {
+                temp=cabeza1;
+                cabeza1=cabeza1.siguiente;
+                while(cabeza1!=null){
+                    if(dato.compareTo(cabeza1.valor) == 0 && cabeza1.siguiente!=null){
+                        temp.siguiente=cabeza1.siguiente;
+                        System.out.println("eliminado 2");
+                    } else if (dato.compareTo(cabeza1.valor) == 0) {
+                        temp.siguiente=null;
+                        ultimo = temp;
+                        System.out.println("eliminado 3");
+                    }
+                    temp=cabeza1;
+                    cabeza1=cabeza1.siguiente;
+                }
+            }
+        }
+    }
+    
+    public void eliminarUltimo() {
+        if (this.cabeza != null) {
+            Nodo eliminado;
+            if (this.cabeza.siguiente != null) {
+                Nodo puntero = this.cabeza;
+                while (puntero.siguiente.siguiente != null) {
+                    puntero = puntero.siguiente;
+                }
+                ultimo = puntero;
+                eliminado = puntero.siguiente;
+                puntero.siguiente = null;
+            } else {
+                eliminado = this.cabeza;
+                this.cabeza = null;
+                ultimo = null;
+            }
+            eliminado = null;
+            this.longitud--;
+        }
+    }
+    /*
     public void eliminar(G dato){
-        Nodo<G> temp, cabeza1=cabeza;     
+        Nodo<G> temp, cabeza1=cabeza;
         if(cabeza==null){
             System.out.println("lista vacia");
         }else{
@@ -102,6 +150,7 @@ public class Lista <G> implements Iterable<G> {
             }
         }
     }
+    */
 
     public G BuscarXDato(G dato) {
         if (this.cabeza == null) {
@@ -131,13 +180,19 @@ public class Lista <G> implements Iterable<G> {
     }
 
     public G obetenerPrimerObjeto() {
-        Object obj = cabeza.getValor();
-        return (G) obj;
+        if (cabeza != null) {
+            Object obj = cabeza.getValor();
+            return (G) obj;
+        }
+        return null;
     }
 
     public G obetenerUltimoObjeto() {
-        Object obj = ultimo.getValor();
-        return (G) obj;
+        if (ultimo != null) {
+            Object obj = ultimo.getValor();
+            return (G) obj;
+        }
+        return null;
     }
 
     public Nodo ObetenerPrimerNodo() {
@@ -156,6 +211,17 @@ public class Lista <G> implements Iterable<G> {
             System.out.println(puntero.valor.toString());
             puntero = puntero.siguiente;
         }
+    }
+    
+    public String getListaString() {
+        Nodo puntero = cabeza;
+        String s = "";
+        while (puntero != null) {
+            System.out.println(puntero.valor.toString());
+            s = s + puntero.valor.toString();
+            puntero = puntero.siguiente;
+        }
+        return s;
     }
 
     @Override

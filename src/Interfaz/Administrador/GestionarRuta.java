@@ -23,10 +23,11 @@ public class GestionarRuta extends javax.swing.JFrame {
         initComponents();
         principal = A;
         insertar();
-
+        this.setLocationRelativeTo(null);
     }
 
     public void insertar() {
+        limpiarCB();
         for (Ciudad C : principal.reg.obtenerCiudades()) {
             CBRuta1.addItem(C.getCiudad());
         }
@@ -36,7 +37,6 @@ public class GestionarRuta extends javax.swing.JFrame {
         limpiarCB();
         for (Ciudad C : principal.reg.obtenerCiudadesAdya(ciudad)) {
             CBRuta1.addItem(C.getCiudad());
-            System.out.println("Hola Mundo ... !!!");
         }
     }
 
@@ -55,8 +55,8 @@ public class GestionarRuta extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         BAgregarCiudad = new javax.swing.JButton();
         BElminarCiudadRuta = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        botonRegistrarRuta = new javax.swing.JButton();
+        botonCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -70,11 +70,6 @@ public class GestionarRuta extends javax.swing.JFrame {
         getContentPane().add(CListaCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 490, -1));
 
         CCiudadSeleccionada.setEditable(false);
-        CCiudadSeleccionada.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CCiudadSeleccionadaActionPerformed(evt);
-            }
-        });
         getContentPane().add(CCiudadSeleccionada, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 70, -1));
 
         jLabel1.setText("Ciudad seleccionada");
@@ -99,23 +94,28 @@ public class GestionarRuta extends javax.swing.JFrame {
         });
         getContentPane().add(BElminarCiudadRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, -1, -1));
 
-        jButton3.setText("Registrar ruta");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        botonRegistrarRuta.setText("Registrar ruta");
+        botonRegistrarRuta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                botonRegistrarRutaActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, -1, -1));
+        getContentPane().add(botonRegistrarRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, -1, -1));
 
-        jButton4.setText("Cancelar");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, -1, -1));
+        botonCancelar.setText("Cancelar");
+        botonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void botonRegistrarRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarRutaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_botonRegistrarRutaActionPerformed
 
     private void CBRuta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBRuta1ActionPerformed
 
@@ -146,6 +146,20 @@ public class GestionarRuta extends javax.swing.JFrame {
 
     private void BElminarCiudadRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BElminarCiudadRutaActionPerformed
         // TODO add your handling code here:
+        listaTemporal.eliminarUltimo();
+        Ciudad ultimaCiudad = listaTemporal.obetenerUltimoObjeto();
+        if (ultimaCiudad != null) {
+            insertarAdya(ultimaCiudad);
+        } else {
+            insertar();
+        }
+        String temporal = "";
+        for (Ciudad c : listaTemporal) {
+            temporal = temporal + c.toString();
+        }
+        CListaCiudad.setText(temporal);
+        
+        /*
         principal.reg.obtenerCiudades().eliminar(principal.reg.obtenerCiudades().obetenerUltimoObjeto());
         String[] arregloDeLuis = CListaCiudad.getText().split("-");
         String temporal = "";
@@ -158,11 +172,15 @@ public class GestionarRuta extends javax.swing.JFrame {
             }
         }
         CListaCiudad.setText(temporal);
+        */
     }//GEN-LAST:event_BElminarCiudadRutaActionPerformed
 
-    private void CCiudadSeleccionadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CCiudadSeleccionadaActionPerformed
+    private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CCiudadSeleccionadaActionPerformed
+        PanelDeControl UU = new PanelDeControl(principal);
+        this.setVisible(false);
+        UU.setVisible(true);
+    }//GEN-LAST:event_botonCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -171,8 +189,8 @@ public class GestionarRuta extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> CBRuta1;
     private javax.swing.JTextField CCiudadSeleccionada;
     private javax.swing.JTextField CListaCiudad;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton botonCancelar;
+    private javax.swing.JButton botonRegistrarRuta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

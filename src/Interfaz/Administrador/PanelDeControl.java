@@ -36,7 +36,7 @@ public class PanelDeControl extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        botonGestionarBus = new javax.swing.JButton();
         CMostrarRuta = new javax.swing.JButton();
         CConstruirRuta = new javax.swing.JButton();
 
@@ -71,8 +71,13 @@ public class PanelDeControl extends javax.swing.JFrame {
         jButton4.setText("Salir sesion");
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, -1, -1));
 
-        jButton3.setText("Gestionar Bus");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 120, -1));
+        botonGestionarBus.setText("Gestionar Bus");
+        botonGestionarBus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGestionarBusActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botonGestionarBus, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 120, -1));
 
         CMostrarRuta.setText("Mostrar ruta");
         jPanel1.add(CMostrarRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 120, -1));
@@ -110,12 +115,19 @@ public class PanelDeControl extends javax.swing.JFrame {
         UU.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void botonGestionarBusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGestionarBusActionPerformed
+        // TODO add your handling code here:
+        GestionarBus UU = new GestionarBus(principal);
+        this.setVisible(false);
+        UU.setVisible(true);
+    }//GEN-LAST:event_botonGestionarBusActionPerformed
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CConstruirRuta;
     private javax.swing.JButton CMostrarRuta;
+    private javax.swing.JButton botonGestionarBus;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
