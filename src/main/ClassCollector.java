@@ -56,7 +56,7 @@ public class ClassCollector {
 
         listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(001, "Lima", 10));
         listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(002, "Huancayo", 20));
-        listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(003, "Pichanaki", 30));
+        listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(003, "Tarapoto", 30));
         listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(004, "Trujillo", 40));
         listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(005, "Puno", 50));
         listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(006, "Cajamarca", 60));
@@ -69,16 +69,20 @@ public class ClassCollector {
         listaRutas.BuscarXDato(a2).ingresarCiudad(new Ciudad(006, "La libertad", 60));
 
         
-        reg.agregarCiudad(new Ciudad(001, "AA", 10));
-        reg.agregarCiudad(new Ciudad(002, "CD", 20));
-        reg.agregarCiudad(new Ciudad(003, "EF", 30));
-        reg.agregarCiudad(new Ciudad(004, "FG", 40));
-        reg.agregarCiudad(new Ciudad(005, "HI", 50));
+        reg.agregarCiudad(new Ciudad(001, "Lima", 10));
+        reg.agregarCiudad(new Ciudad(002, "Huancayo", 20));
+        reg.agregarCiudad(new Ciudad(003, "Trujillo", 30));
+        reg.agregarCiudad(new Ciudad(004, "Arequipa", 40));
+        reg.agregarCiudad(new Ciudad(005, "Chiclayo", 50));
+        
         reg.agregarCamino(1, 4, 50);
-        reg.agregarCamino(2, 3, 50);
         reg.agregarCamino(1, 3, 50);
-        reg.agregarCamino(5, 1, 50);
+        
+        reg.agregarCamino(2, 3, 50);
         reg.agregarCamino(2, 4, 50);
+        
+        reg.agregarCamino(5, 1, 50);
+        
 
         System.out.println(reg.toString());
         Ciudad c = reg.buscarCiudad(1);
