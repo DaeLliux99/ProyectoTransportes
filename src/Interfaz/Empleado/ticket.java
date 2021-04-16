@@ -5,8 +5,22 @@
  */
 package Interfaz.Empleado;
 
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import estructuras.Cola;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import main.ClassCollector;
 import modelos.Bus;
 import modelos.Pasajero;
@@ -27,7 +41,119 @@ public class ticket extends javax.swing.JFrame {
         this.setMinimumSize(new Dimension(470, 522));
         this.setLocationRelativeTo(null);
     }
-
+    public void crearPDF() throws FileNotFoundException, DocumentException {
+        // Se crea el documento
+        /*
+        int val = Integer.parseInt(CNumeroTicket.getText());
+        int dniC = Integer.parseInt(CAsiento.getText());
+        String nombres = CNombresyAp.getText();
+        String salida = CSalida.getText();
+        String llegada = CDestino.getText();
+        int numeroAsiento = Integer.parseInt(CAsiento.getText());
+        int importe = Integer.parseInt(CEquipaje.getText());
+        String equipaje = CEquipaje.getText();
+        String descripcion = CDescripccion.getText();
+        */
+        Document documento = new Document();
+        
+        // El OutPutStream para el fichero donde crearemos el PDF
+        String nombre=CNumeroTicket+".pdf";
+        FileOutputStream ficheroPDF = new FileOutputStream(nombre);
+        
+        // Se asocia el documento de OutPutStream
+        PdfWriter.getInstance(documento, ficheroPDF);
+        
+        // Se abre el documento
+        documento.open();
+        
+        // Parrafo
+        Paragraph titulo1 = new Paragraph("Ticket Nº \t\t "+CNumeroTicket.getText(),
+                FontFactory.getFont("arial",
+                        24,
+                        Font.PLAIN,
+                        BaseColor.BLACK
+                        )
+        );
+        /*
+        Paragraph titulo2 = new Paragraph("\t\tMatricula de bus:  \t\t"+Cmatricula.getText(),
+                FontFactory.getFont("arial",
+                        14,
+                        Font.PLAIN,
+                        BaseColor.BLACK
+                        )
+        );
+        Paragraph titulo3 = new Paragraph("\t\tAsiento Nº:  \t\t"+CAsiento.getText(),
+                FontFactory.getFont("arial",
+                        14,
+                        Font.PLAIN,
+                        BaseColor.BLACK
+                        )
+        );
+        Paragraph titulo4 = new Paragraph("\t\tDNI Cliente:  \t\t"+CDNI.getText(),
+                FontFactory.getFont("arial",
+                        14,
+                        Font.PLAIN,
+                        BaseColor.BLACK
+                        )
+        );
+        Paragraph titulo5 = new Paragraph("\t\tNombres y apellidos:  \t\t"+CNombresyAp.getText(),
+                FontFactory.getFont("arial",
+                        14,
+                        Font.PLAIN,
+                        BaseColor.BLACK
+                        )
+        );
+        Paragraph titulo6 = new Paragraph("\t\tSalida:  \t\t"+CSalida.getText(),
+                FontFactory.getFont("arial",
+                        14,
+                        Font.PLAIN,
+                        BaseColor.BLACK
+                        )
+        );
+        Paragraph titulo7 = new Paragraph("\t\tDestino:  \t\t"+CDestino.getText(),
+                FontFactory.getFont("arial",
+                        14,
+                        Font.PLAIN,
+                        BaseColor.BLACK
+                        )
+        );
+        Paragraph titulo8 = new Paragraph("\t\tImporte ( S/ ):  \t\t"+CCosto.getText(),
+                FontFactory.getFont("arial",
+                        22,
+                        Font.BOLD,
+                        BaseColor.BLACK
+                        )
+        );
+        Paragraph titulo9 = new Paragraph("\t\tEquipaje:  \t\t"+CEquipaje.getText(),
+                FontFactory.getFont("arial",
+                        14,
+                        Font.PLAIN,
+                        BaseColor.BLACK
+                        )
+        );
+        Paragraph titulo10 = new Paragraph("\t\tDescripcion:  \t\t"+CDescripccion.getText(),
+                FontFactory.getFont("arial",
+                        14,
+                        Font.PLAIN,
+                        BaseColor.BLACK
+                        )
+        );
+        */
+        // Añadimos el titulo al documento
+        documento.add(titulo1);
+        /*
+        documento.add(titulo2);
+        documento.add(titulo3);
+        documento.add(titulo4);
+        documento.add(titulo5);
+        documento.add(titulo6);
+        documento.add(titulo7);
+        documento.add(titulo8);
+        documento.add(titulo9);
+*/
+        // Se cierra el documento
+        documento.close();
+    }
     public void busquedaPasajero() {
         Cola<Pasajero> a = bus.getColaPasajero();
 
@@ -209,15 +335,13 @@ public class ticket extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnImprimirActionPerformed
-        int numeroticket = Integer.parseInt(CNumeroTicket.getText());
-        int dni = Integer.parseInt(CAsiento.getText());
-        String nombres = CNombresyAp.getText();
-        String salida = CSalida.getText();
-        String llegada = CDestino.getText();
-        int numeroAsiento = Integer.parseInt(CAsiento.getText());
-        int importe = Integer.parseInt(CEquipaje.getText());
-        String equipaje = CEquipaje.getText();
-        String descripcion = CDescripccion.getText();
+        try {
+            crearPDF();
+            
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "ERROR AL IMPRIMIR", "intente de nuevo mas tarde. \nSi el problema persiste contacte al equipo de soporte", JOptionPane.INFORMATION_MESSAGE);
+        }
+        System.out.println("fin de la operacion");
     }//GEN-LAST:event_BtnImprimirActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -252,8 +376,6 @@ public class ticket extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnImprimir;
     private javax.swing.JTextField CAsiento;
