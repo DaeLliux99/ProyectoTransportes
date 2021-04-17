@@ -5,17 +5,28 @@
  */
 package Interfaz.Administrador;
 
+import main.ClassCollector;
+import modelos.*;
+import estructuras.*;
+import static java.lang.Math.round;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author LEONARDO
  */
 public class GestionarHorario extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RegistrarPasajero
-     */
-    public GestionarHorario() {
+    ClassCollector principal;
+    int contadorBus;
+    int idBus;
+    String salidaTXT;
+
+    public GestionarHorario(ClassCollector A) {
         initComponents();
+        principal = A;
+        mostrar();
     }
 
     /**
@@ -29,10 +40,10 @@ public class GestionarHorario extends javax.swing.JFrame {
 
         jButton2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaHorario = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        ChoraS = new javax.swing.JTextField();
+        ChoraL = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -45,8 +56,18 @@ public class GestionarHorario extends javax.swing.JFrame {
         jButton2.setText("jButton2");
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 420, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaHorario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -71,30 +92,54 @@ public class GestionarHorario extends javax.swing.JFrame {
             new String [] {
                 "Id Chofer", "Id Bus", "Id Ruta", "Ruta"
             }
-        ));
-        jScrollPane2.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaHorario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaHorarioMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tablaHorario);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 550, 120));
 
         jLabel8.setText("Seleccionar Bus");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
-        jTextField4.setText("jTextField4");
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, -1, -1));
+        ChoraS.setText(" ");
+        ChoraS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChoraSActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ChoraS, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 70, -1));
 
-        jTextField5.setText("jTextField5");
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, -1));
+        ChoraL.setEditable(false);
+        ChoraL.setText(" ");
+        getContentPane().add(ChoraL, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, 80, -1));
 
         jLabel9.setText("Hora de salida");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, -1, -1));
 
         jLabel10.setText("Hora de llegada");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 240, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, -1, -1));
 
         jLabel1.setText("Registrar Horario");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, -1, -1));
 
         jButton1.setText("Registrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 370, -1, -1));
 
         jButton3.setText("Cancelar");
@@ -102,21 +147,98 @@ public class GestionarHorario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    /**
-     * @param args the command line arguments
-     */
-    /*
-    public static void main(String args[]) {
-       
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GestionarHorario().setVisible(true);
-            }
-        });
+    private void limpiar() {
+        for (int i = 0; i < 30; i++) {
+            tablaHorario.getModel().setValueAt(" ", i, 0);
+            tablaHorario.getModel().setValueAt(" ", i, 1);
+            tablaHorario.getModel().setValueAt(" ", i, 2);
+            tablaHorario.getModel().setValueAt(" ", i, 3);
+        }
     }
-*/
+
+    private void mostrar() {
+
+        limpiar();
+        principal.listaBuses.mostrarLista();
+        contadorBus = 0;
+        for (Bus b : principal.listaBuses) {
+            if (b.getChofer() != null) {
+            tablaHorario.getModel().setValueAt(b.getChofer().getDniChofer(), contadorBus, 0);
+            tablaHorario.getModel().setValueAt(b.getMatricula(), contadorBus, 1);
+            tablaHorario.getModel().setValueAt(b.getRuta().getIdRuta(), contadorBus, 2);
+            tablaHorario.getModel().setValueAt(b.getRuta().mostrarCiudadesRuta(), contadorBus, 3);
+            contadorBus++;
+            }
+        }
+
+    }
+
+    private String calcularTiempo(float distancia) {
+        //promedio de velocidad 60km/1hora
+        float minutos = round(distancia % 60);
+        float hora = round(distancia / 60);
+        return hora + ":" + minutos;
+    }
+
+    private String sumarTiempo(float distancia, String tiempo) {
+        String[] cadenaDeLuis = calcularTiempo(distancia).split(":");
+        String[] cadenaDeChachi = tiempo.split(":");
+
+        int enteroDeLuis/*Hora*/ = Integer.parseInt(cadenaDeLuis[0]) + Integer.parseInt(cadenaDeChachi[0]);
+        int enteroDeEsteban/*Minuto*/ = Integer.parseInt(cadenaDeLuis[1]) + Integer.parseInt(cadenaDeChachi[1]);
+        if (enteroDeEsteban > 59) {
+            enteroDeLuis = enteroDeLuis + round(enteroDeEsteban % 60);
+            enteroDeEsteban = round(enteroDeEsteban / 60);
+        }
+        return enteroDeLuis + ":" + enteroDeEsteban;
+    }
+
+
+    private void ChoraSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChoraSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ChoraSActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+
+        if (salidaTXT != null && !ChoraS.getText().trim().isEmpty()) {
+            Bus busDeEsteban = principal.listaBuses.ObetenerPorIndiceObjeto(idBus-1);
+            System.out.println(busDeEsteban.getMatricula()); 
+            
+            Horario h = new Horario(ChoraS.getText());
+            
+            busDeEsteban.setHorario(h);
+            
+            ChoraL.setText(sumarTiempo(busDeEsteban.getRuta().getDistanciaRuta(), ChoraS.getText()));
+            busDeEsteban.getHorario().setHoraLlegada(ChoraL.getText());
+            
+            JOptionPane.showMessageDialog(null, "VENTANA DE NESTOR", "Se ha calculado", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado nada", "No se puede realizaar registro", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tablaHorarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaHorarioMouseClicked
+        // TODO add your handling code here:
+
+        int fila = tablaHorario.getSelectedRow();
+        DefaultTableModel modelo = (DefaultTableModel) tablaHorario.getModel();
+
+        if (fila > contadorBus - 1) {
+            JOptionPane.showMessageDialog(null, "No ha seleccionado nada", "Casilla vacia", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            salidaTXT = String.valueOf(modelo.getValueAt(fila, 0));
+            idBus = (int) modelo.getValueAt(fila, 1);
+        }
+
+
+    }//GEN-LAST:event_tablaHorarioMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField ChoraL;
+    private javax.swing.JTextField ChoraS;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -125,8 +247,6 @@ public class GestionarHorario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTable tablaHorario;
     // End of variables declaration//GEN-END:variables
 }

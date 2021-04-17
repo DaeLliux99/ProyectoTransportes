@@ -10,12 +10,13 @@ import nodos.Nodo;
 import modelos.*;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+
 /**
  *
  * @author Carlos Esteban
  * @param <G>
  */
-public class Lista <G> implements Iterable<G> {
+public class Lista<G> implements Iterable<G> {
 
     //Atributos
     Nodo cabeza;
@@ -40,6 +41,7 @@ public class Lista <G> implements Iterable<G> {
         }
         this.longitud++;
     }
+
     //Por practicidad
     public void insertarFinal(G dato) {
         Nodo<G> nodo = new Nodo<>(dato);
@@ -75,34 +77,34 @@ public class Lista <G> implements Iterable<G> {
             this.longitud++;
         }
     }
-    
+
     public <G extends Comparable<? super G>> void eliminar(G dato) {
-        Nodo<G> temp, cabeza1=cabeza;
-        if (cabeza == null){
+        Nodo<G> temp, cabeza1 = cabeza;
+        if (cabeza == null) {
             System.out.println("lista vacia");
         } else {
-            if (dato.compareTo(cabeza1.valor) == 0){
-                cabeza=cabeza.siguiente;
-                System.out.println("eliminado 1");      
+            if (dato.compareTo(cabeza1.valor) == 0) {
+                cabeza = cabeza.siguiente;
+                System.out.println("eliminado 1");
             } else {
-                temp=cabeza1;
-                cabeza1=cabeza1.siguiente;
-                while(cabeza1!=null){
-                    if(dato.compareTo(cabeza1.valor) == 0 && cabeza1.siguiente!=null){
-                        temp.siguiente=cabeza1.siguiente;
+                temp = cabeza1;
+                cabeza1 = cabeza1.siguiente;
+                while (cabeza1 != null) {
+                    if (dato.compareTo(cabeza1.valor) == 0 && cabeza1.siguiente != null) {
+                        temp.siguiente = cabeza1.siguiente;
                         System.out.println("eliminado 2");
                     } else if (dato.compareTo(cabeza1.valor) == 0) {
-                        temp.siguiente=null;
+                        temp.siguiente = null;
                         ultimo = temp;
                         System.out.println("eliminado 3");
                     }
-                    temp=cabeza1;
-                    cabeza1=cabeza1.siguiente;
+                    temp = cabeza1;
+                    cabeza1 = cabeza1.siguiente;
                 }
             }
         }
     }
-    
+
     public void eliminarUltimo() {
         if (this.cabeza != null) {
             Nodo eliminado;
@@ -123,6 +125,7 @@ public class Lista <G> implements Iterable<G> {
             this.longitud--;
         }
     }
+
     /*
     public void eliminar(G dato){
         Nodo<G> temp, cabeza1=cabeza;
@@ -150,7 +153,7 @@ public class Lista <G> implements Iterable<G> {
             }
         }
     }
-    */
+     */
 
     public G BuscarXDato(G dato) {
         if (this.cabeza == null) {
@@ -170,12 +173,12 @@ public class Lista <G> implements Iterable<G> {
                 return (G) temp2.getValor();
             } else {
                 System.out.println("\nEl dato no existe\n");
-            }           
+            }
         }
         return null;
     }
-    
-    public int obtenerLongitud(){
+
+    public int obtenerLongitud() {
         return longitud;
     }
 
@@ -212,7 +215,7 @@ public class Lista <G> implements Iterable<G> {
             puntero = puntero.siguiente;
         }
     }
-    
+
     public String getListaString() {
         Nodo puntero = cabeza;
         String s = "";
@@ -224,19 +227,56 @@ public class Lista <G> implements Iterable<G> {
         return s;
     }
 
+    public Nodo ObetenerPorIndiceNodo(int i) {
+        if (i < longitud && i >= 0) {
+            Nodo puntero = cabeza;
+            int a = 0;
+            while (puntero != null) {
+                if (a == i) {
+                    return puntero;
+                }
+                puntero = puntero.siguiente;
+                i++;
+            }
+
+        }
+        System.out.println("fuera de arreglo");
+        return null;
+    }
+
+    public G ObetenerPorIndiceObjeto(int i) {
+        int a = 0;
+        if (i < longitud && i >= 0) {
+            Nodo puntero = cabeza;
+
+            while (puntero != null) {
+                if (a == i) {
+                    return (G) puntero.valor;
+                }
+                puntero = puntero.siguiente;
+                a++;
+            }
+
+        }
+        System.out.println("fuera de arreglo");
+        return null;
+    }
+
     @Override
-    
-    public Iterator<G> iterator() {    
+
+    public Iterator<G> iterator() {
         if (this.cabeza == null) {
             return Collections.<G>emptyList().iterator();
         }
         return new Iterator<G>() {
-            private Nodo <G> nodoActual = null;
+            private Nodo<G> nodoActual = null;
+
             @Override
             public boolean hasNext() {
                 return nodoActual != ultimo;
             }
-            @Override   
+
+            @Override
             public G next() {
                 if (nodoActual == null) {
                     nodoActual = cabeza;
@@ -247,7 +287,7 @@ public class Lista <G> implements Iterable<G> {
                 }
                 nodoActual = nodoActual.siguiente;
                 return nodoActual.valor;
-            }        
+            }
         };
     }
 }

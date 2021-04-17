@@ -5,6 +5,7 @@
  */
 package Interfaz.Administrador;
 
+import Interfaz.Empleado.LogIn;
 import main.ClassCollector;
 
 /**
@@ -31,106 +32,146 @@ public class PanelDeControl extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        GestionarChofer = new javax.swing.JButton();
+        GestionarRegion = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        GestionarHorario = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        botonGestionarBus = new javax.swing.JButton();
-        CMostrarRuta = new javax.swing.JButton();
-        CConstruirRuta = new javax.swing.JButton();
+        GestionarBus = new javax.swing.JButton();
+        GMostrarRuta = new javax.swing.JButton();
+        GestionarRuta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Gestionar Chofer");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        GestionarChofer.setText("Gestionar Chofer");
+        GestionarChofer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                GestionarChoferActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 130, -1));
+        jPanel1.add(GestionarChofer, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 130, -1));
 
-        jButton6.setText("Gestionar Ciudades");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        GestionarRegion.setText("Gestionar Region");
+        GestionarRegion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                GestionarRegionActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 130, -1));
+        jPanel1.add(GestionarRegion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 130, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Panel de control");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
 
-        jButton5.setText("Gestionar Horario");
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 130, -1));
+        GestionarHorario.setText("Gestionar Horario");
+        GestionarHorario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GestionarHorarioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(GestionarHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 130, -1));
 
         jButton4.setText("Salir sesion");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, -1, -1));
 
-        botonGestionarBus.setText("Gestionar Bus");
-        botonGestionarBus.addActionListener(new java.awt.event.ActionListener() {
+        GestionarBus.setText("Gestionar Bus");
+        GestionarBus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonGestionarBusActionPerformed(evt);
+                GestionarBusActionPerformed(evt);
             }
         });
-        jPanel1.add(botonGestionarBus, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 120, -1));
+        jPanel1.add(GestionarBus, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 120, -1));
 
-        CMostrarRuta.setText("Mostrar ruta");
-        jPanel1.add(CMostrarRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 120, -1));
-
-        CConstruirRuta.setText("Gestionar Ruta");
-        CConstruirRuta.addActionListener(new java.awt.event.ActionListener() {
+        GMostrarRuta.setText("Mostrar ruta");
+        GMostrarRuta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CConstruirRutaActionPerformed(evt);
+                GMostrarRutaActionPerformed(evt);
             }
         });
-        jPanel1.add(CConstruirRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 120, -1));
+        jPanel1.add(GMostrarRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 120, -1));
+
+        GestionarRuta.setText("Gestionar Ruta");
+        GestionarRuta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GestionarRutaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(GestionarRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 120, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CConstruirRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CConstruirRutaActionPerformed
+    private void GestionarRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GestionarRutaActionPerformed
         // TODO add your handling code here:
         GestionarRuta UU = new GestionarRuta(principal);
         this.setVisible(false);
         UU.setVisible(true);
-        
-    }//GEN-LAST:event_CConstruirRutaActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_GestionarRutaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void GestionarRegionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GestionarRegionActionPerformed
         // TODO add your handling code here:
-        
+    }//GEN-LAST:event_GestionarRegionActionPerformed
+
+    private void GestionarChoferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GestionarChoferActionPerformed
+        // TODO add your handling code here:
+
         GestionarChofer UU = new GestionarChofer(principal);
         this.setVisible(false);
         UU.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_GestionarChoferActionPerformed
 
-    private void botonGestionarBusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGestionarBusActionPerformed
+    private void GestionarBusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GestionarBusActionPerformed
         // TODO add your handling code here:
         GestionarBus UU = new GestionarBus(principal);
         this.setVisible(false);
         UU.setVisible(true);
-    }//GEN-LAST:event_botonGestionarBusActionPerformed
+    }//GEN-LAST:event_GestionarBusActionPerformed
 
-    
+    private void GMostrarRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GMostrarRutaActionPerformed
+        // TODO add your handling code here:
+
+        MostrarRuta UU = new MostrarRuta(principal);
+        this.setVisible(false);
+        UU.setVisible(true);
+
+    }//GEN-LAST:event_GMostrarRutaActionPerformed
+
+    private void GestionarHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GestionarHorarioActionPerformed
+        // TODO add your handling code here:
+        GestionarHorario UU = new GestionarHorario(principal);
+        this.setVisible(false);
+        UU.setVisible(true);
+    }//GEN-LAST:event_GestionarHorarioActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        LogIn a = new LogIn(principal);
+        a.setVisible(true);
+        this.setVisible(false);
+
+
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CConstruirRuta;
-    private javax.swing.JButton CMostrarRuta;
-    private javax.swing.JButton botonGestionarBus;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton GMostrarRuta;
+    private javax.swing.JButton GestionarBus;
+    private javax.swing.JButton GestionarChofer;
+    private javax.swing.JButton GestionarHorario;
+    private javax.swing.JButton GestionarRegion;
+    private javax.swing.JButton GestionarRuta;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

@@ -19,15 +19,15 @@ import modelos.Ruta;
 public class GestionarBus extends javax.swing.JFrame {
 
     ClassCollector principal;
-    
+
     int dniChoferSelec;
     int idRutaSelec;
     int matriBusSelec;
-    
+
     int contadorChofer;
     int contadorBus;
     int contadorRuta;
-    
+
     public GestionarBus(ClassCollector A) {
         initComponents();
         principal = A;
@@ -37,7 +37,7 @@ public class GestionarBus extends javax.swing.JFrame {
         idRutaSelec = -1;
         matriBusSelec = -1;
     }
-    
+
     private void mostrar() {
         contadorChofer = 0;
         limpiar();
@@ -50,7 +50,7 @@ public class GestionarBus extends javax.swing.JFrame {
         }
         contadorBus = 0;
         for (Bus b : principal.listaBuses) {
-            if (b.getIdChofer() == null) {
+            if (b.getChofer() == null) {
                 tablaBuses.getModel().setValueAt(b.getMatricula(), contadorBus, 0);
                 tablaBuses.getModel().setValueAt(b.getNumeroAsientos(), contadorBus, 1);
                 contadorBus++;
@@ -64,11 +64,28 @@ public class GestionarBus extends javax.swing.JFrame {
             contadorRuta++;
         }
     }
-    
+
+    /*
     private void limpiar() {
         tablaChofer.removeAll();
         tablaBuses.removeAll();
         tablaRutas.removeAll();
+    }*/
+     
+    private void limpiar() {
+        for (int i = 0; i < 30; i++) {
+
+            tablaBuses.getModel().setValueAt(" ", i, 0);
+            tablaBuses.getModel().setValueAt(" ", i, 1);
+            
+            tablaChofer.getModel().setValueAt(" ", i, 0);
+            tablaChofer.getModel().setValueAt(" ", i, 1);
+            
+            tablaRutas.getModel().setValueAt(" ", i, 0);
+            tablaRutas.getModel().setValueAt(" ", i, 1);
+            tablaRutas.getModel().setValueAt(" ", i, 2);   //
+
+        }
     }
 
     /**
@@ -96,6 +113,7 @@ public class GestionarBus extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         botonRegistrar = new javax.swing.JButton();
         botonSalir = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -122,6 +140,32 @@ public class GestionarBus extends javax.swing.JFrame {
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
                 {null, null, null}
             },
             new String [] {
@@ -145,6 +189,32 @@ public class GestionarBus extends javax.swing.JFrame {
                 {null, null},
                 {null, null},
                 {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
                 {null, null}
             },
             new String [] {
@@ -162,6 +232,32 @@ public class GestionarBus extends javax.swing.JFrame {
 
         tablaBuses.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
                 {null, null},
                 {null, null},
                 {null, null},
@@ -197,13 +293,16 @@ public class GestionarBus extends javax.swing.JFrame {
         });
         getContentPane().add(botonRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, -1, -1));
 
-        botonSalir.setText("Salir");
+        botonSalir.setText("Atras");
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonSalirActionPerformed(evt);
             }
         });
         getContentPane().add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 320, 80, -1));
+
+        jButton1.setText("Agregar Buses");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -217,28 +316,48 @@ public class GestionarBus extends javax.swing.JFrame {
         Chofer choferSelec = null;
         Bus busSelec = null;
         Ruta rutaSelec = null;
-        for (Chofer c: principal.listaChoferes) {
+        for (Chofer c : principal.listaChoferes) {
             if (c.getDniChofer() == this.dniChoferSelec) {
                 choferSelec = c;
                 break;
             }
         }
-        for (Bus b: principal.listaBuses) {
-            if (b.getMatricula() == this.matriBusSelec) {
-                busSelec = b;
-                break;
-            }
-        }
-        for (Ruta r: principal.listaRutas) {
+
+        for (Ruta r : principal.listaRutas) {
             if (r.getIdRuta() == this.idRutaSelec) {
                 rutaSelec = r;
                 break;
             }
         }
+        
+        for (Bus b : principal.listaBuses) {
+            if (b.getMatricula() == this.matriBusSelec) {
+                busSelec = b;
+                break;
+            }
+        }
+        /* ESTO ES MIO
         busSelec.setIdChofer(choferSelec);
         busSelec.setRuta(rutaSelec);
         choferSelec.setEstado(false);
         mostrar();
+        */
+
+        //busSelec.setChofer(choferSelec);
+        //busSelec.setRuta(rutaSelec);
+
+        principal.listaBuses.BuscarXDato(busSelec).setChofer(choferSelec);
+        principal.listaBuses.BuscarXDato(busSelec).setRuta(rutaSelec);
+
+        //Bus nuevoBus = new Bus(1234, 20, 80, C, a1);
+        
+        
+        principal.listaBuses.mostrarLista();
+
+        limpiar();
+        mostrar();
+
+        JOptionPane.showMessageDialog(null, "BUS REGISTRADO", "BUS REGISTRADO", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_botonRegistrarActionPerformed
 
     private void tablaChoferMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaChoferMouseClicked
@@ -290,11 +409,11 @@ public class GestionarBus extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonRegistrar;
     private javax.swing.JButton botonSalir;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;

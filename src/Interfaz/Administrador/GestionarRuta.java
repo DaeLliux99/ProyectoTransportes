@@ -8,6 +8,7 @@ package Interfaz.Administrador;
 import main.ClassCollector;
 import modelos.*;
 import estructuras.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -43,6 +44,17 @@ public class GestionarRuta extends javax.swing.JFrame {
     void limpiarCB() {
         CBRuta1.removeAllItems();
     }
+    
+    Ciudad encontrarRegionCiudad(String a){
+        for(Ciudad c:principal.reg.obtenerCiudades()){
+            if(c.getCiudad().equals(a)){
+                System.out.println(a);
+                return c;
+            }
+        }
+        return null;
+    }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -115,6 +127,22 @@ public class GestionarRuta extends javax.swing.JFrame {
 
     private void botonRegistrarRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarRutaActionPerformed
         // TODO add your handling code here:
+        if (CListaCiudad.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "VACIO, NO SE PUEDE REGISTRAR", "VACIO, NO SE PUEDE REGISTRAR", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            String[] arreglo = CListaCiudad.getText().split("-");
+            Ruta rutaDeLuis = new Ruta(principal.listaRutas.longitud + 1);
+            principal.listaRutas.insertarFinal(rutaDeLuis);
+
+            for (int i = 0; i < arreglo.length; i++) {
+                principal.listaRutas.BuscarXDato(rutaDeLuis).ingresarCiudad(encontrarRegionCiudad(arreglo[i]));
+            }
+
+            JOptionPane.showMessageDialog(null, CListaCiudad.getText(), "REGISTRADO CON EXITO", JOptionPane.INFORMATION_MESSAGE);
+            PanelDeControl UU = new PanelDeControl(principal);
+            this.setVisible(false);
+            UU.setVisible(true);
+        }
     }//GEN-LAST:event_botonRegistrarRutaActionPerformed
 
     private void CBRuta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBRuta1ActionPerformed
@@ -125,7 +153,27 @@ public class GestionarRuta extends javax.swing.JFrame {
 
     private void BAgregarCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAgregarCiudadActionPerformed
         // TODO add your handling code here:
+        if (CListaCiudad.getText().isEmpty()) {
+            CListaCiudad.setText(CCiudadSeleccionada.getText());
+        } else {
+            CListaCiudad.setText(CListaCiudad.getText() + "-" + CCiudadSeleccionada.getText());
+        }
 
+        for (Ciudad d : principal.reg.obtenerCiudades()) {
+            if (d.getCiudad().equals(CCiudadSeleccionada.getText())) {
+                listaTemporal.insertarFinal(d);
+                break;
+            }
+        }
+
+        for (Ciudad C : principal.reg.obtenerCiudades()) {
+            if (C.getCiudad().equals(ciudadBuscada)) {
+                insertarAdya(C);
+                break;
+            }
+        }
+
+        /*
         CListaCiudad.setText(CListaCiudad.getText() + "-" + CCiudadSeleccionada.getText());
         
         for (Ciudad d : principal.reg.obtenerCiudades()) {
@@ -141,7 +189,7 @@ public class GestionarRuta extends javax.swing.JFrame {
                 break;
             }
         }
-        
+         */
     }//GEN-LAST:event_BAgregarCiudadActionPerformed
 
     private void BElminarCiudadRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BElminarCiudadRutaActionPerformed
@@ -158,20 +206,35 @@ public class GestionarRuta extends javax.swing.JFrame {
             temporal = temporal + c.toString();
         }
         CListaCiudad.setText(temporal);
-        
         /*
-        principal.reg.obtenerCiudades().eliminar(principal.reg.obtenerCiudades().obetenerUltimoObjeto());
-        String[] arregloDeLuis = CListaCiudad.getText().split("-");
-        String temporal = "";
-        for (int i = 0; i < arregloDeLuis.length - 1; i++) {
-            System.out.println("luis KBRO");
-            if (i == 0) {
-                temporal = arregloDeLuis[i];
-            } else {
-                temporal = temporal + "-" + arregloDeLuis[i];
+        if (CListaCiudad.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "VACIO, NO SE PUEDE ELIMINAR", "VACIO, NO SE PUEDE ELIMINAR", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            principal.reg.obtenerCiudades().eliminar( principal.reg.obtenerCiudades().obetenerPrimerObjeto());
+            String[] arregloDeLuis = CListaCiudad.getText().split("-");
+            String temporal = "";
+            int tam = arregloDeLuis.length - 1;
+            for (int i = 0; i < tam; i++) {
+
+                if (i == 0) {
+                    System.out.println(arregloDeLuis.length);
+                    temporal = arregloDeLuis[i];
+                } else {
+                    temporal = temporal + "-" + arregloDeLuis[i];
+                }
+
             }
+            for (Ciudad C : principal.reg.obtenerCiudades()) {
+                if (tam == 0) {
+                    insertar();
+                    break;
+                } else if (C.getCiudad().equals(arregloDeLuis[tam - 1])) {
+                    insertarAdya(C);
+                    break;
+                }
+            }
+            CListaCiudad.setText(temporal);
         }
-        CListaCiudad.setText(temporal);
         */
     }//GEN-LAST:event_BElminarCiudadRutaActionPerformed
 
