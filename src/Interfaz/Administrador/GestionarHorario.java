@@ -27,6 +27,7 @@ public class GestionarHorario extends javax.swing.JFrame {
         initComponents();
         principal = A;
         mostrar();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -38,7 +39,6 @@ public class GestionarHorario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaHorario = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
@@ -51,10 +51,8 @@ public class GestionarHorario extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton2.setText("jButton2");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 420, -1, -1));
 
         tablaHorario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -173,16 +171,18 @@ public class GestionarHorario extends javax.swing.JFrame {
 
     }
 
-    private String calcularTiempo(float distancia) {
+    private String calcularTiempo(int distancia) {//lo pase a entero
         //promedio de velocidad 60km/1hora
-        float minutos = round(distancia % 60);
-        float hora = round(distancia / 60);
+        int minutos = round(distancia % 60);
+        int hora = round(distancia / 60);
         return hora + ":" + minutos;
     }
+    
 
-    private String sumarTiempo(float distancia, String tiempo) {
+    private String sumarTiempo(int distancia, String tiempo) {
+        String t=tiempo.replace(" ", "");//esto era el error, habia un espacio antes
         String[] cadenaDeLuis = calcularTiempo(distancia).split(":");
-        String[] cadenaDeChachi = tiempo.split(":");
+        String[] cadenaDeChachi = t.split(":");
 
         int enteroDeLuis/*Hora*/ = Integer.parseInt(cadenaDeLuis[0]) + Integer.parseInt(cadenaDeChachi[0]);
         int enteroDeEsteban/*Minuto*/ = Integer.parseInt(cadenaDeLuis[1]) + Integer.parseInt(cadenaDeChachi[1]);
@@ -208,11 +208,12 @@ public class GestionarHorario extends javax.swing.JFrame {
             Horario h = new Horario(ChoraS.getText());
             
             busDeEsteban.setHorario(h);
-            
-            ChoraL.setText(sumarTiempo(busDeEsteban.getRuta().getDistanciaRuta(), ChoraS.getText()));
+            System.out.println(busDeEsteban.getHorario().getHoraSalida());
+            //error en las dos siguientes lineas;
+            ChoraL.setText(sumarTiempo((int)busDeEsteban.getRuta().getDistanciaRuta(), ChoraS.getText()));
             busDeEsteban.getHorario().setHoraLlegada(ChoraL.getText());
             
-            JOptionPane.showMessageDialog(null, "VENTANA DE NESTOR", "Se ha calculado", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "EXITO :v", "Se ha calculado", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(null, "No se ha seleccionado nada", "No se puede realizaar registro", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -240,7 +241,6 @@ public class GestionarHorario extends javax.swing.JFrame {
     private javax.swing.JTextField ChoraL;
     private javax.swing.JTextField ChoraS;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
