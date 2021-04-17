@@ -16,18 +16,27 @@ public class Bus {
     private int matricula;
     private int numeroAsientos;
     private int pesoMaximo;
-    private Chofer idChofer;
     private int ocupado = 0;
     
+    private Chofer idChofer;
     private Ruta ruta;
    
     Cola<Pasajero> colaPasajero = new Cola<>();
-
+    
+    public Bus(int matricula, int NumAsientos, int PesoMaximo) {
+        this.matricula = matricula;
+        this.numeroAsientos = NumAsientos;
+        this.pesoMaximo = PesoMaximo;
+        this.idChofer = null;
+        this.ruta = null;
+    }
+    
     public Bus(int matricula, int NumAsientos, int PesoMaximo, Chofer ID_chofer, Ruta ruta) {
         this.matricula = matricula;
         this.numeroAsientos = NumAsientos;
         this.pesoMaximo = PesoMaximo;
         this.idChofer = ID_chofer;
+        this.idChofer.setEstado(false);
         this.ruta = ruta;
     }
 
@@ -36,6 +45,7 @@ public class Bus {
         this.numeroAsientos = NumAsientos;
         this.pesoMaximo = PesoMaximo;
         this.idChofer = ID_chofer;
+        this.idChofer.setEstado(false);
         this.colaPasajero = Cola_Pasajero;
     }
 
