@@ -33,6 +33,9 @@ public class GestionarBus extends javax.swing.JFrame {
         principal = A;
         this.setLocationRelativeTo(null);
         mostrar();
+        dniChoferSelec = -1;
+        idRutaSelec = -1;
+        matriBusSelec = -1;
     }
     
     private void mostrar() {
@@ -234,6 +237,8 @@ public class GestionarBus extends javax.swing.JFrame {
         }
         busSelec.setIdChofer(choferSelec);
         busSelec.setRuta(rutaSelec);
+        choferSelec.setEstado(false);
+        mostrar();
     }//GEN-LAST:event_botonRegistrarActionPerformed
 
     private void tablaChoferMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaChoferMouseClicked

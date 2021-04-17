@@ -38,9 +38,13 @@ public class ClassCollector {
 
         Chofer C = new Chofer(730, "Pepito");
         Chofer C2 = new Chofer(555, "Jose");
+        Chofer C3 = new Chofer(666, "Chachi");
+        Chofer C4 = new Chofer(777, "Luis");
 
         listaChoferes.insertarFinal(C);
         listaChoferes.insertarFinal(C2);
+        listaChoferes.insertarFinal(C3);
+        listaChoferes.insertarFinal(C4);
 
         Ruta a1 = new Ruta(1, /*B,*/ 40);
         Ruta a2 = new Ruta(2, /*B2,*/ 50);
@@ -50,9 +54,13 @@ public class ClassCollector {
 
         Bus B = new Bus(1234, 20, 80, C, a1);
         Bus B2 = new Bus(4321, 15, 50, C2, a2);
+        Bus B3 = new Bus(222, 15, 50);
+        Bus B4 = new Bus(2333, 15, 50);
 
         listaBuses.insertarFinal(B);
         listaBuses.insertarFinal(B2);
+        listaBuses.insertarFinal(B3);
+        listaBuses.insertarFinal(B4);
 
         listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(001, "Lima", 10));
         listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(002, "Huancayo", 20));
