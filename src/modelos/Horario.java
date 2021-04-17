@@ -6,22 +6,14 @@
 package modelos;
 
 public class Horario {
-    private Bus bus;
+    
     private String horaSalida;
     private String horaLlegada;
 
-    public Horario(Bus bus, String Hora_Salida, String Hora_Llegada) {
-        this.bus = bus;
+    public Horario(String Hora_Salida) {
+        
         this.horaSalida = Hora_Salida;
-        this.horaLlegada = Hora_Llegada;
-    }
-
-    public Bus getBus() {
-        return bus;
-    }
-
-    public void setBus(Bus bus) {
-        this.bus = bus;
+        
     }
 
     public String getHoraSalida() {

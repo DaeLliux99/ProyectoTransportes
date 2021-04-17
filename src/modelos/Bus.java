@@ -17,9 +17,11 @@ public class Bus {
     private int numeroAsientos;
     private int pesoMaximo;
     private int ocupado = 0;
+    private boolean disponible = true;
     
-    private Chofer idChofer;
+    private Chofer chofer;
     private Ruta ruta;
+    private Horario horario;
    
     Cola<Pasajero> colaPasajero = new Cola<>();
     
@@ -27,7 +29,7 @@ public class Bus {
         this.matricula = matricula;
         this.numeroAsientos = NumAsientos;
         this.pesoMaximo = PesoMaximo;
-        this.idChofer = null;
+        this.chofer = null;
         this.ruta = null;
     }
     
@@ -35,20 +37,20 @@ public class Bus {
         this.matricula = matricula;
         this.numeroAsientos = NumAsientos;
         this.pesoMaximo = PesoMaximo;
-        this.idChofer = ID_chofer;
-        this.idChofer.setEstado(false);
+        this.chofer = ID_chofer;
+        this.chofer.setEstado(false);
         this.ruta = ruta;
     }
-
+/*
     public Bus(int matricula, int NumAsientos, int PesoMaximo, Chofer ID_chofer, Cola<Pasajero> Cola_Pasajero) {
         this.matricula = matricula;
         this.numeroAsientos = NumAsientos;
         this.pesoMaximo = PesoMaximo;
-        this.idChofer = ID_chofer;
-        this.idChofer.setEstado(false);
+        this.chofer = ID_chofer;
+        this.chofer.setEstado(false);
         this.colaPasajero = Cola_Pasajero;
     }
-
+*/
     public int getMatricula() {
         return matricula;
     }
@@ -81,12 +83,13 @@ public class Bus {
         this.ocupado = Ocupado;
     }
 
-    public Chofer getIdChofer() {
-        return idChofer;
+    public Chofer getChofer() {
+        return chofer;
     }
 
-    public void setIdChofer(Chofer idChofer) {
-        this.idChofer = idChofer;
+    public void setChofer(Chofer chofer) {  
+        this.chofer = chofer;
+        this.chofer.setEstado(false);
     }
 
     public Ruta getRuta() {
@@ -107,6 +110,30 @@ public class Bus {
 
     public void ocuparAsiento() {
         ocupado++;       
+    }
+
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
+    }
+
+    public Horario getHorario() {
+        return horario;
+    }
+
+    public void setHorario(Horario horario) {
+        this.horario = horario;
+    }
+    
+    
+    
+
+    @Override
+    public String toString() {
+        return "Bus{" + "matricula=" + matricula + ", disponible=" + disponible + ", chofer=" + chofer + ", ruta=" + ruta + '}';
     }
     
     
