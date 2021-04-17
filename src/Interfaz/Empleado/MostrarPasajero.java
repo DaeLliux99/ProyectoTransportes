@@ -47,7 +47,7 @@ public class MostrarPasajero extends javax.swing.JFrame {
     private void llenar() {
         Nodo<Bus> b = principal.listaBuses.ObetenerPrimerNodo();
         while (b != null) {
-            buses.addItem(b.valor.getMatricula());
+            buses.addItem(b.valor.getIdBus());
             b = b.siguiente;
         }
     }
@@ -55,10 +55,10 @@ public class MostrarPasajero extends javax.swing.JFrame {
     public final Bus encontrarBus() {
 
         for (Bus B : principal.listaBuses) {
-            if (B.getMatricula() == (int) buses.getSelectedItem()) {
+            if (B.getIdBus() == (int) buses.getSelectedItem()) {
                 return B;
             }
-            System.out.println(B.getMatricula());
+            System.out.println(B.getIdBus());
 
         }
         return null;

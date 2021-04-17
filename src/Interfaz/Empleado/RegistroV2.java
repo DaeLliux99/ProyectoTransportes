@@ -57,11 +57,11 @@ public class RegistroV2 extends javax.swing.JFrame {
 
         Nodo<Bus> temp = Principal.listaBuses.ObetenerPrimerNodo();
         while (temp != null) {
-            if (temp.valor.getMatricula() == ID_bus) {
+            if (temp.valor.getIdBus() == ID_bus) {
                 return temp.getValor();
             }
             System.out.println(ID_bus);
-            System.out.println(temp.valor.getMatricula());
+            System.out.println(temp.valor.getIdBus());
             temp = temp.siguiente;
         }
         return null;

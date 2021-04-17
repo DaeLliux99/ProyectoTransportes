@@ -42,7 +42,7 @@ public class ticket extends javax.swing.JFrame {
                 CNombresyAp.setText(p.getNombre());
                 CNumeroTicket.setText("" + 1015874);
                 CSalida.setText(bus.getRuta().obtenerPrimerCiudad());
-                Cmatricula.setText("" + bus.getMatricula());
+                Cmatricula.setText("" + bus.getIdBus());
             }
         }
     }

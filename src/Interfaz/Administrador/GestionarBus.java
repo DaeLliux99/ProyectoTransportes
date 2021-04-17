@@ -68,16 +68,15 @@ public class GestionarBus extends javax.swing.JFrame {
         tablaBuses.removeAll();
         tablaRutas.removeAll();
     }*/
-     
     private void limpiar() {
         for (int i = 0; i < 30; i++) {
 
             tablaBuses.getModel().setValueAt(" ", i, 0);
             tablaBuses.getModel().setValueAt(" ", i, 1);
-            
+
             tablaChofer.getModel().setValueAt(" ", i, 0);
             tablaChofer.getModel().setValueAt(" ", i, 1);
-            
+
             tablaRutas.getModel().setValueAt(" ", i, 0);
             tablaRutas.getModel().setValueAt(" ", i, 1);
             tablaRutas.getModel().setValueAt(" ", i, 2);   //
@@ -263,7 +262,15 @@ public class GestionarBus extends javax.swing.JFrame {
             new String [] {
                 "Matrícula", "# asientos"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         tablaBuses.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablaBusesMouseClicked(evt);
@@ -299,6 +306,11 @@ public class GestionarBus extends javax.swing.JFrame {
         getContentPane().add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 320, 80, -1));
 
         jButton1.setText("Agregar Buses");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, -1, -1));
 
         pack();
@@ -326,9 +338,9 @@ public class GestionarBus extends javax.swing.JFrame {
                 break;
             }
         }
-        
+
         for (Bus b : principal.listaBuses) {
-            if (b.getMatricula() == this.matriBusSelec) {
+            if (b.getIdBus() == this.matriBusSelec) {
                 busSelec = b;
                 break;
             }
@@ -336,13 +348,10 @@ public class GestionarBus extends javax.swing.JFrame {
 
         //busSelec.setChofer(choferSelec);
         //busSelec.setRuta(rutaSelec);
-
         principal.listaBuses.BuscarXDato(busSelec).setChofer(choferSelec);
         principal.listaBuses.BuscarXDato(busSelec).setRuta(rutaSelec);
 
         //Bus nuevoBus = new Bus(1234, 20, 80, C, a1);
-        
-        
         principal.listaBuses.mostrarLista();
 
         limpiar();
@@ -396,6 +405,15 @@ public class GestionarBus extends javax.swing.JFrame {
         this.setVisible(false);
         UU.setVisible(true);
     }//GEN-LAST:event_botonSalirActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+
+        AgregarBus UU = new AgregarBus(principal);
+        this.setVisible(false);
+        UU.setVisible(true);
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

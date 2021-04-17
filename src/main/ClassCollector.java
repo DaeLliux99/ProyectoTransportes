@@ -57,13 +57,13 @@ public class ClassCollector {
         Ruta a2 = new Ruta(listaRutas.longitud + 1);
         listaRutas.insertarFinal(a2);
 
-        Bus B = new Bus(listaBuses.longitud+1, 20, 80, C, a1);
+        Bus B = new Bus("N35T0R",listaBuses.longitud+1, 20, 80, C, a1);
         listaBuses.insertarFinal(B);
-        Bus B2 = new Bus(listaBuses.longitud+1, 15, 50, C2, a2);
+        Bus B2 = new Bus("L30N4RD0",listaBuses.longitud+1, 15, 50, C2, a2);
         listaBuses.insertarFinal(B2);
-        Bus B3 = new Bus(listaBuses.longitud+1, 25, 40);
+        Bus B3 = new Bus("35T3B4N",listaBuses.longitud+1, 25, 40);
         listaBuses.insertarFinal(B3);
-        Bus B4 = new Bus(listaBuses.longitud+1, 30, 60);
+        Bus B4 = new Bus("P4L0M1N0",listaBuses.longitud+1, 30, 60);
         listaBuses.insertarFinal(B4);
 
         

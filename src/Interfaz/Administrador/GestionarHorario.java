@@ -138,9 +138,14 @@ public class GestionarHorario extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 370, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, -1, -1));
 
-        jButton3.setText("Cancelar");
+        jButton3.setText("Atras");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, -1, -1));
 
         pack();
@@ -161,11 +166,11 @@ public class GestionarHorario extends javax.swing.JFrame {
         contadorBus = 0;
         for (Bus b : principal.listaBuses) {
             if (b.getChofer() != null) {
-            tablaHorario.getModel().setValueAt(b.getChofer().getDniChofer(), contadorBus, 0);
-            tablaHorario.getModel().setValueAt(b.getMatricula(), contadorBus, 1);
-            tablaHorario.getModel().setValueAt(b.getRuta().getIdRuta(), contadorBus, 2);
-            tablaHorario.getModel().setValueAt(b.getRuta().mostrarCiudadesRuta(), contadorBus, 3);
-            contadorBus++;
+                tablaHorario.getModel().setValueAt(b.getChofer().getDniChofer(), contadorBus, 0);
+                tablaHorario.getModel().setValueAt(b.getIdBus(), contadorBus, 1);
+                tablaHorario.getModel().setValueAt(b.getRuta().getIdRuta(), contadorBus, 2);
+                tablaHorario.getModel().setValueAt(b.getRuta().mostrarCiudadesRuta(), contadorBus, 3);
+                contadorBus++;
             }
         }
 
@@ -177,10 +182,9 @@ public class GestionarHorario extends javax.swing.JFrame {
         int hora = round(distancia / 60);
         return hora + ":" + minutos;
     }
-    
 
     private String sumarTiempo(int distancia, String tiempo) {
-        String t=tiempo.replace(" ", "");//esto era el error, habia un espacio antes
+        String t = tiempo.replace(" ", "");//esto era el error, habia un espacio antes
         String[] cadenaDeLuis = calcularTiempo(distancia).split(":");
         String[] cadenaDeChachi = t.split(":");
 
@@ -202,17 +206,17 @@ public class GestionarHorario extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         if (salidaTXT != null && !ChoraS.getText().trim().isEmpty()) {
-            Bus busDeEsteban = principal.listaBuses.ObetenerPorIndiceObjeto(idBus-1);
-            System.out.println(busDeEsteban.getMatricula()); 
-            
+            Bus busDeEsteban = principal.listaBuses.ObetenerPorIndiceObjeto(idBus - 1);
+            System.out.println(busDeEsteban.getIdBus());
+
             Horario h = new Horario(ChoraS.getText());
-            
+
             busDeEsteban.setHorario(h);
             System.out.println(busDeEsteban.getHorario().getHoraSalida());
             //error en las dos siguientes lineas;
-            ChoraL.setText(sumarTiempo((int)busDeEsteban.getRuta().getDistanciaRuta(), ChoraS.getText()));
+            ChoraL.setText(sumarTiempo((int) busDeEsteban.getRuta().getDistanciaRuta(), ChoraS.getText()));
             busDeEsteban.getHorario().setHoraLlegada(ChoraL.getText());
-            
+
             JOptionPane.showMessageDialog(null, "EXITO :v", "Se ha calculado", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(null, "No se ha seleccionado nada", "No se puede realizaar registro", JOptionPane.INFORMATION_MESSAGE);
@@ -236,6 +240,15 @@ public class GestionarHorario extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_tablaHorarioMouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        PanelDeControl UU = new PanelDeControl(principal);
+        this.setVisible(false);
+        UU.setVisible(true);
+
+
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ChoraL;

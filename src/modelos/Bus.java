@@ -13,50 +13,54 @@ import estructuras.*;
  */
 public class Bus {
 
-    private int matricula;
+    private String matricula;
+    private int idBus;
     private int numeroAsientos;
     private int pesoMaximo;
     private int ocupado = 0;
     private boolean disponible = true;
-    
+
     private Chofer chofer;
     private Ruta ruta;
     private Horario horario;
-   
+
     Cola<Pasajero> colaPasajero = new Cola<>();
-    
-    public Bus(int matricula, int NumAsientos, int PesoMaximo) {
+
+    public Bus(String matricula, int idBus, int NumAsientos, int PesoMaximo) {
         this.matricula = matricula;
+        this.idBus = idBus;
         this.numeroAsientos = NumAsientos;
         this.pesoMaximo = PesoMaximo;
         this.chofer = null;
         this.ruta = null;
     }
-    
-    public Bus(int matricula, int NumAsientos, int PesoMaximo, Chofer ID_chofer, Ruta ruta) {
+
+    public Bus(String matricula, int idBus, int NumAsientos, int PesoMaximo, Chofer ID_chofer, Ruta ruta) {
         this.matricula = matricula;
+        this.idBus = idBus;
         this.numeroAsientos = NumAsientos;
         this.pesoMaximo = PesoMaximo;
         this.chofer = ID_chofer;
         this.chofer.setEstado(false);
         this.ruta = ruta;
     }
-/*
-    public Bus(int matricula, int NumAsientos, int PesoMaximo, Chofer ID_chofer, Cola<Pasajero> Cola_Pasajero) {
-        this.matricula = matricula;
+
+    /*
+    public Bus(int idBus, int NumAsientos, int PesoMaximo, Chofer ID_chofer, Cola<Pasajero> Cola_Pasajero) {
+        this.idBus = idBus;
         this.numeroAsientos = NumAsientos;
         this.pesoMaximo = PesoMaximo;
         this.chofer = ID_chofer;
         this.chofer.setEstado(false);
         this.colaPasajero = Cola_Pasajero;
     }
-*/
-    public int getMatricula() {
-        return matricula;
+     */
+    public int getIdBus() {
+        return idBus;
     }
 
-    public void setMatricula(int matricula) {
-        this.matricula = matricula;
+    public void setIdBus(int idBus) {
+        this.idBus = idBus;
     }
 
     public int getNumeroAsientos() {
@@ -87,7 +91,7 @@ public class Bus {
         return chofer;
     }
 
-    public void setChofer(Chofer chofer) {  
+    public void setChofer(Chofer chofer) {
         this.chofer = chofer;
         this.chofer.setEstado(false);
     }
@@ -109,7 +113,7 @@ public class Bus {
     }
 
     public void ocuparAsiento() {
-        ocupado++;       
+        ocupado++;
     }
 
     public boolean isDisponible() {
@@ -124,18 +128,29 @@ public class Bus {
         return horario;
     }
 
+    
+    
+    
     public void setHorario(Horario horario) {
         this.horario = horario;
     }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+    
     
     
     
 
     @Override
     public String toString() {
-        return "Bus{" + "matricula=" + matricula + ", disponible=" + disponible + ", chofer=" + chofer + ", ruta=" + ruta + '}';
+        return "Bus{" + "matricula=" + matricula + ", idBus=" + idBus + ", numeroAsientos=" + numeroAsientos + ", pesoMaximo=" + pesoMaximo + ", ocupado=" + ocupado + ", disponible=" + disponible + ", chofer=" + chofer + ", ruta=" + ruta + ", horario=" + horario + ", colaPasajero=" + colaPasajero + '}';
     }
-    
-    
 
+    
 }
