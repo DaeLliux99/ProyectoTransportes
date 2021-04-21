@@ -6,12 +6,13 @@
 package modelos;
 
 import estructuras.*;
+import java.io.Serializable;
 
 /**
  *
  * @author LEONARDO
  */
-public class Bus {
+public class Bus implements Serializable{
 
     private String matricula;
     private int idBus;

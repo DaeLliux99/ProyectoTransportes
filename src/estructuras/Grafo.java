@@ -6,11 +6,12 @@
  */
 
 package estructuras;
+import java.io.Serializable;
 import java.util.*;
 
-public class Grafo <G>{
+public class Grafo <G> implements Serializable{
     
-    class Arista <G>{
+    class Arista <G> implements Serializable{
         G destino;
         int peso;
         Arista(G destino, int peso) {

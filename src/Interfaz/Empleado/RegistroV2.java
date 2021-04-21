@@ -97,7 +97,6 @@ public class RegistroV2 extends javax.swing.JFrame {
         cancelcli = new javax.swing.JButton();
         salirclijButton3 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        salir = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         Cdni = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -122,15 +121,15 @@ public class RegistroV2 extends javax.swing.JFrame {
                 regclienteActionPerformed(evt);
             }
         });
-        getContentPane().add(regcliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 358, 92, -1));
+        getContentPane().add(regcliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, 92, -1));
 
-        cancelcli.setText("Cancelar");
+        cancelcli.setText("Atras");
         cancelcli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelcliActionPerformed(evt);
             }
         });
-        getContentPane().add(cancelcli, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 358, -1, -1));
+        getContentPane().add(cancelcli, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 360, -1, -1));
 
         salirclijButton3.setText("Salir");
         salirclijButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -144,14 +143,6 @@ public class RegistroV2 extends javax.swing.JFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("REGISTRAR PERSONAS");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 14, 500, -1));
-
-        salir.setText("Salir");
-        salir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salirActionPerformed(evt);
-            }
-        });
-        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(367, 358, -1, -1));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Datos personales", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -264,12 +255,6 @@ public class RegistroV2 extends javax.swing.JFrame {
 
     }//GEN-LAST:event_salirclijButton3ActionPerformed
 
-    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-
-        System.exit(0);
-
-    }//GEN-LAST:event_salirActionPerformed
-
     private void CdniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CdniActionPerformed
 
     }//GEN-LAST:event_CdniActionPerformed
@@ -305,7 +290,6 @@ public class RegistroV2 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton regcliente;
-    private javax.swing.JButton salir;
     private javax.swing.JButton salirclijButton3;
     // End of variables declaration//GEN-END:variables
 

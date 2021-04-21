@@ -6,13 +6,14 @@ package modelos;
  * and open the template in the editor.
  */
 import estructuras.Lista;
+import java.io.Serializable;
 import nodos.*;
 
 /**
  *
  * @author Leonardo
  */
-public class Ruta {
+public class Ruta implements Serializable {
 
     private int idRuta;
     private String salida;

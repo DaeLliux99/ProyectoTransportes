@@ -5,12 +5,14 @@
  */
 package nodos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Carlos Esteban
  * @param <G>
  */
-public class Nodo <G> {
+public class Nodo <G> implements Serializable{
     public G valor;
     public Nodo siguiente;
     public Nodo anterior;

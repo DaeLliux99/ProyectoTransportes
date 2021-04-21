@@ -42,7 +42,7 @@ public class ticket extends javax.swing.JFrame {
                 CNombresyAp.setText(p.getNombre());
                 CNumeroTicket.setText("" + 1015874);
                 CSalida.setText(bus.getRuta().obtenerPrimerCiudad());
-                Cmatricula.setText("" + bus.getIdBus());
+                Cmatricula.setText("" + bus.getMatricula());
             }
         }
     }
@@ -69,7 +69,6 @@ public class ticket extends javax.swing.JFrame {
         CDestino = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         CDescripccion = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         CDNI = new javax.swing.JTextField();
@@ -162,14 +161,6 @@ public class ticket extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 410, 100));
 
-        jButton1.setText("Salir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 430, -1, -1));
-
         jButton2.setText("Realizar nueva compra");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,7 +194,7 @@ public class ticket extends javax.swing.JFrame {
                 CAtrasActionPerformed(evt);
             }
         });
-        jPanel2.add(CAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 430, -1, -1));
+        jPanel2.add(CAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 430, -1, -1));
 
         CSalida.setEditable(false);
         CSalida.setText("jTextField1");
@@ -260,11 +251,6 @@ public class ticket extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CNumeroTicketActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void CAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CAtrasActionPerformed
         // TODO add your handling code here:
         MostrarPasajero h = new MostrarPasajero(principal);
@@ -286,7 +272,6 @@ public class ticket extends javax.swing.JFrame {
     private javax.swing.JTextField CNumeroTicket;
     private javax.swing.JTextField CSalida;
     private javax.swing.JTextField Cmatricula;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
