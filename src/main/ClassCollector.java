@@ -66,10 +66,6 @@ public class ClassCollector {
         Bus B4 = new Bus("P4L0M1N0",listaBuses.longitud+1, 30, 60);
         listaBuses.insertarFinal(B4);
 
-        
-        
-        
-        
         /*
         listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(001, "Lima", 10));
         listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(002, "Huancayo", 20));

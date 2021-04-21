@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Interfaz.Administrador;
 
 import javax.swing.JOptionPane;
@@ -12,10 +8,7 @@ import modelos.Bus;
 import modelos.Chofer;
 import modelos.Ruta;
 
-/**
- *
- * @author LEONARDO
- */
+
 public class GestionarBus extends javax.swing.JFrame {
 
     ClassCollector principal;
@@ -33,6 +26,9 @@ public class GestionarBus extends javax.swing.JFrame {
         principal = A;
         this.setLocationRelativeTo(null);
         mostrar();
+        dniChoferSelec = -1;
+        idRutaSelec = -1;
+        matriBusSelec = -1;
     }
 
     private void mostrar() {
@@ -48,7 +44,7 @@ public class GestionarBus extends javax.swing.JFrame {
         contadorBus = 0;
         for (Bus b : principal.listaBuses) {
             if (b.getChofer() == null) {
-                tablaBuses.getModel().setValueAt(b.getMatricula(), contadorBus, 0);
+                tablaBuses.getModel().setValueAt(b.getIdBus(), contadorBus, 0);
                 tablaBuses.getModel().setValueAt(b.getNumeroAsientos(), contadorBus, 1);
                 contadorBus++;
             }
@@ -345,6 +341,12 @@ public class GestionarBus extends javax.swing.JFrame {
                 break;
             }
         }
+        /* ESTO ES MIO
+        busSelec.setIdChofer(choferSelec);
+        busSelec.setRuta(rutaSelec);
+        choferSelec.setEstado(false);
+        mostrar();
+        */
 
         //busSelec.setChofer(choferSelec);
         //busSelec.setRuta(rutaSelec);

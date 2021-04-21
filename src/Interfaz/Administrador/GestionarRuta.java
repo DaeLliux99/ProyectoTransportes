@@ -194,7 +194,19 @@ public class GestionarRuta extends javax.swing.JFrame {
 
     private void BElminarCiudadRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BElminarCiudadRutaActionPerformed
         // TODO add your handling code here:
-
+        listaTemporal.eliminarUltimo();
+        Ciudad ultimaCiudad = listaTemporal.obetenerUltimoObjeto();
+        if (ultimaCiudad != null) {
+            insertarAdya(ultimaCiudad);
+        } else {
+            insertar();
+        }
+        String temporal = "";
+        for (Ciudad c : listaTemporal) {
+            temporal = temporal + c.toString();
+        }
+        CListaCiudad.setText(temporal);
+        /*
         if (CListaCiudad.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "VACIO, NO SE PUEDE ELIMINAR", "VACIO, NO SE PUEDE ELIMINAR", JOptionPane.INFORMATION_MESSAGE);
         } else {
@@ -223,35 +235,7 @@ public class GestionarRuta extends javax.swing.JFrame {
             }
             CListaCiudad.setText(temporal);
         }
-
-        /*
-        listaTemporal.eliminarUltimo();
-        Ciudad ultimaCiudad = listaTemporal.obetenerUltimoObjeto();
-        if (ultimaCiudad != null) {
-            insertarAdya(ultimaCiudad);
-        } else {
-            insertar();
-        }
-        String temporal = "";
-        for (Ciudad c : listaTemporal) {
-            temporal = temporal + c.toString();
-        }
-        CListaCiudad.setText(temporal);
-         */
- /*
-        principal.reg.obtenerCiudades().eliminar(principal.reg.obtenerCiudades().obetenerUltimoObjeto());
-        String[] arregloDeLuis = CListaCiudad.getText().split("-");
-        String temporal = "";
-        for (int i = 0; i < arregloDeLuis.length - 1; i++) {
-            System.out.println("luis KBRO");
-            if (i == 0) {
-                temporal = arregloDeLuis[i];
-            } else {
-                temporal = temporal + "-" + arregloDeLuis[i];
-            }
-        }
-        CListaCiudad.setText(temporal);
-         */
+        */
     }//GEN-LAST:event_BElminarCiudadRutaActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed

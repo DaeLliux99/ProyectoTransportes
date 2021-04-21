@@ -78,22 +78,22 @@ public class Lista<G> implements Iterable<G> {
         }
     }
 
-    public /*<G extends Comparable<? super G>>*/ void eliminar(G dato) {
+    public <G extends Comparable<? super G>> void eliminar(G dato) {
         Nodo<G> temp, cabeza1 = cabeza;
         if (cabeza == null) {
             System.out.println("lista vacia");
         } else {
-            if (/*dato.compareTo(cabeza1.valor) == 0*/cabeza1.valor == dato) {
+            if (dato.compareTo(cabeza1.valor) == 0) {
                 cabeza = cabeza.siguiente;
                 System.out.println("eliminado 1");
             } else {
                 temp = cabeza1;
                 cabeza1 = cabeza1.siguiente;
                 while (cabeza1 != null) {
-                    if (/*dato.compareTo(cabeza1.valor)== 0*/cabeza1.valor == dato && cabeza1.siguiente != null) {
+                    if (dato.compareTo(cabeza1.valor) == 0 && cabeza1.siguiente != null) {
                         temp.siguiente = cabeza1.siguiente;
                         System.out.println("eliminado 2");
-                    } else if (/*dato.compareTo(cabeza1.valor) == 0*/cabeza1.valor == dato) {
+                    } else if (dato.compareTo(cabeza1.valor) == 0) {
                         temp.siguiente = null;
                         ultimo = temp;
                         System.out.println("eliminado 3");
