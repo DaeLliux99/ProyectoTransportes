@@ -5,11 +5,13 @@
  */
 package modelos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author LEONARDO
  */
-public class Chofer implements Comparable<Chofer> {
+public class Chofer implements Comparable<Chofer>, Serializable{
     private int dniChofer;
     private String nombre;
     private boolean estado=true; //true = disponible false= no disponible

@@ -21,7 +21,7 @@ public class Horarios extends javax.swing.JFrame {
     String rutaA;
     Ruta ruta1;
     Lista<Ruta> listaRuta = new Lista<>();
-    int contador ;
+    int contador;
     String salidaTXT;
     String llegadaTXT;
     int bus;
@@ -48,6 +48,7 @@ public class Horarios extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         Buscar_Ruta_Boton = new javax.swing.JButton();
         Casilla_Buscar_Ruta = new javax.swing.JTextField();
+        botonGuardarFichero = new javax.swing.JButton();
         mostrarPasajero = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -173,6 +174,14 @@ public class Horarios extends javax.swing.JFrame {
         });
         jPanel3.add(Casilla_Buscar_Ruta, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 530, -1));
 
+        botonGuardarFichero.setText("Guardar Cambios");
+        botonGuardarFichero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGuardarFicheroActionPerformed(evt);
+            }
+        });
+        jPanel3.add(botonGuardarFichero, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 30, -1, -1));
+
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 880, 70));
         jPanel3.getAccessibleContext().setAccessibleDescription("");
 
@@ -207,7 +216,7 @@ public class Horarios extends javax.swing.JFrame {
     }//GEN-LAST:event_salirActionPerformed
 
     private void Buscar_Ruta_BotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar_Ruta_BotonActionPerformed
-
+        jTable1.getSelectionModel().removeSelectionInterval(0, 30);
         for (int i = 0; i <= 10; i++) {
             jTable1.getModel().setValueAt("", i, 0);
             jTable1.getModel().setValueAt("", i, 1);
@@ -216,17 +225,19 @@ public class Horarios extends javax.swing.JFrame {
             jTable1.getModel().setValueAt("", i, 4);
             jTable1.getModel().setValueAt("", i, 5);
         }
-        
+
         contador = 0;
         for (Bus b : principal.listaBuses) {
-            if (b.getRuta().Busqueda_Ciudad(Casilla_Buscar_Ruta.getText()) != null) {
-                jTable1.getModel().setValueAt(b.getRuta().obtenerPrimerCiudad(), contador, 0);
-                jTable1.getModel().setValueAt(b.getRuta().obtenerUltimaCiudad(), contador, 1);
-                jTable1.getModel().setValueAt(b.getIdBus(), contador, 2);   //
-                jTable1.getModel().setValueAt(b.getRuta().mostrarCiudadesRuta(), contador, 3);
-                jTable1.getModel().setValueAt(b.getRuta().getPrecio(), contador, 4);
-                jTable1.getModel().setValueAt(b.getNumeroAsientos() - b.getOcupado(), contador, 5);            
-                contador++;
+            if (b.getRuta() != null) {
+                if (b.getRuta().Busqueda_Ciudad(Casilla_Buscar_Ruta.getText()) != null) {
+                    jTable1.getModel().setValueAt(b.getRuta().obtenerPrimerCiudad(), contador, 0);
+                    jTable1.getModel().setValueAt(b.getRuta().obtenerUltimaCiudad(), contador, 1);
+                    jTable1.getModel().setValueAt(b.getIdBus(), contador, 2);   //
+                    jTable1.getModel().setValueAt(b.getRuta().mostrarCiudadesRuta(), contador, 3);
+                    jTable1.getModel().setValueAt(b.getRuta().getPrecio(), contador, 4);
+                    jTable1.getModel().setValueAt(b.getNumeroAsientos() - b.getOcupado(), contador, 5);
+                    contador++;
+                }
             }
         }
 
@@ -246,13 +257,13 @@ public class Horarios extends javax.swing.JFrame {
         // TODO add your handling code here:
         int fila = jTable1.getSelectedRow();
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        
-        if (fila > contador-1 ) {
+
+        if (fila > contador - 1) {
             JOptionPane.showMessageDialog(null, "No ha seleccionado nada", "Casilla vacia", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            salidaTXT =  (String) modelo.getValueAt(fila, 0);
+            salidaTXT = (String) modelo.getValueAt(fila, 0);
             llegadaTXT = /*(String)*/ Casilla_Buscar_Ruta.getText();
-            bus = (int) modelo.getValueAt(fila, 2) ;
+            bus = (int) modelo.getValueAt(fila, 2);
         }
         /*
         salidaTXT = (String) modelo.getValueAt(fila, 0);
@@ -270,10 +281,17 @@ public class Horarios extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_mostrarPasajeroActionPerformed
 
+    private void botonGuardarFicheroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarFicheroActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Registrado!", "Guardado", JOptionPane.INFORMATION_MESSAGE);
+        principal.guardarFichero();
+    }//GEN-LAST:event_botonGuardarFicheroActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Buscar_Ruta_Boton;
     private javax.swing.JTextField Casilla_Buscar_Ruta;
+    private javax.swing.JButton botonGuardarFichero;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel3;

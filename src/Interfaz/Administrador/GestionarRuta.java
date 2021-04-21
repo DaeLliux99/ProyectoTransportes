@@ -138,7 +138,7 @@ public class GestionarRuta extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "VACIO, NO SE PUEDE REGISTRAR", "VACIO, NO SE PUEDE REGISTRAR", JOptionPane.INFORMATION_MESSAGE);
         } else {
             String[] arreglo = CListaCiudad.getText().split("-");
-            Ruta rutaDeLuis = new Ruta(principal.listaRutas.longitud + 1);
+            Ruta rutaDeLuis = new Ruta(principal.listaRutas.idControlador + 1);
             principal.listaRutas.insertarFinal(rutaDeLuis);
 
             for (int i = 0; i < arreglo.length; i++) {

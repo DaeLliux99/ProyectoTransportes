@@ -7,12 +7,13 @@
 package modelos;
 
 import estructuras.*;
+import java.io.Serializable;
 
 /**
  * 
  * @author CODIGO LAGARTO
  */
-public class Region {
+public class Region implements Serializable{
     Grafo<Ciudad> reg;
     
     public Region() {

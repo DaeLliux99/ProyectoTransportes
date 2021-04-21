@@ -5,6 +5,7 @@
  */
 
 package estructuras;
+import java.io.Serializable;
 import nodos.Nodo;
 
 /**
@@ -12,7 +13,7 @@ import nodos.Nodo;
  * @author Carlos Esteban
  * @param <G>
  */
-public class Pila <G>{
+public class Pila <G> implements Serializable{
     Nodo cabeza;
     int longitud;
 

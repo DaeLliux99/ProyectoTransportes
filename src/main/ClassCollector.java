@@ -11,6 +11,14 @@ Autores:
 package main;
 
 import estructuras.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelos.*;
 import nodos.*;
 
@@ -27,7 +35,36 @@ public class ClassCollector {
     public Region reg = new Region();
 
     public ClassCollector() {
-        //String username, String password, boolean managent
+        //String username, String password, boolean managent 
+        try {
+            ObjectInputStream leyendoUsuarios = new ObjectInputStream(new FileInputStream("/archivos/usuarios.dat"));
+            listaUsuarios = (Lista) leyendoUsuarios.readObject();
+            leyendoUsuarios.close();
+            ObjectInputStream leyendoChoferes = new ObjectInputStream(new FileInputStream("/archivos/choferes.dat"));
+            listaChoferes = (Lista) leyendoChoferes.readObject();
+            leyendoChoferes.close();
+            ObjectInputStream leyendoRutas = new ObjectInputStream(new FileInputStream("./archivos/rutas.dat"));
+            listaRutas = (Lista) leyendoRutas.readObject();
+            leyendoRutas.close();
+            ObjectInputStream leyendoBuses = new ObjectInputStream(new FileInputStream("./archivos/buses.dat"));
+            listaBuses = (Lista) leyendoBuses.readObject();
+            leyendoBuses.close();
+            ObjectInputStream leyendoCiudades = new ObjectInputStream(new FileInputStream("./archivos/ciudades.dat"));
+            listaCiudades = (Lista) leyendoCiudades.readObject();
+            leyendoCiudades.close();
+            ObjectInputStream leyendoRegion = new ObjectInputStream(new FileInputStream("./archivos/region.dat"));
+            reg = (Region) leyendoRegion.readObject();
+            leyendoRegion.close();
+        } catch (IOException e) {
+            initObjetos();
+            guardarFichero();
+            System.out.println("OwO");
+        } catch (ClassNotFoundException ex) {
+            System.out.println("UwU");
+        }
+    }
+    
+    private void initObjetos() {
         Usuario u1 = new Usuario("username", "password", true);
         Usuario u2 = new Usuario("abc", "abc", false);
 
@@ -45,56 +82,21 @@ public class ClassCollector {
         listaChoferes.insertarFinal(C3);
         listaChoferes.insertarFinal(C4);
         listaChoferes.insertarFinal(C5);
-
-        /*
-        Ruta a1 = new Ruta(1,  40);
-        Ruta a2 = new Ruta(2,  50);
-        listaRutas.insertarInicio(a1);
-        listaRutas.insertarInicio(a2);
-         */
-        Ruta a1 = new Ruta(listaRutas.longitud + 1);
+        
+        Ruta a1 = new Ruta(listaRutas.idControlador + 1);
         listaRutas.insertarFinal(a1);
-        Ruta a2 = new Ruta(listaRutas.longitud + 1);
+        Ruta a2 = new Ruta(listaRutas.idControlador + 1);
         listaRutas.insertarFinal(a2);
 
-        Bus B = new Bus("N35T0R",listaBuses.longitud+1, 20, 80, C, a1);
+        Bus B = new Bus("N35T0R",listaBuses.idControlador+1, 20, 80, C, a1);
         listaBuses.insertarFinal(B);
-        Bus B2 = new Bus("L30N4RD0",listaBuses.longitud+1, 15, 50, C2, a2);
+        Bus B2 = new Bus("L30N4RD0",listaBuses.idControlador+1, 15, 50, C2, a2);
         listaBuses.insertarFinal(B2);
-        Bus B3 = new Bus("35T3B4N",listaBuses.longitud+1, 25, 40);
+        Bus B3 = new Bus("35T3B4N",listaBuses.idControlador+1, 25, 40);
         listaBuses.insertarFinal(B3);
-        Bus B4 = new Bus("P4L0M1N0",listaBuses.longitud+1, 30, 60);
+        Bus B4 = new Bus("P4L0M1N0",listaBuses.idControlador+1, 30, 60);
         listaBuses.insertarFinal(B4);
 
-        /*
-        listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(001, "Lima", 10));
-        listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(002, "Huancayo", 20));
-        listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(003, "Tarapoto", 30));
-        listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(004, "Trujillo", 40));
-        listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(005, "Puno", 50));
-        listaRutas.BuscarXDato(a1).ingresarCiudad(new Ciudad(006, "Cajamarca", 60));
-
-        listaRutas.BuscarXDato(a2).ingresarCiudad(new Ciudad(001, "Arequipa", 10));
-        listaRutas.BuscarXDato(a2).ingresarCiudad(new Ciudad(002, "Huancayo", 20));
-        listaRutas.BuscarXDato(a2).ingresarCiudad(new Ciudad(003, "Tarapoto", 30));
-        listaRutas.BuscarXDato(a2).ingresarCiudad(new Ciudad(004, "Iquitos", 40));
-        listaRutas.BuscarXDato(a2).ingresarCiudad(new Ciudad(005, "Chiclayo", 50));
-        listaRutas.BuscarXDato(a2).ingresarCiudad(new Ciudad(006, "La libertad", 60));
-
-        reg.agregarCiudad(new Ciudad(001, "Lima", 10));
-        reg.agregarCiudad(new Ciudad(002, "Huancayo", 20));
-        reg.agregarCiudad(new Ciudad(003, "Trujillo", 30));
-        reg.agregarCiudad(new Ciudad(004, "Arequipa", 40));
-        reg.agregarCiudad(new Ciudad(005, "Chiclayo", 50));
-
-        reg.agregarCamino(1, 4, 50);
-        reg.agregarCamino(1, 3, 50);
-
-        reg.agregarCamino(2, 3, 50);
-        reg.agregarCamino(2, 4, 50);
-
-        reg.agregarCamino(5, 1, 50);
-         */
         listaCiudades.insertarFinal(new Ciudad(listaCiudades.longitud, "Lima", 10));//0
         listaCiudades.insertarFinal(new Ciudad(listaCiudades.longitud, "Huancayo", 20));//1
         listaCiudades.insertarFinal(new Ciudad(listaCiudades.longitud, "Pichanaki", 30));//2
@@ -136,8 +138,30 @@ public class ClassCollector {
         Ciudad c = reg.buscarCiudad(1);
         Lista<Ciudad> ccc = reg.obtenerCiudadesAdya(c);
         ccc.mostrarLista();
-        
-        
-
+    }
+    
+    public void guardarFichero() {
+        try {
+            ObjectOutputStream escribiendoUsuarios = new ObjectOutputStream(new FileOutputStream("./archivos/usuarios.dat"));
+            escribiendoUsuarios.writeObject(listaUsuarios);
+            escribiendoUsuarios.close();
+            ObjectOutputStream escribiendolistaChoferes = new ObjectOutputStream(new FileOutputStream("./archivos/choferes.dat"));
+            escribiendolistaChoferes.writeObject(listaChoferes);
+            escribiendolistaChoferes.close();
+            ObjectOutputStream escribiendolistaRutas = new ObjectOutputStream(new FileOutputStream("./archivos/rutas.dat"));
+            escribiendolistaRutas.writeObject(listaRutas);
+            escribiendolistaRutas.close();
+            ObjectOutputStream escribiendolistaBuses = new ObjectOutputStream(new FileOutputStream("./archivos/buses.dat"));
+            escribiendolistaBuses.writeObject(listaBuses);
+            escribiendolistaBuses.close();
+            ObjectOutputStream escribiendolistaCiudades = new ObjectOutputStream(new FileOutputStream("./archivos/ciudades.dat"));
+            escribiendolistaCiudades.writeObject(listaCiudades);
+            escribiendolistaCiudades.close();
+            ObjectOutputStream escribiendoRegion = new ObjectOutputStream(new FileOutputStream("./archivos/region.dat"));
+            escribiendoRegion.writeObject(reg);
+            escribiendoRegion.close();
+        } catch (IOException e) {
+            System.out.println("Calla mrd");
+        }
     }
 }

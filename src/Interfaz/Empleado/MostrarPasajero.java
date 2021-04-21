@@ -49,7 +49,7 @@ public class MostrarPasajero extends javax.swing.JFrame {
     private void llenar() {
         Nodo<Bus> b = principal.listaBuses.ObetenerPrimerNodo();
         while (b != null) {
-            buses.addItem(b.valor.getIdBus());
+            buses.addItem(b.valor.getMatricula());
             b = b.siguiente;
         }
     }
@@ -57,7 +57,7 @@ public class MostrarPasajero extends javax.swing.JFrame {
     public final Bus encontrarBus() {
 
         for (Bus B : principal.listaBuses) {
-            if (B.getIdBus() == (int) buses.getSelectedItem()) {
+            if (B.getIdBus() == (int) buses.getSelectedIndex() + 1) {
                 return B;
             }
             System.out.println(B.getIdBus());
@@ -157,7 +157,7 @@ public class MostrarPasajero extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("MATRICULAS DE BUSES DISPONIBLES");
+        jLabel1.setText("ID DE BUSES DISPONIBLES");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -226,15 +226,16 @@ public class MostrarPasajero extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(buses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(262, 262, 262)
-                        .addComponent(atras)))
+                        .addComponent(atras))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(buses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -242,9 +243,9 @@ public class MostrarPasajero extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(buses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(atras)

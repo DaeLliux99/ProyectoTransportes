@@ -360,6 +360,9 @@ public class GestionarBus extends javax.swing.JFrame {
 
         limpiar();
         mostrar();
+        tablaBuses.getSelectionModel().removeSelectionInterval(0, 30);
+        tablaChofer.getSelectionModel().removeSelectionInterval(0, 30);
+        tablaRutas.getSelectionModel().removeSelectionInterval(0, 30);
 
         JOptionPane.showMessageDialog(null, "BUS REGISTRADO", "BUS REGISTRADO", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_botonRegistrarActionPerformed

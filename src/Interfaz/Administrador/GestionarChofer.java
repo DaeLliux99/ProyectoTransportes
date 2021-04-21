@@ -203,7 +203,8 @@ public class GestionarChofer extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "ERROR EN LA CASILLA DNI", "ESTA INTRODUCIENDO LETRAS", JOptionPane.INFORMATION_MESSAGE);
             }
         }
-
+        CDniChofer.setText("");
+        CNombreChofer.setText("");
 
     }//GEN-LAST:event_BRegistrarActionPerformed
 
