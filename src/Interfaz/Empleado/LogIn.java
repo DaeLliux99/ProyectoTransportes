@@ -22,6 +22,7 @@ public class LogIn extends javax.swing.JFrame {
         CCampoUsuario.setText("username");
         CCampoAdministrador.setText("password");
         this.setLocationRelativeTo(null);
+        this.setTitle("Iniciar sesion");
         //ValidarIngresoDimension(passw, 15);
     }
 

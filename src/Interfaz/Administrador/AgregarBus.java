@@ -25,6 +25,8 @@ public class AgregarBus extends javax.swing.JFrame {
         initComponents();
         principal = a;
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setTitle("Registro de buses");
     }
 
     /**

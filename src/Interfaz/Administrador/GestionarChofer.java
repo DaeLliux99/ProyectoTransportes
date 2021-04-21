@@ -24,6 +24,8 @@ public class GestionarChofer extends javax.swing.JFrame {
 
         mostrar();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setTitle("Registro de choferes");
     }
 
     public static boolean isNumeric(String cadena) {

@@ -20,6 +20,8 @@ public class MostrarRuta extends javax.swing.JFrame {
         principal=a;
         mostrar();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setTitle("Rutas registradas");
     }
 
     /**

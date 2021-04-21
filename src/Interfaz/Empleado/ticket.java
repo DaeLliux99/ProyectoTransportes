@@ -26,6 +26,8 @@ public class ticket extends javax.swing.JFrame {
         this.setSize(new Dimension(470, 522));
         this.setMinimumSize(new Dimension(470, 522));
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setTitle("Ticket");
     }
 
     public void busquedaPasajero() {

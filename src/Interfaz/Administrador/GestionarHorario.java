@@ -28,6 +28,8 @@ public class GestionarHorario extends javax.swing.JFrame {
         principal = A;
         mostrar();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setTitle("Registro de horarios");
     }
 
     /**

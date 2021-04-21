@@ -25,6 +25,8 @@ public class GestionarBus extends javax.swing.JFrame {
         initComponents();
         principal = A;
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setTitle("Gestor de buses");
         mostrar();
         dniChoferSelec = -1;
         idRutaSelec = -1;

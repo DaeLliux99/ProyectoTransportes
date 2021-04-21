@@ -27,6 +27,8 @@ public class RegistroV2 extends javax.swing.JFrame {
         llenar();
         sacar();
         setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setTitle("Registro de pasajeros");
 
     }
 
@@ -142,7 +144,7 @@ public class RegistroV2 extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("REGISTRAR PERSONAS");
+        jLabel8.setText("REGISTRAR PASAJEROS");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 14, 500, -1));
 
         salir.setText("Salir");

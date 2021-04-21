@@ -35,6 +35,8 @@ public class MostrarPasajero extends javax.swing.JFrame {
         mostrar();
 
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setTitle("Pasajeros registrados");
     }
 
     /**

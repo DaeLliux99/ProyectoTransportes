@@ -20,6 +20,8 @@ public class PanelDeControl extends javax.swing.JFrame {
         initComponents();
         principal = A;
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setTitle("Panel de control");
     }
 
     /**
