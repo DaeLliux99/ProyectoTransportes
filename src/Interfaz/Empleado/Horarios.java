@@ -214,7 +214,7 @@ public class Horarios extends javax.swing.JFrame {
     }//GEN-LAST:event_salirActionPerformed
 
     private void Buscar_Ruta_BotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar_Ruta_BotonActionPerformed
-
+        jTable1.getSelectionModel().removeSelectionInterval(0, 30);
         for (int i = 0; i <= 10; i++) {
             jTable1.getModel().setValueAt("", i, 0);
             jTable1.getModel().setValueAt("", i, 1);

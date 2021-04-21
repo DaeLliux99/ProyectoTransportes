@@ -46,6 +46,11 @@ public class Usuario implements Serializable{
     public void setManagent(boolean managent) {
         this.managent = managent;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "username=" + username + ", password=" + password + ", managent=" + managent + '}';
+    }
   
    
     

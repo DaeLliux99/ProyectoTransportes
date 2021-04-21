@@ -65,6 +65,12 @@ public class LogIn extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
+
+        CCampoAdministrador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CCampoAdministradorActionPerformed(evt);
+            }
+        });
         jPanel1.add(CCampoAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 37, 179, -1));
 
         jButton2.setText("Salir");
@@ -133,6 +139,10 @@ public class LogIn extends javax.swing.JFrame {
         //String pass = passw.getText();
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void CCampoAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CCampoAdministradorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CCampoAdministradorActionPerformed
 
     /**
      * @param args the command line arguments

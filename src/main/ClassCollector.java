@@ -37,22 +37,22 @@ public class ClassCollector {
     public ClassCollector() {
         //String username, String password, boolean managent 
         try {
-            ObjectInputStream leyendoUsuarios = new ObjectInputStream(new FileInputStream("C:\\Users\\Carlos Esteban\\Desktop\\usuarios.dat"));
+            ObjectInputStream leyendoUsuarios = new ObjectInputStream(new FileInputStream("/archivos/usuarios.dat"));
             listaUsuarios = (Lista) leyendoUsuarios.readObject();
             leyendoUsuarios.close();
-            ObjectInputStream leyendoChoferes = new ObjectInputStream(new FileInputStream("C:\\Users\\Carlos Esteban\\Desktop\\choferes.dat"));
+            ObjectInputStream leyendoChoferes = new ObjectInputStream(new FileInputStream("/archivos/choferes.dat"));
             listaChoferes = (Lista) leyendoChoferes.readObject();
             leyendoChoferes.close();
-            ObjectInputStream leyendoRutas = new ObjectInputStream(new FileInputStream("C:\\Users\\Carlos Esteban\\Desktop\\rutas.dat"));
+            ObjectInputStream leyendoRutas = new ObjectInputStream(new FileInputStream("./archivos/rutas.dat"));
             listaRutas = (Lista) leyendoRutas.readObject();
             leyendoRutas.close();
-            ObjectInputStream leyendoBuses = new ObjectInputStream(new FileInputStream("C:\\Users\\Carlos Esteban\\Desktop\\buses.dat"));
+            ObjectInputStream leyendoBuses = new ObjectInputStream(new FileInputStream("./archivos/buses.dat"));
             listaBuses = (Lista) leyendoBuses.readObject();
             leyendoBuses.close();
-            ObjectInputStream leyendoCiudades = new ObjectInputStream(new FileInputStream("C:\\Users\\Carlos Esteban\\Desktop\\ciudades.dat"));
+            ObjectInputStream leyendoCiudades = new ObjectInputStream(new FileInputStream("./archivos/ciudades.dat"));
             listaCiudades = (Lista) leyendoCiudades.readObject();
             leyendoCiudades.close();
-            ObjectInputStream leyendoRegion = new ObjectInputStream(new FileInputStream("C:\\Users\\Carlos Esteban\\Desktop\\region.dat"));
+            ObjectInputStream leyendoRegion = new ObjectInputStream(new FileInputStream("./archivos/region.dat"));
             reg = (Region) leyendoRegion.readObject();
             leyendoRegion.close();
         } catch (IOException e) {
@@ -142,22 +142,22 @@ public class ClassCollector {
     
     public void guardarFichero() {
         try {
-            ObjectOutputStream escribiendoUsuarios = new ObjectOutputStream(new FileOutputStream("C:\\Users\\Carlos Esteban\\Desktop\\usuarios.dat"));
+            ObjectOutputStream escribiendoUsuarios = new ObjectOutputStream(new FileOutputStream("./archivos/usuarios.dat"));
             escribiendoUsuarios.writeObject(listaUsuarios);
             escribiendoUsuarios.close();
-            ObjectOutputStream escribiendolistaChoferes = new ObjectOutputStream(new FileOutputStream("C:\\Users\\Carlos Esteban\\Desktop\\choferes.dat"));
+            ObjectOutputStream escribiendolistaChoferes = new ObjectOutputStream(new FileOutputStream("./archivos/choferes.dat"));
             escribiendolistaChoferes.writeObject(listaChoferes);
             escribiendolistaChoferes.close();
-            ObjectOutputStream escribiendolistaRutas = new ObjectOutputStream(new FileOutputStream("C:\\Users\\Carlos Esteban\\Desktop\\rutas.dat"));
+            ObjectOutputStream escribiendolistaRutas = new ObjectOutputStream(new FileOutputStream("./archivos/rutas.dat"));
             escribiendolistaRutas.writeObject(listaRutas);
             escribiendolistaRutas.close();
-            ObjectOutputStream escribiendolistaBuses = new ObjectOutputStream(new FileOutputStream("C:\\Users\\Carlos Esteban\\Desktop\\buses.dat"));
+            ObjectOutputStream escribiendolistaBuses = new ObjectOutputStream(new FileOutputStream("./archivos/buses.dat"));
             escribiendolistaBuses.writeObject(listaBuses);
             escribiendolistaBuses.close();
-            ObjectOutputStream escribiendolistaCiudades = new ObjectOutputStream(new FileOutputStream("C:\\Users\\Carlos Esteban\\Desktop\\ciudades.dat"));
+            ObjectOutputStream escribiendolistaCiudades = new ObjectOutputStream(new FileOutputStream("./archivos/ciudades.dat"));
             escribiendolistaCiudades.writeObject(listaCiudades);
             escribiendolistaCiudades.close();
-            ObjectOutputStream escribiendoRegion = new ObjectOutputStream(new FileOutputStream("C:\\Users\\Carlos Esteban\\Desktop\\region.dat"));
+            ObjectOutputStream escribiendoRegion = new ObjectOutputStream(new FileOutputStream("./archivos/region.dat"));
             escribiendoRegion.writeObject(reg);
             escribiendoRegion.close();
         } catch (IOException e) {

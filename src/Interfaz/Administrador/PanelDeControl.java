@@ -34,7 +34,7 @@ public class PanelDeControl extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         GestionarChofer = new javax.swing.JButton();
-        GestionarRegion = new javax.swing.JButton();
+        GestionarUsuario = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         GestionarHorario = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -56,13 +56,13 @@ public class PanelDeControl extends javax.swing.JFrame {
         });
         jPanel1.add(GestionarChofer, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 130, -1));
 
-        GestionarRegion.setText("Gestionar Region");
-        GestionarRegion.addActionListener(new java.awt.event.ActionListener() {
+        GestionarUsuario.setText("Gestionar Usuario");
+        GestionarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GestionarRegionActionPerformed(evt);
+                GestionarUsuarioActionPerformed(evt);
             }
         });
-        jPanel1.add(GestionarRegion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 130, -1));
+        jPanel1.add(GestionarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 130, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Panel de control");
@@ -129,9 +129,12 @@ public class PanelDeControl extends javax.swing.JFrame {
 
     }//GEN-LAST:event_GestionarRutaActionPerformed
 
-    private void GestionarRegionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GestionarRegionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_GestionarRegionActionPerformed
+    private void GestionarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GestionarUsuarioActionPerformed
+        // TODO add your handling code here:      
+        GestionarUsuario UU = new GestionarUsuario(principal);
+        this.setVisible(false);
+        UU.setVisible(true);
+    }//GEN-LAST:event_GestionarUsuarioActionPerformed
 
     private void GestionarChoferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GestionarChoferActionPerformed
         // TODO add your handling code here:
@@ -185,9 +188,10 @@ public class PanelDeControl extends javax.swing.JFrame {
     private javax.swing.JButton GestionarBus;
     private javax.swing.JButton GestionarChofer;
     private javax.swing.JButton GestionarHorario;
-    private javax.swing.JButton GestionarRegion;
     private javax.swing.JButton GestionarRuta;
     private javax.swing.JButton botonGuardarFichero;
+    private javax.swing.JButton GestionarUsuario;
+
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
