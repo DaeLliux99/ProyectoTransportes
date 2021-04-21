@@ -27,6 +27,8 @@ public class GestionarUsuario extends javax.swing.JFrame {
         insertar();
 
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setTitle("Gestor de usuarios");
     }
 
     /**
@@ -99,7 +101,7 @@ public class GestionarUsuario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
