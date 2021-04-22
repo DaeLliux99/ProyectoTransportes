@@ -46,16 +46,6 @@ public class Bus implements Serializable{
         this.ruta = ruta;
     }
 
-    /*
-    public Bus(int idBus, int NumAsientos, int PesoMaximo, Chofer ID_chofer, Cola<Pasajero> Cola_Pasajero) {
-        this.idBus = idBus;
-        this.numeroAsientos = NumAsientos;
-        this.pesoMaximo = PesoMaximo;
-        this.chofer = ID_chofer;
-        this.chofer.setEstado(false);
-        this.colaPasajero = Cola_Pasajero;
-    }
-     */
     public int getIdBus() {
         return idBus;
     }
@@ -129,7 +119,6 @@ public class Bus implements Serializable{
         return horario;
     }
 
- 
     public void setHorario(Horario horario) {
         this.horario = horario;
     }

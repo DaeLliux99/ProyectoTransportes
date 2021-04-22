@@ -142,7 +142,7 @@ public class GestionarRuta extends javax.swing.JFrame {
             principal.listaRutas.insertarFinal(rutaDeLuis);
 
             for (int i = 0; i < arreglo.length; i++) {
-                principal.listaRutas.BuscarXDato(rutaDeLuis).calcularPrecioRuta(encontrarRegionCiudad(arreglo[i]));
+                principal.listaRutas.BuscarXDato(rutaDeLuis).insertarCiudad(encontrarRegionCiudad(arreglo[i]),principal.reg);
             }
 
             JOptionPane.showMessageDialog(null, CListaCiudad.getText(), "REGISTRADO CON EXITO", JOptionPane.INFORMATION_MESSAGE);

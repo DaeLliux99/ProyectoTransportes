@@ -1,18 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 package modelos;
 
 import estructuras.*;
 import java.io.Serializable;
 
-/**
- * 
- * @author CODIGO LAGARTO
- */
+
 public class Region implements Serializable{
     Grafo<Ciudad> reg;
     
@@ -57,6 +50,10 @@ public class Region implements Serializable{
             }
         }
         return null;
+    }
+    
+    public int obtenerDistancia(Ciudad ciudadA,Ciudad ciudadB ) {
+        return reg.obtenerPeso(ciudadA, ciudadB);
     }
 
     @Override

@@ -63,8 +63,9 @@ public class ClassCollector {
             System.out.println("UwU");
         }
     }
-    
+
     private void initObjetos() {
+
         Usuario u1 = new Usuario("username", "password", true);
         Usuario u2 = new Usuario("abc", "abc", false);
 
@@ -82,64 +83,84 @@ public class ClassCollector {
         listaChoferes.insertarFinal(C3);
         listaChoferes.insertarFinal(C4);
         listaChoferes.insertarFinal(C5);
-        
+
         Ruta a1 = new Ruta(listaRutas.idControlador + 1);
         listaRutas.insertarFinal(a1);
         Ruta a2 = new Ruta(listaRutas.idControlador + 1);
         listaRutas.insertarFinal(a2);
 
-        Bus B = new Bus("N35T0R",listaBuses.idControlador+1, 20, 80, C, a1);
+        Bus B = new Bus("N35T0R", listaBuses.idControlador + 1, 20, 80, C, a1);
         listaBuses.insertarFinal(B);
-        Bus B2 = new Bus("L30N4RD0",listaBuses.idControlador+1, 15, 50, C2, a2);
+        Bus B2 = new Bus("L30N4RD0", listaBuses.idControlador + 1, 15, 50, C2, a2);
         listaBuses.insertarFinal(B2);
-        Bus B3 = new Bus("35T3B4N",listaBuses.idControlador+1, 25, 40);
+        Bus B3 = new Bus("35T3B4N", listaBuses.idControlador + 1, 25, 40);
         listaBuses.insertarFinal(B3);
-        Bus B4 = new Bus("P4L0M1N0",listaBuses.idControlador+1, 30, 60);
+        Bus B4 = new Bus("P4L0M1N0", listaBuses.idControlador + 1, 30, 60);
         listaBuses.insertarFinal(B4);
 
-        listaCiudades.insertarFinal(new Ciudad(listaCiudades.longitud, "Lima", 10));//0
-        listaCiudades.insertarFinal(new Ciudad(listaCiudades.longitud, "Huancayo", 20));//1
-        listaCiudades.insertarFinal(new Ciudad(listaCiudades.longitud, "Pichanaki", 30));//2
-        listaCiudades.insertarFinal(new Ciudad(listaCiudades.longitud, "Trujillo", 40));//3
-        listaCiudades.insertarFinal(new Ciudad(listaCiudades.longitud, "Puno", 50));//
-        listaCiudades.insertarFinal(new Ciudad(listaCiudades.longitud, "Cajamarca", 60));
-        listaCiudades.insertarFinal(new Ciudad(listaCiudades.longitud, "Arequipa", 70));
-        listaCiudades.insertarFinal(new Ciudad(listaCiudades.longitud, "Tarapoto", 80));
-        listaCiudades.insertarFinal(new Ciudad(listaCiudades.longitud, "Iquitos", 90));//8
-        listaCiudades.insertarFinal(new Ciudad(listaCiudades.longitud, "Chiclayo", 100));//9
-        listaCiudades.insertarFinal(new Ciudad(listaCiudades.longitud, "La libertad", 110));//10
-
-        listaRutas.BuscarXDato(a1).calcularPrecioRuta(listaCiudades.ObetenerPorIndiceObjeto(0));
-        listaRutas.BuscarXDato(a1).calcularPrecioRuta(listaCiudades.ObetenerPorIndiceObjeto(1));
-        listaRutas.BuscarXDato(a1).calcularPrecioRuta(listaCiudades.ObetenerPorIndiceObjeto(2));
-        listaRutas.BuscarXDato(a1).calcularPrecioRuta(listaCiudades.ObetenerPorIndiceObjeto(3));
-        listaRutas.BuscarXDato(a1).calcularPrecioRuta(listaCiudades.ObetenerPorIndiceObjeto(4));
-        listaRutas.BuscarXDato(a1).calcularPrecioRuta(listaCiudades.ObetenerPorIndiceObjeto(5));
-
-        listaRutas.BuscarXDato(a2).calcularPrecioRuta(listaCiudades.ObetenerPorIndiceObjeto(6));
-        listaRutas.BuscarXDato(a2).calcularPrecioRuta(listaCiudades.ObetenerPorIndiceObjeto(1));
-        listaRutas.BuscarXDato(a2).calcularPrecioRuta(listaCiudades.ObetenerPorIndiceObjeto(7));
-        listaRutas.BuscarXDato(a2).calcularPrecioRuta(listaCiudades.ObetenerPorIndiceObjeto(8));
-        listaRutas.BuscarXDato(a2).calcularPrecioRuta(listaCiudades.ObetenerPorIndiceObjeto(9));
-        listaRutas.BuscarXDato(a2).calcularPrecioRuta(listaCiudades.ObetenerPorIndiceObjeto(10));
-
-        reg.agregarCiudad(listaCiudades.ObetenerPorIndiceObjeto(5));
+        listaCiudades.insertarFinal(new Ciudad(listaCiudades.longitud, "Lima"));        //0
+        listaCiudades.insertarFinal(new Ciudad(listaCiudades.longitud, "Huancayo"));    //1
+        listaCiudades.insertarFinal(new Ciudad(listaCiudades.longitud, "Pichanaki"));   //2
+        listaCiudades.insertarFinal(new Ciudad(listaCiudades.longitud, "Trujillo"));    //3
+        listaCiudades.insertarFinal(new Ciudad(listaCiudades.longitud, "Puno"));        //4
+        listaCiudades.insertarFinal(new Ciudad(listaCiudades.longitud, "Cajamarca"));   //5
+        listaCiudades.insertarFinal(new Ciudad(listaCiudades.longitud, "Arequipa"));    //6
+        listaCiudades.insertarFinal(new Ciudad(listaCiudades.longitud, "Tarapoto"));    //7
+        listaCiudades.insertarFinal(new Ciudad(listaCiudades.longitud, "Iquitos"));     //8
+        listaCiudades.insertarFinal(new Ciudad(listaCiudades.longitud, "Chiclayo"));    //9
+        listaCiudades.insertarFinal(new Ciudad(listaCiudades.longitud, "La libertad")); //10
+      
+        reg.agregarCiudad(listaCiudades.ObetenerPorIndiceObjeto(0));
         reg.agregarCiudad(listaCiudades.ObetenerPorIndiceObjeto(1));
         reg.agregarCiudad(listaCiudades.ObetenerPorIndiceObjeto(2));
         reg.agregarCiudad(listaCiudades.ObetenerPorIndiceObjeto(3));
         reg.agregarCiudad(listaCiudades.ObetenerPorIndiceObjeto(4));
-        reg.agregarCamino(1, 4, 50);
-        reg.agregarCamino(2, 3, 50);
-        reg.agregarCamino(1, 3, 50);
-        reg.agregarCamino(5, 1, 50);
-        reg.agregarCamino(2, 4, 50);
+        reg.agregarCiudad(listaCiudades.ObetenerPorIndiceObjeto(5));
+        reg.agregarCiudad(listaCiudades.ObetenerPorIndiceObjeto(6));
+        reg.agregarCiudad(listaCiudades.ObetenerPorIndiceObjeto(7));
+        reg.agregarCiudad(listaCiudades.ObetenerPorIndiceObjeto(8));
+        reg.agregarCiudad(listaCiudades.ObetenerPorIndiceObjeto(9));
+        reg.agregarCiudad(listaCiudades.ObetenerPorIndiceObjeto(10));
+
+        reg.agregarCamino(1, 4, 1222);
+        reg.agregarCamino(2, 3, 864);
+        reg.agregarCamino(1, 3, 861);
+        reg.agregarCamino(5, 1, 1161);
+        reg.agregarCamino(2, 4, 1147);
+        
+        reg.agregarCamino(0, 1, 304);
+        reg.agregarCamino(1, 2, 255);
+        reg.agregarCamino(2, 3, 863);
+        reg.agregarCamino(3, 4, 1852);
+        reg.agregarCamino(4, 5, 2154); 
+        
+        reg.agregarCamino(6, 1, 1191);
+        reg.agregarCamino(1, 7, 957);
+        reg.agregarCamino(7, 8, 300);
+        reg.agregarCamino(8, 9, 775);
+        reg.agregarCamino(9, 10, 335);
+        
+
+        listaRutas.BuscarXDato(a1).insertarCiudad(listaCiudades.ObetenerPorIndiceObjeto(0),reg);
+        listaRutas.BuscarXDato(a1).insertarCiudad(listaCiudades.ObetenerPorIndiceObjeto(1),reg);
+        listaRutas.BuscarXDato(a1).insertarCiudad(listaCiudades.ObetenerPorIndiceObjeto(2),reg);
+        listaRutas.BuscarXDato(a1).insertarCiudad(listaCiudades.ObetenerPorIndiceObjeto(3),reg);
+        listaRutas.BuscarXDato(a1).insertarCiudad(listaCiudades.ObetenerPorIndiceObjeto(4),reg);
+        listaRutas.BuscarXDato(a1).insertarCiudad(listaCiudades.ObetenerPorIndiceObjeto(5),reg);
+
+        listaRutas.BuscarXDato(a2).insertarCiudad(listaCiudades.ObetenerPorIndiceObjeto(6),reg);
+        listaRutas.BuscarXDato(a2).insertarCiudad(listaCiudades.ObetenerPorIndiceObjeto(1),reg);
+        listaRutas.BuscarXDato(a2).insertarCiudad(listaCiudades.ObetenerPorIndiceObjeto(7),reg);
+        listaRutas.BuscarXDato(a2).insertarCiudad(listaCiudades.ObetenerPorIndiceObjeto(8),reg);
+        listaRutas.BuscarXDato(a2).insertarCiudad(listaCiudades.ObetenerPorIndiceObjeto(9),reg);
+        listaRutas.BuscarXDato(a2).insertarCiudad(listaCiudades.ObetenerPorIndiceObjeto(10),reg);
 
         System.out.println(reg.toString());
         Ciudad c = reg.buscarCiudad(1);
         Lista<Ciudad> ccc = reg.obtenerCiudadesAdya(c);
         ccc.mostrarLista();
     }
-    
+
     public void guardarFichero() {
         try {
             ObjectOutputStream escribiendoUsuarios = new ObjectOutputStream(new FileOutputStream("./archivos/usuarios.dat"));

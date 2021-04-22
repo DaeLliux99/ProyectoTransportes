@@ -1,25 +1,15 @@
 package modelos;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 import estructuras.Lista;
 import java.io.Serializable;
 import nodos.*;
 
-/**
- *
- * @author Leonardo
- */
 public class Ruta implements Serializable {
 
     private int idRuta;
     private String salida;
     private String llegada;
     private float distanciaRuta = 0;
-
     private float precio = 0;
 
     Lista<Ciudad> ciudadesRuta = new Lista<>();
@@ -27,12 +17,7 @@ public class Ruta implements Serializable {
     public Ruta(int id) {
         idRuta = id;
     }
-/*
-    public Ruta(int ID_ruta, float precio) {
-        this.idRuta = ID_ruta;
-        this.precio = precio;
-    }
-*/
+
     public int getIdRuta() {
         return idRuta;
     }
@@ -106,10 +91,13 @@ public class Ruta implements Serializable {
         return null;
     }
 
-    public void calcularPrecioRuta(Ciudad C) {
+    public void insertarCiudad(Ciudad C, Region reg) {
+        Ciudad ultimo = ciudadesRuta.obetenerUltimoObjeto();
         ciudadesRuta.insertarFinal(C);
-        precio = (float) (precio + C.getDistanciaSigteCiudad() * 0.5);
-        distanciaRuta = distanciaRuta + C.getDistanciaSigteCiudad();
+        if (ciudadesRuta.longitud > 1) {
+            precio = (float) (precio + reg.obtenerDistancia(ultimo, C) * 0.06);
+            distanciaRuta = distanciaRuta + reg.obtenerDistancia(ultimo, C);
+        }
     }
 
     public String mostrarCiudadesRuta() {
@@ -122,7 +110,6 @@ public class Ruta implements Serializable {
     }
 
     public String toString() {
-
         return ("\nId Ruta: " + this.getIdRuta()
                 + "\n\tDistancia Ruta: " + this.distanciaRuta
                 + "\n\tSalida: " + this.getSalida()

@@ -72,7 +72,14 @@ public class Grafo <G> implements Serializable{
         return lista;
     }
     
-    
+    public int obtenerPeso(G datoA, G datoB) {
+        for (Arista v: map.get(datoA)) {
+            if (datoB == v.destino) {
+                return v.peso;
+            }
+        }
+        return -1;
+    }
 
     @Override
     public String toString() {
