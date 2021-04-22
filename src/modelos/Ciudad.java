@@ -1,5 +1,7 @@
 package modelos;
 
+import java.io.Serializable;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -11,7 +13,7 @@ package modelos;
  *
  * @author Sistema
  */
-public class Ciudad {
+public class Ciudad implements Serializable{
     private int idCiudad;
     private String ciudad;
     private int distanciaSigteCiudad;

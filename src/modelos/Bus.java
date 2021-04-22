@@ -6,12 +6,13 @@
 package modelos;
 
 import estructuras.*;
+import java.io.Serializable;
 
 /**
  *
  * @author LEONARDO
  */
-public class Bus {
+public class Bus implements Serializable{
 
     private String matricula;
     private int idBus;
@@ -128,9 +129,7 @@ public class Bus {
         return horario;
     }
 
-    
-    
-    
+ 
     public void setHorario(Horario horario) {
         this.horario = horario;
     }
@@ -142,10 +141,6 @@ public class Bus {
     public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
-    
-    
-    
-    
 
     @Override
     public String toString() {

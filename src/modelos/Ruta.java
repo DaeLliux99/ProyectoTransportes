@@ -6,13 +6,14 @@ package modelos;
  * and open the template in the editor.
  */
 import estructuras.Lista;
+import java.io.Serializable;
 import nodos.*;
 
 /**
  *
  * @author Leonardo
  */
-public class Ruta {
+public class Ruta implements Serializable {
 
     private int idRuta;
     private String salida;
@@ -105,7 +106,7 @@ public class Ruta {
         return null;
     }
 
-    public void ingresarCiudad(Ciudad C) {
+    public void calcularPrecioRuta(Ciudad C) {
         ciudadesRuta.insertarFinal(C);
         precio = (float) (precio + C.getDistanciaSigteCiudad() * 0.5);
         distanciaRuta = distanciaRuta + C.getDistanciaSigteCiudad();

@@ -6,11 +6,13 @@
 
 package modelos;
 
+import java.io.Serializable;
+
 /**
  * 
  * @author LEONARDO
  */
-public class Usuario {
+public class Usuario implements Comparable<Usuario>, Serializable{
     private String username;
     private String password;
     private boolean managent;
@@ -48,6 +50,14 @@ public class Usuario {
     @Override
     public String toString() {
         return "Usuario{" + "username=" + username + ", password=" + password + ", managent=" + managent + '}';
+    }
+
+    @Override
+    public int compareTo(Usuario o) {
+        if (this.username.equals(o.username)) {
+            return 0;
+        }
+        return -1;
     }
   
    

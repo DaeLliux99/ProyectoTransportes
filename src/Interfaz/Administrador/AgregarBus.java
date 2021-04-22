@@ -25,6 +25,8 @@ public class AgregarBus extends javax.swing.JFrame {
         initComponents();
         principal = a;
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setTitle("Registro de buses");
     }
 
     /**
@@ -123,7 +125,7 @@ public class AgregarBus extends javax.swing.JFrame {
             numAsiento = Integer.parseInt(Casiento.getText());
             pesoMax = Integer.parseInt(Cpeso.getText());
             //"35T3B4N",listaBuses.longitud+1, 25, 40
-            Bus nuevoBus = new Bus(matricula, principal.listaBuses.longitud + 1, numAsiento, pesoMax);
+            Bus nuevoBus = new Bus(matricula, principal.listaBuses.idControlador + 1, numAsiento, pesoMax);
             principal.listaBuses.insertarFinal(nuevoBus);
             JOptionPane.showMessageDialog(null, "CADENA DE LUIS", "BUS REGISTRADO CON EXITO", JOptionPane.INFORMATION_MESSAGE);
 

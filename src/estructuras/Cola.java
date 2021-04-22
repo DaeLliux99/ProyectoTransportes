@@ -5,6 +5,7 @@
  */
 package estructuras;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -15,7 +16,7 @@ import nodos.Nodo;
  * @author Carlos Esteban
  * @param <G>
  */
-public class Cola<G> implements Iterable<G>{
+public class Cola<G> implements Iterable<G>, Serializable{
 
     Nodo cabeza;
     Nodo ultimo;

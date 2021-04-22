@@ -25,6 +25,8 @@ public class GestionarRuta extends javax.swing.JFrame {
         principal = A;
         insertar();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setTitle("Gestor de rutas");
     }
 
     public void insertar() {
@@ -69,6 +71,7 @@ public class GestionarRuta extends javax.swing.JFrame {
         BElminarCiudadRuta = new javax.swing.JButton();
         botonRegistrarRuta = new javax.swing.JButton();
         botonCancelar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -122,6 +125,10 @@ public class GestionarRuta extends javax.swing.JFrame {
         });
         getContentPane().add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setText("Administracion de ciudades");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 250, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -131,11 +138,11 @@ public class GestionarRuta extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "VACIO, NO SE PUEDE REGISTRAR", "VACIO, NO SE PUEDE REGISTRAR", JOptionPane.INFORMATION_MESSAGE);
         } else {
             String[] arreglo = CListaCiudad.getText().split("-");
-            Ruta rutaDeLuis = new Ruta(principal.listaRutas.longitud + 1);
+            Ruta rutaDeLuis = new Ruta(principal.listaRutas.idControlador + 1);
             principal.listaRutas.insertarFinal(rutaDeLuis);
 
             for (int i = 0; i < arreglo.length; i++) {
-                principal.listaRutas.BuscarXDato(rutaDeLuis).ingresarCiudad(encontrarRegionCiudad(arreglo[i]));
+                principal.listaRutas.BuscarXDato(rutaDeLuis).calcularPrecioRuta(encontrarRegionCiudad(arreglo[i]));
             }
 
             JOptionPane.showMessageDialog(null, CListaCiudad.getText(), "REGISTRADO CON EXITO", JOptionPane.INFORMATION_MESSAGE);
@@ -256,5 +263,6 @@ public class GestionarRuta extends javax.swing.JFrame {
     private javax.swing.JButton botonRegistrarRuta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,11 +5,13 @@
  */
 package modelos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author LEONARDO
  */
-public class Pasajero {
+public class Pasajero implements Serializable{
     protected int idPasajero;
     protected String nombre;
     protected String lugarDestino;

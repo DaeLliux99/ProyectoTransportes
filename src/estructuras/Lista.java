@@ -5,6 +5,7 @@
  */
 package estructuras;
 
+import java.io.Serializable;
 import java.util.Collections;
 import nodos.Nodo;
 import modelos.*;
@@ -16,12 +17,13 @@ import java.util.NoSuchElementException;
  * @author Carlos Esteban
  * @param <G>
  */
-public class Lista<G> implements Iterable<G> {
+public class Lista<G> implements Iterable<G> , Serializable {
 
     //Atributos
     Nodo cabeza;
     Nodo ultimo;
     public int longitud;
+    public int idControlador;
 
     //Constructor
     public Lista() {
@@ -40,6 +42,7 @@ public class Lista<G> implements Iterable<G> {
             this.cabeza = nodo;
         }
         this.longitud++;
+        this.idControlador++;
     }
 
     //Por practicidad
@@ -53,6 +56,7 @@ public class Lista<G> implements Iterable<G> {
             ultimo = nodo;
         }
         this.longitud++;
+        this.idControlador++;
     }
 
     public void insertarEnIndice(int indice, G dato) {
@@ -61,6 +65,7 @@ public class Lista<G> implements Iterable<G> {
             this.cabeza = nodo;
             this.ultimo = nodo;
             this.longitud++;
+            this.idControlador++;
         } else if (indice == 1) {
             this.insertarInicio(dato);
         } else if (indice == this.longitud) {
@@ -75,6 +80,7 @@ public class Lista<G> implements Iterable<G> {
             nodo.siguiente = puntero.siguiente;
             puntero.siguiente = nodo;
             this.longitud++;
+            this.idControlador++;
         }
     }
 

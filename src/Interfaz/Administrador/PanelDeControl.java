@@ -6,6 +6,7 @@
 package Interfaz.Administrador;
 
 import Interfaz.Empleado.LogIn;
+import javax.swing.JOptionPane;
 import main.ClassCollector;
 
 /**
@@ -20,6 +21,8 @@ public class PanelDeControl extends javax.swing.JFrame {
         initComponents();
         principal = A;
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setTitle("Panel de control");
     }
 
     /**
@@ -40,6 +43,7 @@ public class PanelDeControl extends javax.swing.JFrame {
         GestionarBus = new javax.swing.JButton();
         GMostrarRuta = new javax.swing.JButton();
         GestionarRuta = new javax.swing.JButton();
+        botonGuardarFichero = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -80,7 +84,7 @@ public class PanelDeControl extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, -1, -1));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, -1, -1));
 
         GestionarBus.setText("Gestionar Bus");
         GestionarBus.addActionListener(new java.awt.event.ActionListener() {
@@ -105,6 +109,14 @@ public class PanelDeControl extends javax.swing.JFrame {
             }
         });
         jPanel1.add(GestionarRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 120, -1));
+
+        botonGuardarFichero.setText("Guardar Cambios");
+        botonGuardarFichero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGuardarFicheroActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botonGuardarFichero, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
 
@@ -166,6 +178,12 @@ public class PanelDeControl extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void botonGuardarFicheroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarFicheroActionPerformed
+        // TODO add your handling code here:
+        principal.guardarFichero();
+        JOptionPane.showMessageDialog(null, "Registrado!", "Guardado", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_botonGuardarFicheroActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton GMostrarRuta;
@@ -173,7 +191,9 @@ public class PanelDeControl extends javax.swing.JFrame {
     private javax.swing.JButton GestionarChofer;
     private javax.swing.JButton GestionarHorario;
     private javax.swing.JButton GestionarRuta;
+    private javax.swing.JButton botonGuardarFichero;
     private javax.swing.JButton GestionarUsuario;
+
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

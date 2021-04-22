@@ -24,6 +24,8 @@ public class GestionarChofer extends javax.swing.JFrame {
 
         mostrar();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setTitle("Registro de choferes");
     }
 
     public static boolean isNumeric(String cadena) {
@@ -201,7 +203,8 @@ public class GestionarChofer extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "ERROR EN LA CASILLA DNI", "ESTA INTRODUCIENDO LETRAS", JOptionPane.INFORMATION_MESSAGE);
             }
         }
-
+        CDniChofer.setText("");
+        CNombreChofer.setText("");
 
     }//GEN-LAST:event_BRegistrarActionPerformed
 

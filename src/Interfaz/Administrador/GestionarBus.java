@@ -20,11 +20,15 @@ public class GestionarBus extends javax.swing.JFrame {
     int contadorChofer;
     int contadorBus;
     int contadorRuta;
+    
+    int contadorGeneral;
 
     public GestionarBus(ClassCollector A) {
         initComponents();
         principal = A;
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setTitle("Gestor de buses");
         mostrar();
         dniChoferSelec = -1;
         idRutaSelec = -1;
@@ -42,6 +46,7 @@ public class GestionarBus extends javax.swing.JFrame {
             }
         }
         contadorBus = 0;
+        
         for (Bus b : principal.listaBuses) {
             if (b.getChofer() == null) {
                 tablaBuses.getModel().setValueAt(b.getIdBus(), contadorBus, 0);
@@ -50,6 +55,7 @@ public class GestionarBus extends javax.swing.JFrame {
             }
         }
         contadorRuta = 0;
+        
         for (Ruta b : principal.listaRutas) {
             tablaRutas.getModel().setValueAt(b.getIdRuta(), contadorRuta, 0);
             tablaRutas.getModel().setValueAt(b.getPrecio(), contadorRuta, 1);
@@ -58,12 +64,6 @@ public class GestionarBus extends javax.swing.JFrame {
         }
     }
 
-    /*
-    private void limpiar() {
-        tablaChofer.removeAll();
-        tablaBuses.removeAll();
-        tablaRutas.removeAll();
-    }*/
     private void limpiar() {
         for (int i = 0; i < 30; i++) {
 
@@ -341,23 +341,21 @@ public class GestionarBus extends javax.swing.JFrame {
                 break;
             }
         }
-        /* ESTO ES MIO
-        busSelec.setIdChofer(choferSelec);
-        busSelec.setRuta(rutaSelec);
-        choferSelec.setEstado(false);
-        mostrar();
-        */
-
-        //busSelec.setChofer(choferSelec);
-        //busSelec.setRuta(rutaSelec);
+        
         principal.listaBuses.BuscarXDato(busSelec).setChofer(choferSelec);
         principal.listaBuses.BuscarXDato(busSelec).setRuta(rutaSelec);
 
-        //Bus nuevoBus = new Bus(1234, 20, 80, C, a1);
         principal.listaBuses.mostrarLista();
 
         limpiar();
         mostrar();
+        tablaBuses.getSelectionModel().removeSelectionInterval(0, 30);
+        tablaChofer.getSelectionModel().removeSelectionInterval(0, 30);
+        tablaRutas.getSelectionModel().removeSelectionInterval(0, 30);
+
+        dniChoferSelec = -1;
+        idRutaSelec = -1;
+        matriBusSelec = -1;
 
         JOptionPane.showMessageDialog(null, "BUS REGISTRADO", "BUS REGISTRADO", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_botonRegistrarActionPerformed
@@ -367,7 +365,7 @@ public class GestionarBus extends javax.swing.JFrame {
         int fila = tablaChofer.getSelectedRow();
         DefaultTableModel modelo = (DefaultTableModel) tablaChofer.getModel();
 
-        if (fila > contadorChofer - 1) {
+        if (fila > contadorChofer-1 ) {
             JOptionPane.showMessageDialog(null, "No ha seleccionado nada", "Casilla vacia", JOptionPane.INFORMATION_MESSAGE);
             dniChoferSelec = -1;
         } else {
@@ -393,7 +391,7 @@ public class GestionarBus extends javax.swing.JFrame {
         int fila = tablaRutas.getSelectedRow();
         DefaultTableModel modelo = (DefaultTableModel) tablaRutas.getModel();
 
-        if (fila > contadorRuta - 1) {
+        if (fila > contadorRuta -1) {
             JOptionPane.showMessageDialog(null, "No ha seleccionado nada", "Casilla vacia", JOptionPane.INFORMATION_MESSAGE);
             idRutaSelec = -1;
         } else {
