@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Interfaz.Administrador;
 
 import javax.swing.JOptionPane;
@@ -21,7 +17,6 @@ public class GestionarChofer extends javax.swing.JFrame {
     public GestionarChofer(ClassCollector A) {
         initComponents();
         principal = A;
-
         mostrar();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -29,16 +24,13 @@ public class GestionarChofer extends javax.swing.JFrame {
     }
 
     public static boolean isNumeric(String cadena) {
-
         boolean resultado;
-
         try {
             Integer.parseInt(cadena);
             resultado = true;
         } catch (NumberFormatException excepcion) {
             resultado = false;
         }
-
         return resultado;
     }
 
@@ -189,13 +181,11 @@ public class GestionarChofer extends javax.swing.JFrame {
 
     private void BRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRegistrarActionPerformed
         // TODO add your handling code here:
-
         if (CDniChofer.getText().isEmpty() || CNombreChofer.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "ERROR EN LAS CASILLA DNI Y NOMBRE", "Casilla de DNI y NOMBRE vacia", JOptionPane.INFORMATION_MESSAGE);
         } else {
             if (isNumeric(CDniChofer.getText())) {
                 Chofer C = new Chofer(Integer.parseInt(CDniChofer.getText()), CNombreChofer.getText());
-
                 principal.listaChoferes.insertarFinal(C);
                 limpiar();
                 mostrar();
@@ -205,12 +195,10 @@ public class GestionarChofer extends javax.swing.JFrame {
         }
         CDniChofer.setText("");
         CNombreChofer.setText("");
-
     }//GEN-LAST:event_BRegistrarActionPerformed
 
     private void BAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAtrasActionPerformed
         // TODO add your handling code here:
-
         PanelDeControl UU = new PanelDeControl(principal);
         this.setVisible(false);
         UU.setVisible(true);
@@ -218,10 +206,8 @@ public class GestionarChofer extends javax.swing.JFrame {
 
     private void TablaChoferMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaChoferMouseClicked
         // TODO add your handling code here:
-
         int fila = TablaChofer.getSelectedRow();
         DefaultTableModel modelo = (DefaultTableModel) TablaChofer.getModel();
-
         if (fila > contador - 1) {
             JOptionPane.showMessageDialog(null, "No ha seleccionado nada", "Casilla vacia", JOptionPane.INFORMATION_MESSAGE);
         } else {
@@ -255,8 +241,6 @@ public class GestionarChofer extends javax.swing.JFrame {
 
             }
         }
-
-
     }//GEN-LAST:event_BEliminarActionPerformed
 
 

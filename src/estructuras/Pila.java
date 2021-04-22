@@ -1,18 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package estructuras;
 import java.io.Serializable;
 import nodos.Nodo;
 
-/**
- * 
- * @author Carlos Esteban
- * @param <G>
- */
 public class Pila <G> implements Serializable{
     Nodo cabeza;
     int longitud;

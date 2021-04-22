@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package modelos;
 
 import java.io.Serializable;
@@ -12,10 +8,8 @@ public class Horario implements Serializable{
     private String horaSalida;
     private String horaLlegada;
 
-    public Horario(String Hora_Salida) {
-        
-        this.horaSalida = Hora_Salida;
-        
+    public Horario(String Hora_Salida) {    
+        this.horaSalida = Hora_Salida;      
     }
 
     public String getHoraSalida() {

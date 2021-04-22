@@ -1,16 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package modelos;
 
 import java.io.Serializable;
 
-/**
- *
- * @author LEONARDO
- */
 public class Pasajero implements Serializable{
     protected int idPasajero;
     protected String nombre;
@@ -68,18 +60,6 @@ public class Pasajero implements Serializable{
         this.descripcionPaquetes = descripcionPaquetes;
     }
     
-/*
-    public String toString() {
-        return ("Nombre: "+getNombre()+
-                "\nDNI: "+getID()+
-                "\nNumero de asiento: "+getAsiento()+
-                "\nSalida:"+getLugar_Salida()+
-                "\nDestino:"+getLugar_Destino()+
-                "\nPaquete:"+((isPaquetes())? "Si":"No")+
-                "\nPeso del Paquete:"+ getPesoPaquetes());
-    }
-*/
-
     public int getAsiento() {
         return asiento;
     }

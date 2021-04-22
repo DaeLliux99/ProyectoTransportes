@@ -1,9 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Interfaz.Empleado;
+
 
 import estructuras.Cola;
 import java.awt.Dimension;
@@ -18,6 +15,7 @@ public class ticket extends javax.swing.JFrame {
     ClassCollector principal;
 
     public ticket(int documento, Bus b, ClassCollector A) {
+       
         initComponents();
         principal = A;
         dni = documento;
@@ -48,7 +46,6 @@ public class ticket extends javax.swing.JFrame {
             }
         }
     }
-
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -206,8 +203,7 @@ public class ticket extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnImprimirActionPerformed
-        
-        
+   
         int numeroticket = Integer.parseInt(CNumeroTicket.getText());
         int dni = Integer.parseInt(CAsiento.getText());
         String nombres = CNombresyAp.getText();
@@ -216,13 +212,7 @@ public class ticket extends javax.swing.JFrame {
         int numeroAsiento = Integer.parseInt(CAsiento.getText());
         int importe = Integer.parseInt(CEquipaje.getText());
         String equipaje = CEquipaje.getText();
-        String descripcion = CDescripccion.getText();
-        
-        
-        
-        
-        
-        
+        String descripcion = CDescripccion.getText();      
     }//GEN-LAST:event_BtnImprimirActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -234,11 +224,7 @@ public class ticket extends javax.swing.JFrame {
 
     private void CEquipajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CEquipajeActionPerformed
         // TODO add your handling code here:
-        
-        
-        
-        
-        
+
     }//GEN-LAST:event_CEquipajeActionPerformed
 
     private void CAsientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CAsientoActionPerformed
@@ -251,6 +237,8 @@ public class ticket extends javax.swing.JFrame {
 
     private void CNumeroTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CNumeroTicketActionPerformed
         // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_CNumeroTicketActionPerformed
 
     private void CAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CAtrasActionPerformed

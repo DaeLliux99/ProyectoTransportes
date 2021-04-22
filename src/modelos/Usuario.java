@@ -1,17 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 package modelos;
 
 import java.io.Serializable;
 
-/**
- * 
- * @author LEONARDO
- */
+
 public class Usuario implements Comparable<Usuario>, Serializable{
     private String username;
     private String password;
@@ -60,15 +53,4 @@ public class Usuario implements Comparable<Usuario>, Serializable{
         return -1;
     }
   
-   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }

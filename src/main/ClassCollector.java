@@ -35,39 +35,44 @@ public class ClassCollector {
     public Region reg = new Region();
 
     public ClassCollector() {
-        //String username, String password, boolean managent 
         try {
-            ObjectInputStream leyendoUsuarios = new ObjectInputStream(new FileInputStream("/archivos/usuarios.dat"));
+            ObjectInputStream leyendoUsuarios = new ObjectInputStream(new FileInputStream("./archivos/usuarios.dat"));
             listaUsuarios = (Lista) leyendoUsuarios.readObject();
             leyendoUsuarios.close();
-            ObjectInputStream leyendoChoferes = new ObjectInputStream(new FileInputStream("/archivos/choferes.dat"));
+            
+            ObjectInputStream leyendoChoferes = new ObjectInputStream(new FileInputStream("./archivos/choferes.dat"));
             listaChoferes = (Lista) leyendoChoferes.readObject();
             leyendoChoferes.close();
+            
             ObjectInputStream leyendoRutas = new ObjectInputStream(new FileInputStream("./archivos/rutas.dat"));
             listaRutas = (Lista) leyendoRutas.readObject();
             leyendoRutas.close();
+            
             ObjectInputStream leyendoBuses = new ObjectInputStream(new FileInputStream("./archivos/buses.dat"));
             listaBuses = (Lista) leyendoBuses.readObject();
             leyendoBuses.close();
+            
             ObjectInputStream leyendoCiudades = new ObjectInputStream(new FileInputStream("./archivos/ciudades.dat"));
             listaCiudades = (Lista) leyendoCiudades.readObject();
             leyendoCiudades.close();
+            
             ObjectInputStream leyendoRegion = new ObjectInputStream(new FileInputStream("./archivos/region.dat"));
             reg = (Region) leyendoRegion.readObject();
             leyendoRegion.close();
+            
         } catch (IOException e) {
             initObjetos();
             guardarFichero();
-            System.out.println("OwO");
+            System.out.println("No se encontro el archivo ...");
         } catch (ClassNotFoundException ex) {
-            System.out.println("UwU");
+            System.out.println(ex.getMessage());
         }
     }
 
     private void initObjetos() {
 
-        Usuario u1 = new Usuario("username", "password", true);
-        Usuario u2 = new Usuario("abc", "abc", false);
+        Usuario u1 = new Usuario("admin", "admin", true);
+        Usuario u2 = new Usuario("emp", "emp", false);
 
         listaUsuarios.insertarFinal(u1);
         listaUsuarios.insertarFinal(u2);
@@ -138,9 +143,8 @@ public class ClassCollector {
         reg.agregarCamino(1, 7, 957);
         reg.agregarCamino(7, 8, 300);
         reg.agregarCamino(8, 9, 775);
-        reg.agregarCamino(9, 10, 335);
+        reg.agregarCamino(9, 10, 335);  
         
-
         listaRutas.BuscarXDato(a1).insertarCiudad(listaCiudades.ObetenerPorIndiceObjeto(0),reg);
         listaRutas.BuscarXDato(a1).insertarCiudad(listaCiudades.ObetenerPorIndiceObjeto(1),reg);
         listaRutas.BuscarXDato(a1).insertarCiudad(listaCiudades.ObetenerPorIndiceObjeto(2),reg);
@@ -154,11 +158,6 @@ public class ClassCollector {
         listaRutas.BuscarXDato(a2).insertarCiudad(listaCiudades.ObetenerPorIndiceObjeto(8),reg);
         listaRutas.BuscarXDato(a2).insertarCiudad(listaCiudades.ObetenerPorIndiceObjeto(9),reg);
         listaRutas.BuscarXDato(a2).insertarCiudad(listaCiudades.ObetenerPorIndiceObjeto(10),reg);
-
-        System.out.println(reg.toString());
-        Ciudad c = reg.buscarCiudad(1);
-        Lista<Ciudad> ccc = reg.obtenerCiudadesAdya(c);
-        ccc.mostrarLista();
     }
 
     public void guardarFichero() {
@@ -182,7 +181,7 @@ public class ClassCollector {
             escribiendoRegion.writeObject(reg);
             escribiendoRegion.close();
         } catch (IOException e) {
-            System.out.println("Calla mrd");
+            System.out.println("Silencio, por favor. Syntax Error");
         }
     }
 }

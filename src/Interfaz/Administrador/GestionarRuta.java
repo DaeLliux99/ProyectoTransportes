@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Interfaz.Administrador;
 
 import main.ClassCollector;
@@ -10,10 +6,7 @@ import modelos.*;
 import estructuras.*;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author LEONARDO
- */
+
 public class GestionarRuta extends javax.swing.JFrame {
 
     ClassCollector principal;
@@ -140,11 +133,9 @@ public class GestionarRuta extends javax.swing.JFrame {
             String[] arreglo = CListaCiudad.getText().split("-");
             Ruta rutaDeLuis = new Ruta(principal.listaRutas.idControlador + 1);
             principal.listaRutas.insertarFinal(rutaDeLuis);
-
             for (int i = 0; i < arreglo.length; i++) {
                 principal.listaRutas.BuscarXDato(rutaDeLuis).insertarCiudad(encontrarRegionCiudad(arreglo[i]),principal.reg);
             }
-
             JOptionPane.showMessageDialog(null, CListaCiudad.getText(), "REGISTRADO CON EXITO", JOptionPane.INFORMATION_MESSAGE);
             PanelDeControl UU = new PanelDeControl(principal);
             this.setVisible(false);
@@ -165,38 +156,18 @@ public class GestionarRuta extends javax.swing.JFrame {
         } else {
             CListaCiudad.setText(CListaCiudad.getText() + "-" + CCiudadSeleccionada.getText());
         }
-
         for (Ciudad d : principal.reg.obtenerCiudades()) {
             if (d.getCiudad().equals(CCiudadSeleccionada.getText())) {
                 listaTemporal.insertarFinal(d);
                 break;
             }
         }
-
         for (Ciudad C : principal.reg.obtenerCiudades()) {
             if (C.getCiudad().equals(ciudadBuscada)) {
                 insertarAdya(C);
                 break;
             }
-        }
-
-        /*
-        CListaCiudad.setText(CListaCiudad.getText() + "-" + CCiudadSeleccionada.getText());
-        
-        for (Ciudad d : principal.reg.obtenerCiudades()) {
-            if (d.getCiudad().equals(CCiudadSeleccionada.getText())) {
-                listaTemporal.insertarFinal(d);
-                break;
-            }
-        }
-        
-        for (Ciudad C : principal.reg.obtenerCiudades()) {
-            if (C.getCiudad().equals(ciudadBuscada)) {
-                insertarAdya(C);
-                break;
-            }
-        }
-         */
+        }      
     }//GEN-LAST:event_BAgregarCiudadActionPerformed
 
     private void BElminarCiudadRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BElminarCiudadRutaActionPerformed
@@ -213,36 +184,6 @@ public class GestionarRuta extends javax.swing.JFrame {
             temporal = temporal + c.toString();
         }
         CListaCiudad.setText(temporal);
-        /*
-        if (CListaCiudad.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "VACIO, NO SE PUEDE ELIMINAR", "VACIO, NO SE PUEDE ELIMINAR", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            principal.reg.obtenerCiudades().eliminar( principal.reg.obtenerCiudades().obetenerPrimerObjeto());
-            String[] arregloDeLuis = CListaCiudad.getText().split("-");
-            String temporal = "";
-            int tam = arregloDeLuis.length - 1;
-            for (int i = 0; i < tam; i++) {
-
-                if (i == 0) {
-                    System.out.println(arregloDeLuis.length);
-                    temporal = arregloDeLuis[i];
-                } else {
-                    temporal = temporal + "-" + arregloDeLuis[i];
-                }
-
-            }
-            for (Ciudad C : principal.reg.obtenerCiudades()) {
-                if (tam == 0) {
-                    insertar();
-                    break;
-                } else if (C.getCiudad().equals(arregloDeLuis[tam - 1])) {
-                    insertarAdya(C);
-                    break;
-                }
-            }
-            CListaCiudad.setText(temporal);
-        }
-        */
     }//GEN-LAST:event_BElminarCiudadRutaActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed

@@ -8,10 +8,6 @@ import javax.swing.JTextField;
 import main.ClassCollector;
 import modelos.*;
 
-/**
- *
- * @author Jorge Cardenas
- */
 public class LogIn extends javax.swing.JFrame {
 
     ClassCollector A;
@@ -19,11 +15,10 @@ public class LogIn extends javax.swing.JFrame {
     public LogIn(ClassCollector B) {
         initComponents();
         A = B;
-        CCampoUsuario.setText("username");
-        CCampoAdministrador.setText("password");
+        CCampoUsuario.setText("");
+        CCampoAdministrador.setText("");
         this.setLocationRelativeTo(null);
-        this.setTitle("Iniciar sesion");
-        //ValidarIngresoDimension(passw, 15);
+        this.setTitle("Iniciar sesion");       
     }
 
     @SuppressWarnings("unchecked")
@@ -116,46 +111,28 @@ public class LogIn extends javax.swing.JFrame {
             if (nombre_usuario.equalsIgnoreCase(u.getUsername()) && pass.equalsIgnoreCase(u.getPassword()) && !loggeado) {
                 loggeado = true;
                 if (u.isManagent()) {
-                    JOptionPane.showMessageDialog(null, "Es administrador");
+                    JOptionPane.showMessageDialog(null, "Usuario administrador "+CCampoUsuario.getText());
                     PanelDeControl h = new PanelDeControl(A);
                     this.setVisible(false);
                     h.setVisible(true);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Bienvenido");
+                    JOptionPane.showMessageDialog(null, "Usuario empleado "+CCampoUsuario.getText());
                     Horarios h = new Horarios(A);
                     this.setVisible(false);
                     h.setVisible(true);
                 }
-                /*
-                
-                 */
             }
         }
         if (loggeado == false) {
-            JOptionPane.showMessageDialog(null, "NNNNNN");
-        }
-        //JOptionPane.showMessageDialog(null, "Rellene los campos adecuadamente");
-
-        //String nombre_usuario = jTextField3.getText();
-        //String pass = passw.getText();
-
+            JOptionPane.showMessageDialog(null, "ACCESO DENEGADO");
+        }       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void CCampoAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CCampoAdministradorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CCampoAdministradorActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    /*
-    public static void main(String args[]) {
-        
-        java.awt.EventQueue.invokeLater(() -> {
-            new LogIn().setVisible(true);
-        });
-    }
-     */
+     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField CCampoAdministrador;
     private javax.swing.JTextField CCampoUsuario;

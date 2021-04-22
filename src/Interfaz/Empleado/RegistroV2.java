@@ -7,19 +7,13 @@ import estructuras.*;
 import modelos.*;
 import nodos.Nodo;
 
-/**
- *
- * @author T1000
- */
 public class RegistroV2 extends javax.swing.JFrame {
 
     ClassCollector Principal;
     int ID_bus;
 
     public RegistroV2(String Salida, String llegada, int bus, ClassCollector A) {
-
         initComponents();
-        
         Principal = A;
         ID_bus = bus;
         CSalida.setText(Salida);
@@ -29,7 +23,6 @@ public class RegistroV2 extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.setResizable(false);
         this.setTitle("Registro de pasajeros");
-
     }
 
     public void limpiar() {
@@ -37,26 +30,20 @@ public class RegistroV2 extends javax.swing.JFrame {
         Cnombre.setText(null);
         Cllegada.setText("");
         CSalida.setText("");
-        //combo_tipodoc.setSelectedItem("Seleccionar Tipo Documento");
-
     }
 
     public static boolean isNumeric(String cadena) {
-
         boolean resultado;
-
         try {
             Integer.parseInt(cadena);
             resultado = true;
         } catch (NumberFormatException excepcion) {
             resultado = false;
         }
-
         return resultado;
     }
 
     public Bus encontrarBus() {
-
         Nodo<Bus> temp = Principal.listaBuses.ObetenerPrimerNodo();
         while (temp != null) {
             if (temp.valor.getIdBus() == ID_bus) {
@@ -211,22 +198,22 @@ public class RegistroV2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void regclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regclienteActionPerformed
-        
+
         if (Cdni.getText().isEmpty() || Cnombre.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "ERROR EN LAS CASILLA DNI Y NOMBRE", "Casilla de DNI y NOMBRE vacia", JOptionPane.INFORMATION_MESSAGE);
         } else {
             if (isNumeric(Cdni.getText())) {
                 int dni = Integer.parseInt(Cdni.getText());
                 boolean equipaje = false;
-
+                
                 if (TextoEquipaje != null) {
                     equipaje = true;
-                }
-                Bus busUsado = encontrarBus();
-                if (busUsado.getOcupado() < busUsado.getNumeroAsientos() && asiento.getSelectedItem() != null) {
-                    Pasajero p1 = new Pasajero(dni, Cnombre.getText(), Cllegada.getText(), equipaje, TextoEquipaje.getText(), (int) asiento.getSelectedItem());
-                    busUsado.getColaPasajero().push(p1);
-                    busUsado.ocuparAsiento();
+                }             
+                Bus busUsado = encontrarBus();               
+                if (busUsado.getOcupado() < busUsado.getNumeroAsientos() && asiento.getSelectedItem() != null) {                
+                    Pasajero p1 = new Pasajero(dni, Cnombre.getText(), Cllegada.getText(), equipaje, TextoEquipaje.getText(), (int) asiento.getSelectedItem());                 
+                    busUsado.getColaPasajero().push(p1);                  
+                    busUsado.ocuparAsiento();                  
                 } else if (asiento.getSelectedItem() == null) {
                     JOptionPane.showMessageDialog(null, "No selecciono asiento, no se registro pasajero", "No selecciono asiento, no se registro pasajero", JOptionPane.INFORMATION_MESSAGE);
                 } else {
@@ -249,12 +236,10 @@ public class RegistroV2 extends javax.swing.JFrame {
         Horarios UU = new Horarios(Principal);
         this.setVisible(false);
         UU.setVisible(true);
-
     }//GEN-LAST:event_cancelcliActionPerformed
 
     private void salirclijButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirclijButton3ActionPerformed
         this.dispose();
-
     }//GEN-LAST:event_salirclijButton3ActionPerformed
 
     private void CdniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CdniActionPerformed

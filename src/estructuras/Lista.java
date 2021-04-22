@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package estructuras;
 
 import java.io.Serializable;
@@ -12,26 +8,18 @@ import modelos.*;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-/**
- *
- * @author Carlos Esteban
- * @param <G>
- */
 public class Lista<G> implements Iterable<G> , Serializable {
 
-    //Atributos
     Nodo cabeza;
     Nodo ultimo;
     public int longitud;
     public int idControlador;
 
-    //Constructor
     public Lista() {
         cabeza = null;
         longitud = 0;
     }
 
-    //Metodos
     public void insertarInicio(G dato) {
         Nodo<G> nodo = new Nodo<>(dato);
         if (this.cabeza == null) {
@@ -45,7 +33,6 @@ public class Lista<G> implements Iterable<G> , Serializable {
         this.idControlador++;
     }
 
-    //Por practicidad
     public void insertarFinal(G dato) {
         Nodo<G> nodo = new Nodo<>(dato);
         if (this.cabeza == null) {
@@ -131,35 +118,6 @@ public class Lista<G> implements Iterable<G> , Serializable {
             this.longitud--;
         }
     }
-
-    /*
-    public void eliminar(G dato){
-        Nodo<G> temp, cabeza1=cabeza;
-        if(cabeza==null){
-            System.out.println("lista vacia");
-        }else{
-            if(cabeza1.valor==dato){
-                cabeza=cabeza.siguiente;
-                System.out.println("eliminado 1");      
-            }else{
-                temp=cabeza1;
-                cabeza1=cabeza1.siguiente;
-                while(cabeza1!=null){
-                    if(cabeza1.valor==dato && cabeza1.siguiente!=null){
-                        temp.siguiente=cabeza1.siguiente;
-                        System.out.println("eliminado 2");
-                    }else if(cabeza1.valor==dato){
-                        temp.siguiente=null;
-                        ultimo = temp;
-                        System.out.println("eliminado 3");
-                    }
-                    temp=cabeza1;
-                    cabeza1=cabeza1.siguiente;
-                }
-            }
-        }
-    }
-     */
 
     public G BuscarXDato(G dato) {
         if (this.cabeza == null) {

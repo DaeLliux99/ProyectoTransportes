@@ -14,9 +14,6 @@ import main.ClassCollector;
 
 public class Horarios extends javax.swing.JFrame {
 
-    /**
-     * Creates new form GUI_BuscarProveedores
-     */
     ClassCollector principal;
     String rutaA;
     Ruta ruta1;
@@ -27,7 +24,6 @@ public class Horarios extends javax.swing.JFrame {
     int bus;
 
     public Horarios(ClassCollector A) {
-
         initComponents();
         principal = A;
         this.setLocationRelativeTo(null);
@@ -147,7 +143,7 @@ public class Horarios extends javax.swing.JFrame {
         });
         getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 410, -1, -1));
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Buscar destino", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Ciudad que desea visitar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
         jPanel3.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jPanel3PropertyChange(evt);
@@ -198,7 +194,6 @@ public class Horarios extends javax.swing.JFrame {
 
     private void regclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regclienteActionPerformed
         if (salidaTXT != null && llegadaTXT != null) {
-
             RegistroV2 r = new RegistroV2(salidaTXT, llegadaTXT, bus, principal);
             this.setVisible(false);
             r.setVisible(true);
@@ -211,8 +206,6 @@ public class Horarios extends javax.swing.JFrame {
         LogIn a = new LogIn(principal);
         a.setVisible(true);
         this.setVisible(false);
-
-
     }//GEN-LAST:event_salirActionPerformed
 
     private void Buscar_Ruta_BotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar_Ruta_BotonActionPerformed
@@ -225,7 +218,6 @@ public class Horarios extends javax.swing.JFrame {
             jTable1.getModel().setValueAt("", i, 4);
             jTable1.getModel().setValueAt("", i, 5);
         }
-
         contador = 0;
         for (Bus b : principal.listaBuses) {
             if (b.getRuta() != null) {
@@ -234,19 +226,16 @@ public class Horarios extends javax.swing.JFrame {
                     jTable1.getModel().setValueAt(b.getRuta().obtenerUltimaCiudad(), contador, 1);
                     jTable1.getModel().setValueAt(b.getIdBus(), contador, 2);   //
                     jTable1.getModel().setValueAt(b.getRuta().mostrarCiudadesRuta(), contador, 3);
-                    jTable1.getModel().setValueAt(b.getRuta().getPrecio(), contador, 4);
+                    jTable1.getModel().setValueAt((int)b.getRuta().getPrecio(), contador, 4);
                     jTable1.getModel().setValueAt(b.getNumeroAsientos() - b.getOcupado(), contador, 5);
                     contador++;
                 }
             }
-        }
-
-        //JOptionPane.showMessageDialog(null, "No se puede realizar la busqueda!", "NO HAY REGISTROS", JOptionPane.INFORMATION_MESSAGE);
+        }       
     }//GEN-LAST:event_Buscar_Ruta_BotonActionPerformed
 
     private void Casilla_Buscar_RutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Casilla_Buscar_RutaActionPerformed
         // TODO add your handling code here:
-
     }//GEN-LAST:event_Casilla_Buscar_RutaActionPerformed
 
     private void jPanel3PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jPanel3PropertyChange
@@ -254,7 +243,7 @@ public class Horarios extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel3PropertyChange
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        // TODO add your handling code here:
+        
         int fila = jTable1.getSelectedRow();
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
 
@@ -262,16 +251,9 @@ public class Horarios extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No ha seleccionado nada", "Casilla vacia", JOptionPane.INFORMATION_MESSAGE);
         } else {
             salidaTXT = (String) modelo.getValueAt(fila, 0);
-            llegadaTXT = /*(String)*/ Casilla_Buscar_Ruta.getText();
+            llegadaTXT = (String) modelo.getValueAt(fila, 1);
             bus = (int) modelo.getValueAt(fila, 2);
-        }
-        /*
-        salidaTXT = (String) modelo.getValueAt(fila, 0);
-        llegadaTXT = (String) Casilla_Buscar_Ruta.getText();
-        bus = (int) modelo.getValueAt(fila, 2);
-        System.out.println(bus);
-         */
-        //JOptionPane.showMessageDialog(null, "Salida: " + salidaTXT + " llegada: " + llegadaTXT, "INFORMACION DE SELECCION", JOptionPane.INFORMATION_MESSAGE);
+        }   
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void mostrarPasajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarPasajeroActionPerformed
