@@ -108,7 +108,7 @@ public class Lista<G> implements Iterable<G> , Serializable {
                 }
                 ultimo = puntero;
                 eliminado = puntero.siguiente;
-                puntero.siguiente = null;
+                puntero.siguiente = null;                
             } else {
                 eliminado = this.cabeza;
                 this.cabeza = null;

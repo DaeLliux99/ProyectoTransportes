@@ -1,11 +1,9 @@
-
 package Interfaz.Administrador;
 
 import main.ClassCollector;
 import modelos.*;
 import estructuras.*;
 import javax.swing.JOptionPane;
-
 
 public class GestionarRuta extends javax.swing.JFrame {
 
@@ -39,17 +37,16 @@ public class GestionarRuta extends javax.swing.JFrame {
     void limpiarCB() {
         CBRuta1.removeAllItems();
     }
-    
-    Ciudad encontrarRegionCiudad(String a){
-        for(Ciudad c:principal.reg.obtenerCiudades()){
-            if(c.getCiudad().equals(a)){
+
+    Ciudad encontrarRegionCiudad(String a) {
+        for (Ciudad c : principal.reg.obtenerCiudades()) {
+            if (c.getCiudad().equals(a)) {
                 System.out.println(a);
                 return c;
             }
         }
         return null;
     }
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -130,11 +127,14 @@ public class GestionarRuta extends javax.swing.JFrame {
         if (CListaCiudad.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "VACIO, NO SE PUEDE REGISTRAR", "VACIO, NO SE PUEDE REGISTRAR", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            String[] arreglo = CListaCiudad.getText().split("-");
-            Ruta rutaDeLuis = new Ruta(principal.listaRutas.idControlador + 1);
-            principal.listaRutas.insertarFinal(rutaDeLuis);
+
+            String cadenaTemporal = CListaCiudad.getText().replace("--", "-");
+            String[] arreglo = cadenaTemporal.split("-");
+
+            Ruta rutaTemporal = new Ruta(principal.listaRutas.idControlador + 1);
+            principal.listaRutas.insertarFinal(rutaTemporal);
             for (int i = 0; i < arreglo.length; i++) {
-                principal.listaRutas.BuscarXDato(rutaDeLuis).insertarCiudad(encontrarRegionCiudad(arreglo[i]),principal.reg);
+                principal.listaRutas.BuscarXDato(rutaTemporal).insertarCiudad(encontrarRegionCiudad(arreglo[i]), principal.reg);
             }
             JOptionPane.showMessageDialog(null, CListaCiudad.getText(), "REGISTRADO CON EXITO", JOptionPane.INFORMATION_MESSAGE);
             PanelDeControl UU = new PanelDeControl(principal);
@@ -152,9 +152,9 @@ public class GestionarRuta extends javax.swing.JFrame {
     private void BAgregarCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAgregarCiudadActionPerformed
         // TODO add your handling code here:
         if (CListaCiudad.getText().isEmpty()) {
-            CListaCiudad.setText(CCiudadSeleccionada.getText());
+            CListaCiudad.setText(CCiudadSeleccionada.getText() + "-");
         } else {
-            CListaCiudad.setText(CListaCiudad.getText() + "-" + CCiudadSeleccionada.getText());
+            CListaCiudad.setText(CListaCiudad.getText() + CCiudadSeleccionada.getText() + "-");
         }
         for (Ciudad d : principal.reg.obtenerCiudades()) {
             if (d.getCiudad().equals(CCiudadSeleccionada.getText())) {
@@ -167,7 +167,7 @@ public class GestionarRuta extends javax.swing.JFrame {
                 insertarAdya(C);
                 break;
             }
-        }      
+        }
     }//GEN-LAST:event_BAgregarCiudadActionPerformed
 
     private void BElminarCiudadRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BElminarCiudadRutaActionPerformed

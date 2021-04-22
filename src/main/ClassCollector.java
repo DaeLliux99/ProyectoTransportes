@@ -158,6 +158,7 @@ public class ClassCollector {
         listaRutas.BuscarXDato(a2).insertarCiudad(listaCiudades.ObetenerPorIndiceObjeto(8),reg);
         listaRutas.BuscarXDato(a2).insertarCiudad(listaCiudades.ObetenerPorIndiceObjeto(9),reg);
         listaRutas.BuscarXDato(a2).insertarCiudad(listaCiudades.ObetenerPorIndiceObjeto(10),reg);
+        
     }
 
     public void guardarFichero() {
